@@ -1,4 +1,3 @@
-# Ilha Vostok [Provisório]
+# Castway
 
-Aqui podemos adicionar o Algoritmo para sabermos qual fluxo seguir.
-Essa primeira versão não foi tão bem pensada então tem partes do código que se repetem bastante. 
+Um avião com membros de uma comitiva de estudos cai numa ilha localizada no Triângulo das Bermudas, apenas um dos tripulantes sobreviveu e seu objetivo é sair da ilha, mas irá encontrar diversas coisas estranhas no caminho.
