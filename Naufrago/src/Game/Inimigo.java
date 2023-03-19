@@ -8,16 +8,25 @@ public class Inimigo {
 	private int resistenciaInimigo;
 	private int nivelInimigo;
 	
-	public float danoInimigo(float forcaAtualInimigo, float nivelInimigo, float defesaJogador) {
-		float danoInimigo = (forcaAtualInimigo * nivelInimigo) / defesaJogador;
+	public float danoInimigo() {
+		float danoInimigo = (getForcaInimigo() * getNivelInimigo()) / GameController.jogador.getDefesaJogador();
 		return danoInimigo;
 	}
 	
-	public float defesaInimigo(float resistenciaAtualInimigo, float nivelInimigo) {
-		float defesaInimigo = resistenciaAtualInimigo * nivelInimigo;
+	public float defesaInimigo() {
+		float defesaInimigo = getResistenciaInimigo() * getNivelInimigo();
 		return defesaInimigo;
 	}
+	
+	public Inimigo (String nome, int vida, int forca, int resistencia, int nivel) {
+		this.nomeInimigo = nome;
+		this.vidaInimigo = vida;
+		this.forcaInimigo = forca;
+		this.resistenciaInimigo = resistencia;
+		this.nivelInimigo = nivel;
+	}
 
+	/*
 	private Inimigo(String nomeInimigo, int vidaInimigo, int forcaInimigo, int resistenciaInimigo, int nivelInimigo) {
 		super();
 		this.nomeInimigo = nomeInimigo;
@@ -26,6 +35,7 @@ public class Inimigo {
 		this.resistenciaInimigo = resistenciaInimigo;
 		this.nivelInimigo = nivelInimigo;
 	}
+	*/
 
 	private String getNomeInimigo() {
 		return nomeInimigo;

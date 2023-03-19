@@ -6,6 +6,27 @@ import java.util.Scanner;
 public class Menu {
 	
 	Scanner entrada = new Scanner(System.in);
+	
+	public void getIntro() {
+		String texto = 	"+========================================+\n" 
+				+ 		"|         By The Code - Apresenta        |\n"
+				+ 		"+========================================+\n"
+				+ 		"|                                        |\n"
+				+ 		"|                NAUFRAGO                |\n"
+				+       "|                                        |\n"
+				+ 		"+========================================+\n";
+		
+		GameController.uteis.printaTexto(texto, 25);
+		try {
+			Thread.sleep(2000);
+			GameController.uteis.limpaConsole();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		getMenu();
+	}
 
 	public void getMenu() {
 		
@@ -20,31 +41,31 @@ public class Menu {
 				+ 		"|                                        |\n"
 				+ 		"+========================================+\n";
 		
-		Game.uteis.printaTexto(menu, 15);
+		GameController.uteis.printaTexto(menu, 15);
 		 
 		System.out.println("\nDigite uma opção:");
 		int opcao = entrada.nextInt();
 		
 		switch (opcao) {
 		case 1:
-			Game.uteis.limparConsole();
+			GameController.uteis.limpaConsole();
 			System.out.println("Escolheu a opção 1 Jogar");
 			break;
 		case 2:
-			Game.uteis.limparConsole();
+			GameController.uteis.limpaConsole();
 			instrucoes();
 			break;
 		case 3:
-			Game.uteis.limparConsole();
+			GameController.uteis.limpaConsole();
 			creditos();
 			break;
 		case 4:
-			Game.uteis.limparConsole();
+			GameController.uteis.limpaConsole();
 			sair();
 			break;
 		default:
 			System.out.println("Opção inválida!");
-			Game.uteis.limparConsole();
+			GameController.uteis.limpaConsole();
 			getMenu();	
 		}
 	}
@@ -67,7 +88,7 @@ public class Menu {
 							+ " Exemplo: 1 - Jogar | 2 - Sair, se quiser jogar, digite 1, se quiser sair digite 2.				\n\n"
 							+ "+========================================+														\n\n";
 		
-		Game.uteis.printaTexto(instrucoes, 5);
+		GameController.uteis.printaTexto(instrucoes, 5);
 		voltar();	
 	}
 	
@@ -83,7 +104,7 @@ public class Menu {
 						+ " Vinicius Araujo da Silveira 					\n"
 						+ "+========================================+  		\n\n";
 	
-		Game.uteis.printaTexto(creditos, 25);
+		GameController.uteis.printaTexto(creditos, 25);
 		voltar();
 		
 	}
@@ -99,7 +120,7 @@ public class Menu {
 		int opcao = entrada.nextInt();
 		
 		if(opcao == 1)  {
-			Game.uteis.limparConsole();
+			GameController.uteis.limpaConsole();
 			getMenu();
 		} else {
 			System.out.println("Opção Inválida!");

@@ -13,10 +13,15 @@ public class Uteis {
 		}
 	}
 	
-	public void limparConsole() { 
+	public void limpaConsole() { 
 		
 		for (int i = 0; i <= 50; i++) {
 			System.out.println();
 		}
+	}
+	
+	public double geraNumeroRandomico() {
+		double random = Math.random() * 101;
+		return random;
 	}
 }
