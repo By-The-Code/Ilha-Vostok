@@ -261,6 +261,14 @@ public class Jogador {
 	public void setArma(String arma) {
 		this.arma = arma;
 	}
+
+	public String getArmadura() {
+		return armadura;
+	}
+
+	public void setArmadura(String armadura) {
+		this.armadura = armadura;
+	}
 	
 	
 	

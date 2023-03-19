@@ -8,9 +8,13 @@ public class GameController {
 	public static Uteis uteis = new Uteis();
 	public static Inimigo inimigo;
 	public static Jogador jogador;
-		
+	public static Historia historia = new Historia();
+
+
+	/*
 	private static String nome;
 	private static int profissao;
+	*/
 	
 	/*
 	public static void escolherNome() {
@@ -75,8 +79,6 @@ public class GameController {
 				break;
 		}
 	}
-	
-	
 	
 	public static void teste() {
 		jogador = new Jogador(nome, profissao);

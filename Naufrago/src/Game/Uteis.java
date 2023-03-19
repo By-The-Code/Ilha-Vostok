@@ -21,7 +21,6 @@ public class Uteis {
 	}
 	
 	public double geraNumeroRandomico() {
-		double random = Math.random() * 101;
-		return random;
+		return Math.random() * 101;
 	}
 }

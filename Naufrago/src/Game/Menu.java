@@ -49,7 +49,7 @@ public class Menu {
 		switch (opcao) {
 		case 1:
 			GameController.uteis.limpaConsole();
-			System.out.println("Escolheu a opção 1 Jogar");
+			GameController.historia.getIntro();
 			break;
 		case 2:
 			GameController.uteis.limpaConsole();
