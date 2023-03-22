@@ -16,20 +16,20 @@ public class Jogador {
 	private String 	arma = "Mãos";
 	private String 	armadura = "";
 	
-	public Jogador(String nome, int profissao) {
+	public Jogador(String nome, String profissao) {
 		
 		this.nome = nome;
 		
 		switch(profissao) {
-			case 1: this.profissao = "Médico";
+			case "MÉDICO": this.profissao = "Médico";
 			atribuindoValoresBaseadoNaProfissao(this.profissao);
 			break;
 			
-			case 2: this.profissao = "Soldado";
+			case "SOLDADO": this.profissao = "Soldado";
 			atribuindoValoresBaseadoNaProfissao(this.profissao);
 			break;
 			
-			case 3: this.profissao = "Professor";
+			case "PROFESSOR": this.profissao = "Professor";
 			atribuindoValoresBaseadoNaProfissao(this.profissao);
 			break;
 		}
@@ -41,20 +41,23 @@ public class Jogador {
 			case "Médico":  		
 				setVidaMaxima(15);
 				setResistencia(5);
-				getStatus();
+				setVida(vidaMaxima);
+				//getStatus();
 				break;
 				
 			case "Soldado":
 				setVidaMaxima(15);
+				setVida(vidaMaxima);
 				setForca(5);
-				getStatus();
+				//getStatus();
 				break;
 				
 			case "Professor":
 				setVidaMaxima(10);
+				setVida(vidaMaxima);
 				setForca(3);
 				setResistencia(3);
-				getStatus();
+				//getStatus();
 				break;	
 				
 			default: System.out.println("Comando Inválido!");
