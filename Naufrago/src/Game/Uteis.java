@@ -1,6 +1,10 @@
 package Game;
 
+import java.util.Random;
+
 public class Uteis {
+	
+	Random random = new Random();
 
 	public void printaTexto(String texto, int tempo) {
 		for(int loop = 0; loop < texto.length(); loop++) {
@@ -20,17 +24,17 @@ public class Uteis {
 		}
 	}
 	
-	public double geraNumeroRandomico() {
-		return Math.random() * 101;
+	public int geraNumeroRandomico(int valorMin, int valorMax) {
+		return random.nextInt(valorMin, valorMax);
 	}
 	
 	public boolean Continuar() {
 		
-		System.out.println("Precione qualquer tecla para continuar\n");
+		System.out.println("Precione qualquer tecla para continuar.\n");
 		String input = GameController.sc.nextLine();
 		
 		if (input == "" || input != "") return true;
-		else return false;
+		else return true;
 	}
 	
 	public void delayParaProximoComando(int tempo) {

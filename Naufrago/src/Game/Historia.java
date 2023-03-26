@@ -106,9 +106,9 @@ public class Historia {
 	public void PrimeiroAto() {
 		
 		if (!control) {
-		double random = GameController.uteis.geraNumeroRandomico();
+		double random = GameController.uteis.geraNumeroRandomico(0, 101);
 		
-			if (random >= 50.01) {
+			if (random >= 50) {
 				caminhoItem();
 				control = true;
 			} else {
@@ -125,10 +125,12 @@ public class Historia {
 		
 		switch(input) {
 		case "1", "PRAIA":
+			GameController.escolherInimigo();
 			caminhoPraia();
 			break;
 		
 		case "2", "FLORESTA":
+			GameController.escolherInimigo();
 			caminhoFloresta();
 			break;
 		
@@ -139,7 +141,10 @@ public class Historia {
 	
 	public void caminhoItem () {
 		
+<<<<<<< HEAD
 		GameController.jogador.setResistencia(1);
+=======
+>>>>>>> Vini_GameController
 		String caminhoItem = "";
 		caminhoItem = 
 				"Apesar da queda, você encontra um item que pode te auxiliar naquele lugar.\n"

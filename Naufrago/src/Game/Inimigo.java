@@ -8,6 +8,14 @@ public class Inimigo {
 	private int resistenciaInimigo;
 	private int nivelInimigo;
 	
+	public void getStatusInimigo() {
+		System.out.println( 	"Nome Inimigo: " 		+ getNomeInimigo() 		  + "\n"
+							+ 	"Vida Inimigo: " 		+ getVidaInimigo() 		  + "\n"
+							+ 	"Força Inimigo: " 		+ getForcaInimigo()		  + "\n"
+							+ 	"Resistência Inimigo: " + getResistenciaInimigo() + "\n"
+							+ 	"Nível Inimigo: " 		+ getNivelInimigo());
+	}
+	
 	public float danoInimigo() {
 		float danoInimigo = (getForcaInimigo() * getNivelInimigo()) / GameController.jogador.getDefesaJogador();
 		return danoInimigo;
