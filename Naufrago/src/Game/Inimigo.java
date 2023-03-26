@@ -25,6 +25,8 @@ public class Inimigo {
 		this.resistenciaInimigo = resistencia;
 		this.nivelInimigo = nivel;
 	}
+	
+	public Inimigo () {}
 
 	/*
 	private Inimigo(String nomeInimigo, int vidaInimigo, int forcaInimigo, int resistenciaInimigo, int nivelInimigo) {

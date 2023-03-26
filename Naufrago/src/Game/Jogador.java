@@ -146,9 +146,8 @@ public class Jogador {
 		}
 	}
 	
-	public float getDanoJogador() {
-		// Falta definir a defesa do inimigo.
-		return getForca() + getDanoArma(arma);
+	public float getDanoJogador(float defesaInimigo) {
+		return (getForca() + getDanoArma(arma))/ defesaInimigo;
 	}
 	
 	public int getDefesaArmadura(String armadura) {
