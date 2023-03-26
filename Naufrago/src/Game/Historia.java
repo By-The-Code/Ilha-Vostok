@@ -125,12 +125,12 @@ public class Historia {
 		
 		switch(input) {
 		case "1", "PRAIA":
-			GameController.escolherInimigo();
+			GameController.combate.escolherInimigo();
 			caminhoPraia();
 			break;
 		
 		case "2", "FLORESTA":
-			GameController.escolherInimigo();
+			GameController.combate.escolherInimigo();
 			caminhoFloresta();
 			break;
 		
@@ -141,10 +141,7 @@ public class Historia {
 	
 	public void caminhoItem () {
 		
-<<<<<<< HEAD
 		GameController.jogador.setResistencia(1);
-=======
->>>>>>> Vini_GameController
 		String caminhoItem = "";
 		caminhoItem = 
 				"Apesar da queda, você encontra um item que pode te auxiliar naquele lugar.\n"
@@ -173,25 +170,25 @@ public class Historia {
 	public void caminhoPraia () {
 		
 		String caminhoPraia = 
-				"||***********************************************************************************************||\n"
-						+ "|| Andando pela praia, você encontra parte dos destroços do avião, não parece ter nada útil,     ||\n"
-		                + "|| exceto por um encosto de braço de um dos assentos do avião que se partiu exatamente após a    ||\n"
-		                + "|| curvatura, gerando um punhal praticamente perfeito. Você analisa e decide utilizar o encosto  ||\n"
-		                + "|| como arma.                                                                                    ||\n"
-						+ "||***********************************************************************************************||\n";
+							"||***********************************************************************************************||\n"
+						+ 	"|| Andando pela praia, você encontra parte dos destroços do avião, não parece ter nada útil,     ||\n"
+		                + 	"|| exceto por um encosto de braço de um dos assentos do avião que se partiu exatamente após a    ||\n"
+		                + 	"|| curvatura, gerando um punhal praticamente perfeito. Você analisa e decide utilizar o encosto  ||\n"
+		                + 	"|| como arma.                                                                                    ||\n"
+						+ 	"||***********************************************************************************************||\n";
 		GameController.jogador.setArma("Braço do Assento");
 		String continuacaoPraia = 
-				          "||***********************************************************************************************||\n"
-                        + "|| Você se depara com uma montanha de rochas que impede que você siga pela praia, sua única      ||\n"
-                        + "|| opção é entrar na floresta e é exatamente isso que você faz.                                  ||\n"
-                        + "|| Entrando na floresta você se depara com uma cobra no tronco de uma árvore, porém você nota    ||\n"
-                        + "|| alguma coisa brotando do que seriam as ‘costas’ do réptil, mas também nota que ela aparenta   ||\n"
-                        + "|| ser um filhote pelo seu tamanho. Quando você percebe a peculiaridade deste animal, ela já     ||\n"
-                        + "|| está avançando em sua direção com um par de asas abertas e por mais jovem que seja, é um      ||\n"
-                        + "|| animal extremamente violento, você já notou que as histórias sobre esse lugar aparentavam     ||\n"
-                        + "|| ser verdadeiras                                                                               ||\n"
-		                + "|| Você pega o coco que o macaco havia jogado em você. Parece seguro comer.                      ||\n"
-                        + "||***********************************************************************************************||\n";
+				          	"||***********************************************************************************************||\n"
+                        + 	"|| Você se depara com uma montanha de rochas que impede que você siga pela praia, sua única      ||\n"
+                        + 	"|| opção é entrar na floresta e é exatamente isso que você faz.                                  ||\n"
+                        + 	"|| Entrando na floresta você se depara com uma cobra no tronco de uma árvore, porém você nota    ||\n"
+                        + 	"|| alguma coisa brotando do que seriam as ‘costas’ do réptil, mas também nota que ela aparenta   ||\n"
+                        + 	"|| ser um filhote pelo seu tamanho. Quando você percebe a peculiaridade deste animal, ela já     ||\n"
+                        + 	"|| está avançando em sua direção com um par de asas abertas e por mais jovem que seja, é um      ||\n"
+                        + 	"|| animal extremamente violento, você já notou que as histórias sobre esse lugar aparentavam     ||\n"
+                        + 	"|| ser verdadeiras                                                                               ||\n"
+		                + 	"|| Você pega o coco que o macaco havia jogado em você. Parece seguro comer.                      ||\n"
+                        + 	"||***********************************************************************************************||\n";
 		
 		/*Inimigo inimigo = new Inimigo();
 		
@@ -224,25 +221,25 @@ public class Historia {
 	public void getTerceiroAto() {
 		
 		String caminhosUnificados = 
-				"||***********************************************************************************************||\n"
-                        + "|| Você continua floresta adentro, ao retirar alguns galhos e folhas do caminho, você            ||\n"
-                        + "|| acidentalmente se depara com um, ou melhor, centenas de patas pertencentes a uma lacraia      ||\n"
-                        + "|| gigante, com aproximadamente 1,50m de comprimento bem próximo a você. Ela não gostou de você  ||\n" 
-                        + "|| por ter descoberto o esconderijo dela, expondo-a à luz do dia. Enquanto ela se contorce para  ||\n"
-                        + "|| cima para te amedrontar, a única coisa que vem a sua mente é que este inseto aparentava ser   ||\n"
-                        + "|| bem mais forte do que a última criatura que enfrentou.                                        ||\n"   
-		                + "|| Diante de uma criatura aterrorizante daquela, você decide fugir. Você corre até uma clareira, ||\n" 
-                        + "|| onde seus passos desesperados conseguiram te levar, pois percebeu que aquela criatura não     ||\n" 
-                        + "|| gostava muito da luz do sol portanto ela não te seguiu.                                       ||\n"
-	 	                + "|| Chegando naquele espaço aberto, você começa a raciocinar sobre seu real estado, onde você se  ||\n"
-                        + "|| encontra e o que mais aquela ilha poderia estar guardando para você.                          ||\n"
-		                + "|| Diante desse cenário você decide traçar um plano para fugir, porém você não sabe quanto tempo ||\n"
-                        + "|| exatamente isso pode levar e por instinto, você sabe que vai escurecer em algumas horas.      ||\n"
-                        + "|| Tentando aumentar suas chances de sobrevivência você decide procurar por água, comida e       ||\n"        
-                        + "|| abrigo. Porém, duas coisas chamam sua atenção.                                                ||\n"
-		                + "|| Ao leste você ouve um som de água, aparentemente vindo de uma cachoeira. E, ao oeste você     ||\n"
-                        + "|| consegue ver um sinal de fumaça entre a copa das árvores.                                     ||\n"
-		                + "||***********************************************************************************************||\n"
+							"||***********************************************************************************************||\n"
+                        + 	"|| Você continua floresta adentro, ao retirar alguns galhos e folhas do caminho, você            ||\n"
+                        + 	"|| acidentalmente se depara com um, ou melhor, centenas de patas pertencentes a uma lacraia      ||\n"
+                        + 	"|| gigante, com aproximadamente 1,50m de comprimento bem próximo a você. Ela não gostou de você  ||\n" 
+                        +	"|| por ter descoberto o esconderijo dela, expondo-a à luz do dia. Enquanto ela se contorce para  ||\n"
+                        +	"|| cima para te amedrontar, a única coisa que vem a sua mente é que este inseto aparentava ser   ||\n"
+                        + 	"|| bem mais forte do que a última criatura que enfrentou.                                        ||\n"   
+		                + 	"|| Diante de uma criatura aterrorizante daquela, você decide fugir. Você corre até uma clareira, ||\n" 
+                        + 	"|| onde seus passos desesperados conseguiram te levar, pois percebeu que aquela criatura não     ||\n" 
+                        + 	"|| gostava muito da luz do sol portanto ela não te seguiu.                                       ||\n"
+	 	                + 	"|| Chegando naquele espaço aberto, você começa a raciocinar sobre seu real estado, onde você se  ||\n"
+                        + 	"|| encontra e o que mais aquela ilha poderia estar guardando para você.                          ||\n"
+		                +	"|| Diante desse cenário você decide traçar um plano para fugir, porém você não sabe quanto tempo ||\n"
+                        +	"|| exatamente isso pode levar e por instinto, você sabe que vai escurecer em algumas horas.      ||\n"
+                        +	"|| Tentando aumentar suas chances de sobrevivência você decide procurar por água, comida e       ||\n"        
+                        + 	"|| abrigo. Porém, duas coisas chamam sua atenção.                                                ||\n"
+		                + 	"|| Ao leste você ouve um som de água, aparentemente vindo de uma cachoeira. E, ao oeste você     ||\n"
+                        + 	"|| consegue ver um sinal de fumaça entre a copa das árvores.                                     ||\n"
+		                + 	"||***********************************************************************************************||\n"
                         
                         + "\r"
 
@@ -287,14 +284,14 @@ public class Historia {
 				//-Se vidaMaxima não faz nada, se vida < vidaMaxima restaura vida-
 		
 		String continuacaoCachoeira = 
-							 "||***********************************************************************************************||\n"
-	                     + "|| A água parece boa, você se sente renovado.                                                    ||\n"
-	                     + "|| Olhando a frente, você verifica que numa das “paredes” da cachoeira possui uma abertura.      ||\n"
-	                     + "|| Aparentemente uma caverna que poderia servir de abrigo durante a noite, mas ela pode abrigar  ||\n"
-	                     + "|| criaturas desconhecidas como as vistas até aqui.                                              ||\n"
-	                     + "|| Você pode ir para a caverna ou você pode voltar para a clareira e seguir o sinal de fumaça que||\n"
-	                     + "|| viu mais cedo.                                                                                ||\n" 
-	                     + "||***********************************************************************************************||\n"  
+							"||***********************************************************************************************||\n"
+	                     + 	"|| A água parece boa, você se sente renovado.                                                    ||\n"
+	                     + 	"|| Olhando a frente, você verifica que numa das “paredes” da cachoeira possui uma abertura.      ||\n"
+	                     + 	"|| Aparentemente uma caverna que poderia servir de abrigo durante a noite, mas ela pode abrigar  ||\n"
+	                     + 	"|| criaturas desconhecidas como as vistas até aqui.                                              ||\n"
+	                     + 	"|| Você pode ir para a caverna ou você pode voltar para a clareira e seguir o sinal de fumaça que||\n"
+	                     + 	"|| viu mais cedo.                                                                                ||\n" 
+	                     + 	"||***********************************************************************************************||\n"  
 				    //Água adquirida, falta comida e abrigo.
 	                     + "||************* O QUE VOCÊ FAZ? *************||\n"
 	                     + "||===========================================||\n"
@@ -369,8 +366,12 @@ public class Historia {
 				getCaminhoCaverna();
 		
 		String continuacaoCaverna =
-				  "Após você enfrentar e matar a mãe de todos, seus filhotes voam para fora da caverna, fugindo com medo, agora que sua mãe está morta.\n"
-				+ "Agora mais calmo, você consegue notar alguns objetos do que um dia pertenceram a um humano, que não teve tanta sorte quanto você. Pela insígnia em sua roupa desgastada, ele era um piloto, o que justificava alguns itens espalhados ao seu redor...\n";
+				 	"||***********************************************************************************************||\n"
+				+	"|| Após você enfrentar e matar a mãe de todos, seus filhotes voam para fora da caverna, 		  ||\n"
+				+ 	"|| fugindo com medo, agora que sua mãe está morta. 											  ||\n"
+				+ 	"|| Agora mais calmo, você consegue notar alguns objetos do que um dia pertenceram a um humano,   ||"
+				+ 	"|| que não teve tanta sorte quanto você. Pela insígnia em sua roupa desgastada,				  ||"
+				+ 	"||  ele era um piloto, o que justificava alguns itens espalhados ao seu redor...				  ||\n";
 		
 				// Você adquiriu 1 fêmur e 1 latinha de querosene - Arma
 		
@@ -758,5 +759,18 @@ public class Historia {
 		String fim = 
 			 "F I M";
 		GameController.uteis.printaTexto(fim, 250);
+	}
+	
+	public void gameOver() {
+		System.out.println("Você morreu");
+		
+		try {
+			Thread.sleep(5000);
+			GameController.uteis.limpaConsole();
+			getIntro();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -3,21 +3,24 @@ package Game;
 public class Inimigo {
 
 	private String nomeInimigo;
+	private int vidaInicialInimigo;
 	private int vidaInimigo;
 	private int forcaInimigo;
 	private int resistenciaInimigo;
 	private int nivelInimigo;
 	
-	public void getStatusInimigo() {
-		System.out.println( 	"Nome Inimigo: " 		+ getNomeInimigo() 		  + "\n"
+	public String getStatusInimigo() {
+		String txt = 			"Nome Inimigo: " 		+ getNomeInimigo() 		  + "\n"
 							+ 	"Vida Inimigo: " 		+ getVidaInimigo() 		  + "\n"
 							+ 	"Força Inimigo: " 		+ getForcaInimigo()		  + "\n"
 							+ 	"Resistência Inimigo: " + getResistenciaInimigo() + "\n"
-							+ 	"Nível Inimigo: " 		+ getNivelInimigo());
+							+ 	"Nível Inimigo: " 		+ getNivelInimigo() 	  + "\n";
+		
+		return txt;
 	}
 	
-	public float danoInimigo() {
-		float danoInimigo = (getForcaInimigo() * getNivelInimigo()) / GameController.jogador.getDefesaJogador();
+	public float danoInimigo(int resistJogador) {
+		float danoInimigo = (getForcaInimigo() * getNivelInimigo()) / resistJogador;
 		return danoInimigo;
 	}
 	
@@ -30,8 +33,11 @@ public class Inimigo {
 		this.nomeInimigo = nome;
 		this.vidaInimigo = vida;
 		this.forcaInimigo = forca;
+		this.vidaInicialInimigo = this.vidaInimigo;
 		this.resistenciaInimigo = resistencia;
 		this.nivelInimigo = nivel;
+		
+		if (this.nivelInimigo <= 0) this.nivelInimigo = 1;
 	}
 	
 	public Inimigo () {}
@@ -47,20 +53,24 @@ public class Inimigo {
 	}
 	*/
 
-	private String getNomeInimigo() {
+	public String getNomeInimigo() {
 		return nomeInimigo;
 	}
 
 	private void setNomeInimigo(String nomeInimigo) {
 		this.nomeInimigo = nomeInimigo;
 	}
+	
+	public int getVidaInicialInimigo() {
+		return  vidaInicialInimigo;
+	}
 
-	private int getVidaInimigo() {
+	public int getVidaInimigo() {
 		return vidaInimigo;
 	}
 
-	private void setVidaInimigo(int vidaInimigo) {
-		this.vidaInimigo = vidaInimigo;
+	public void setVidaInimigo(float danoLevado) {
+		this.vidaInimigo -= danoLevado;
 	}
 
 	private int getForcaInimigo() {
@@ -71,7 +81,7 @@ public class Inimigo {
 		this.forcaInimigo = forcaInimigo;
 	}
 
-	private int getResistenciaInimigo() {
+	public int getResistenciaInimigo() {
 		return resistenciaInimigo;
 	}
 
@@ -79,7 +89,7 @@ public class Inimigo {
 		this.resistenciaInimigo = resistenciaInimigo;
 	}
 
-	private int getNivelInimigo() {
+	public int getNivelInimigo() {
 		return nivelInimigo;
 	}
 

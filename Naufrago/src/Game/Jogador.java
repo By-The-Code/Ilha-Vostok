@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Jogador {
 	
 	private int 	vidaMaxima = 100;
-	private float 	vida = vidaMaxima;
+	private float 	vida = 100;
 	private int 	forca = 0;
 	private int 	resistencia = 0;
 	private int 	nivel = 1;
@@ -65,9 +65,9 @@ public class Jogador {
 		}		
 	}
 
-	public void getStatus() {
+	public String getStatus() {
 		
-		System.out.println(	"Nome: "		+ nome 			+ " | Profissão: " + profissao + "\n"
+		String txt = 		"Nome: "		+ nome 			+ " | Profissão: " + profissao + "\n"
 						+	"Vida Máxima: " + vidaMaxima	+ "\n"
 						+ 	"Vida: " 		+ vida 			+ "\n"
 						+ 	"Força: " 		+ forca 		+ "\n"
@@ -76,7 +76,9 @@ public class Jogador {
 						+ 	"XP: " 			+ xp 			+ "\n"
 						+ 	"Arma: " 		+ arma			+ "\n"
 						+ 	"Armadura: " 	+ armadura 		+ "\n"
-						+ 	"XP p/ Upar: "  + xpParaUpar   );
+						+ 	"XP p/ Upar: "  + xpParaUpar    + "\n";
+		
+		return txt;
 	}
 	
 	
@@ -89,7 +91,7 @@ public class Jogador {
 			melhoraStatus();
 		}
 		else 
-			xp += experiencia;		
+			setXp(experiencia);		
 	}
 	
 	public void melhoraStatus() {
@@ -146,7 +148,7 @@ public class Jogador {
 		}
 	}
 	
-	public float getDanoJogador(float defesaInimigo) {
+	public float getDanoJogador(int defesaInimigo) {
 		return (getForca() + getDanoArma(arma))/ defesaInimigo;
 	}
 	
@@ -173,7 +175,7 @@ public class Jogador {
 		}		
 	}
 	
-	public float getDefesaJogador() {
+	public int getDefesaJogador() {
 		return getResistencia() + getDefesaArmadura(armadura);
 	}
 
@@ -181,16 +183,20 @@ public class Jogador {
 		return vidaMaxima;
 	}
 
-	public void setVidaMaxima(int vidaMaxima) {
+	public void setVidaMaxima(float vidaMaxima) {
 		this.vidaMaxima += vidaMaxima;
 	}
 
 	public float getVida() {
 		return vida;
 	}
-
+	
 	public void setVida(float vida) {
 		this.vida = vida;
+	}
+	
+	public void setVidaDano(float dano) {
+		this.vida -= dano;
 	}
 
 	public int getForca() {
@@ -222,7 +228,7 @@ public class Jogador {
 	}
 
 	public void setXp(float xp) {
-		this.xp = xp;
+		this.xp += xp;
 	}
 
 	public float getXpParaUpar() {
