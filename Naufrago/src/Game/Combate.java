@@ -1,29 +1,32 @@
 package Game;
 
 public class Combate {
-	public static void escolherInimigo() {
+	
+	private static int errarAtaque;
+	
+	public void escolherInimigo() {
 		int random = GameController.uteis.geraNumeroRandomico(0, 101);
 		int randomAtt = GameController.uteis.geraNumeroRandomico(-2, 3);
 		
 		if (random >= 10 && random <= 65) {
 			System.out.println("Você encontrou um Macaco-Aranha enquanto andava");
 			istInimigo("Macaco-Aranha", 10 * GameController.jogador.getNivel() + randomAtt, 
-					5 + GameController.jogador.getNivel() + randomAtt, 
-					5 + GameController.jogador.getNivel() + randomAtt, 
+					2 + GameController.jogador.getNivel() + randomAtt, 
+					2 + GameController.jogador.getNivel() + randomAtt, 
 						GameController.jogador.getNivel() + randomAtt); 
 		}
 		else if (random >= 66 && random <= 85) {
 			System.out.println("Você encontrou uma Cobra-Voadora enquanto andava");
 			istInimigo("Cobra-Voadora", 10 * GameController.jogador.getNivel() + randomAtt, 
-					5 + GameController.jogador.getNivel() + randomAtt, 
-					5 + GameController.jogador.getNivel() + randomAtt, 
+					2 + GameController.jogador.getNivel() + randomAtt, 
+					2 + GameController.jogador.getNivel() + randomAtt, 
 						GameController.jogador.getNivel() + randomAtt); 
 		}
 		else if (random >= 86) {
 			System.out.println("Você encontrou uma Lacraia Gigante enquanto andava");
 			istInimigo("Lacraia", 10 * GameController.jogador.getNivel() + randomAtt, 
-					5 + GameController.jogador.getNivel() + randomAtt, 
-					5 + GameController.jogador.getNivel() + randomAtt, 
+					2 + GameController.jogador.getNivel() + randomAtt, 
+					2 + GameController.jogador.getNivel() + randomAtt, 
 						GameController.jogador.getNivel() + randomAtt); 
 		}
 		else {
@@ -39,6 +42,7 @@ public class Combate {
 	}
 	
 	public static void combate() {
+		
 		System.out.println(
 						   "||*************  O QUE VOCÊ FAZ? *************||\n"
 				         + "||============================================||\n"
@@ -63,7 +67,7 @@ public class Combate {
 	}
 	
 	public static void ataque() {
-		int errarAtaque = GameController.uteis.geraNumeroRandomico(0, 11);
+		errarAtaque = GameController.uteis.geraNumeroRandomico(0, 11);
 		
 		System.out.println(	"Você tenta atacar o(a) " + GameController.inimigo.getNomeInimigo() + ".\n"
 						  + "Seus Status: \n" + GameController.jogador.getStatus() + "\n"
@@ -89,7 +93,7 @@ public class Combate {
 	}
 	
 	public static void dano() {
-		int errarAtaque = GameController.uteis.geraNumeroRandomico(0, 11);
+		errarAtaque = GameController.uteis.geraNumeroRandomico(0, 11);
 		
 		System.out.println(	/*"Sua vida atual" + GameController.jogador.getVida() + ".\n"
 						+ 	"Vida do inimigo" + GameController.inimigo.getVidaInimigo()*/

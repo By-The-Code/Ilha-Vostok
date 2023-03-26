@@ -96,10 +96,12 @@ public class Jogador {
 	
 	public void melhoraStatus() {
 		
-		System.out.println("Escolha o que você quer melhorar! \n"
-						+  "1. Vida \n"
-						+  "2. Força \n"
-						+  "3. Resistência");
+		System.out.println("||**********SUBIU DE NÍVEL************||"
+						+  "|| Escolha o que você quer melhorar!  ||\n"
+						+  "|| 1. Vida                            ||\n"
+						+  "|| 2. Força                           ||\n"
+						+  "|| 3. Resistência                     ||\n"
+						+  "||************************************||\"");
 		
 		Scanner scan = new Scanner (System.in);
 		int escolha = scan.nextInt();
@@ -155,6 +157,9 @@ public class Jogador {
 	public int getDefesaArmadura(String armadura) {
 		
 		switch(armadura) {
+			case "":
+				return 0;
+		
 			case "Boné":
 				return 5;
 			
@@ -197,6 +202,10 @@ public class Jogador {
 	
 	public void setVidaDano(float dano) {
 		this.vida -= dano;
+	}
+	
+	public void setVidaCura(float vida) {
+		this.vida += vida;
 	}
 
 	public int getForca() {

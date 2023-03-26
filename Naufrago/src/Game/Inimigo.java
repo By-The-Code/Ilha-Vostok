@@ -57,9 +57,11 @@ public class Inimigo {
 		return nomeInimigo;
 	}
 
+	/*
 	private void setNomeInimigo(String nomeInimigo) {
 		this.nomeInimigo = nomeInimigo;
 	}
+	*/
 	
 	public int getVidaInicialInimigo() {
 		return  vidaInicialInimigo;
@@ -77,24 +79,29 @@ public class Inimigo {
 		return forcaInimigo;
 	}
 
+	/*
 	private void setForcaInimigo(int forcaInimigo) {
 		this.forcaInimigo = forcaInimigo;
 	}
+	*/
 
 	public int getResistenciaInimigo() {
 		return resistenciaInimigo;
 	}
 
+	/*
 	private void setResistenciaInimigo(int resistenciaInimigo) {
 		this.resistenciaInimigo = resistenciaInimigo;
 	}
+	*/
 
 	public int getNivelInimigo() {
 		return nivelInimigo;
 	}
-
+	
+	/*
 	private void setNivelInimigo(int nivelInimigo) {
 		this.nivelInimigo = nivelInimigo;
 	}
-
+	*/
 }

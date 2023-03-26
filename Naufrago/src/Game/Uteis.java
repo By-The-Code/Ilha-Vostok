@@ -30,7 +30,7 @@ public class Uteis {
 	
 	public boolean Continuar() {
 		
-		System.out.println("Precione qualquer tecla para continuar.\n");
+		System.out.println("Precione 'ENTER' para continuar.\n");
 		String input = GameController.sc.nextLine();
 		
 		if (input == "" || input != "") return true;
