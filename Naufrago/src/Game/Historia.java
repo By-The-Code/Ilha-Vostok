@@ -22,7 +22,7 @@ public class Historia {
 						+ "|| E então, a colisão.                                                                           ||\n"
 						+ "||***********************************************************************************************||\n";   
 
-		GameController.uteis.printaTexto(intro, 15);
+		Game.uteis.printaTexto(intro, 15);
 		try {
 			Thread.sleep(2000);
 			Apresentacao();
@@ -40,10 +40,10 @@ public class Historia {
 				+ 	"Olhando ao redor você nota que todos os outros membros da comitiva não tiveram a mesma sorte que você.\n"
 				+ 	"Você tenta se lembrar de coisas básicas como o seu nome.\n";
 
-		GameController.uteis.printaTexto(apresentacaoNome, 15);
+		Game.uteis.printaTexto(apresentacaoNome, 15);
 
 		System.out.println("\nComo você se chama?");
-		String nome = GameController.sc.nextLine();
+		String nome = Game.sc.nextLine();
 
 		String apresentacaoProfissao = 
 				  "\nIsso mesmo, seu nome é " + nome + ".\n"
@@ -59,30 +59,30 @@ public class Historia {
 				+ "| 3 - PROFESSOR |    +10   |      +3    |        +3       |\n"
 				+ "+=========================================================+\n";
 			
-		GameController.uteis.printaTexto(apresentacaoProfissao, 10);
+		Game.uteis.printaTexto(apresentacaoProfissao, 10);
 				
 		System.out.println("\nQual é sua profissão?");
-		String input =  GameController.sc.nextLine().toUpperCase();
+		String input =  Game.sc.nextLine().toUpperCase();
 		String profissao = "";
 		
 		switch(input) {
 		case "1", "MEDICO", "MÉDICO":
 			profissao = "MÉDICO";
-			GameController.jogador = new Jogador (nome, profissao);
+			Game.jogador = new Jogador (nome, profissao);
 			break;
 			
 		case "2", "SOLDADO":
 			profissao = "SOLDADO";
-			GameController.jogador = new Jogador (nome, profissao);
+			Game.jogador = new Jogador (nome, profissao);
 			break;
 			
 		case "3", "PROFESSOR":
 			profissao = "PROFESSOR";
-			GameController.jogador = new Jogador (nome, profissao);
+			Game.jogador = new Jogador (nome, profissao);
 			break;
 			
 		default: 
-					GameController.uteis.limpaConsole();
+					Game.uteis.limpaConsole();
 					System.out.println("Opção inválida!");
 					Apresentacao();
 		}
@@ -92,10 +92,10 @@ public class Historia {
 				+ 	"Apesar de atordoado, você se levanta e dá alguns passos lentos na areia\n"
 				+ 	"tentando encontrar algum sinal de vida ou esperança. \n"
 				+	"Caminhando pela orla, você avista o que parece ser algum objeto útil um pouco atolado na areia.\n\n";
-		GameController.uteis.printaTexto(lembranca, 15);
+		Game.uteis.printaTexto(lembranca, 15);
 		
-		if(GameController.uteis.Continuar()) {
-			GameController.uteis.limpaConsole();
+		if(Game.uteis.Continuar()) {
+			Game.uteis.limpaConsole();
 			PrimeiroAto();
 		}
 		else {
@@ -106,7 +106,7 @@ public class Historia {
 	public void PrimeiroAto() {
 		
 		if (!control) {
-		double random = GameController.uteis.geraNumeroRandomico(0, 101);
+		double random = Game.uteis.geraNumeroRandomico(0, 101);
 		
 			if (random >= 50) {
 				caminhoItem();
@@ -121,16 +121,16 @@ public class Historia {
 						+ 	"\t1 - Seguir pela Praia\n"
 						+ 	"\t2 - Seguir pela Floresta\n");
 		
-		String input = GameController.sc.next().toUpperCase();
+		String input = Game.sc.next().toUpperCase();
 		
 		switch(input) {
 		case "1", "PRAIA":
-			GameController.combate.escolherInimigo();
+			Game.combate.escolherInimigo();
 			caminhoPraia();
 			break;
 		
 		case "2", "FLORESTA":
-			GameController.combate.escolherInimigo();
+			Game.combate.escolherInimigo();
 			caminhoFloresta();
 			break;
 		
@@ -141,19 +141,19 @@ public class Historia {
 	
 	public void caminhoItem () {
 		
-		GameController.jogador.setResistencia(1);
+		Game.jogador.setResistencia(1);
 		String caminhoItem = "";
 		caminhoItem = 
 				"Apesar da queda, você encontra um item que pode te auxiliar naquele lugar.\n"
 			+ 	"Um boné! Vai ser bom para se proteger do sol!\n"
 			+ 	"Você aumentou sua resistência!\n\r"
 			+ 	"\tRESISTÊNCIA: "
-			+ 	GameController.jogador.getResistencia()	
+			+ 	Game.jogador.getResistencia()	
 			+ 	"\rAndando mais a frente, você nota uma mata fechada ao norte, mas também nota que a praia se estende ao redor de toda a ilha.\n\n";
 	
 	
-		GameController.uteis.printaTexto(caminhoItem, 15);
-		GameController.jogador.setArmadura("Boné");
+		Game.uteis.printaTexto(caminhoItem, 15);
+		Game.jogador.setArmadura("Boné");
 	}
 	
 	
@@ -164,7 +164,7 @@ public class Historia {
 				+ "Aparentemente, tudo de útil que estava no avião se perdeu.\n"
 				+ "Andando mais a frente, você nota uma mata fechada ao norte, mas também nota que a praia se estende ao redor de toda a ilha.\n\n";
 		
-		GameController.uteis.printaTexto(caminhoNormal, 15);
+		Game.uteis.printaTexto(caminhoNormal, 15);
 	}
 	
 	public void caminhoPraia () {
@@ -176,7 +176,7 @@ public class Historia {
 		                + 	"|| curvatura, gerando um punhal praticamente perfeito. Você analisa e decide utilizar o encosto  ||\n"
 		                + 	"|| como arma.                                                                                    ||\n"
 						+ 	"||***********************************************************************************************||\n";
-		GameController.jogador.setArma("Braço do Assento");
+		Game.jogador.setArma("Braço do Assento");
 		String continuacaoPraia = 
 				          	"||***********************************************************************************************||\n"
                         + 	"|| Você se depara com uma montanha de rochas que impede que você siga pela praia, sua única      ||\n"
@@ -194,13 +194,13 @@ public class Historia {
 		
 		inimigo.setNomeInimigo("Macaco");*/
 		
-		GameController.uteis.printaTexto(caminhoPraia, 15);
-		GameController.uteis.printaTexto(continuacaoPraia, 15);
+		Game.uteis.printaTexto(caminhoPraia, 15);
+		Game.uteis.printaTexto(continuacaoPraia, 15);
 		
 		//- Você come e recupera 1 de vida. --
 		
-		/*GameController.jogador.setVida(1);
-		System.out.println(GameController.jogador.getVidaMaxima());*/
+		/*Game.jogador.setVida(1);
+		System.out.println(Game.jogador.getVidaMaxima());*/
 		
 	}
 	
@@ -215,7 +215,7 @@ public class Historia {
               + "|| verdadeiras.”                                                                                 ||\n"
               + "||***********************************************************************************************||\n";
 		
-		GameController.uteis.printaTexto(caminhoFloresta, 15);
+		Game.uteis.printaTexto(caminhoFloresta, 15);
 	}
 	
 	public void getTerceiroAto() {
@@ -249,24 +249,24 @@ public class Historia {
 		                + "|| 2 - Anda em direção ao Oeste (Fumaça)      ||\n"
 		                + "||============================================||\n";
 		
-		GameController.uteis.printaTexto(caminhosUnificados, 15);
-		int input = GameController.sc.nextInt();
+		Game.uteis.printaTexto(caminhosUnificados, 15);
+		int input = Game.sc.nextInt();
 		
 		switch (input) {
 			
 			case 1: 
-			GameController.uteis.limpaConsole();	
+			Game.uteis.limpaConsole();	
 			getCaminhoCachoeira();
 			break;
 			
 			case 2:
-			GameController.uteis.limpaConsole();	
+			Game.uteis.limpaConsole();	
 			getCaminhoFumaca();
 			break;
 			
 			default: 
 			System.out.println("Opção inválida!");
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 			getTerceiroAto();
 		}
 	}
@@ -299,26 +299,26 @@ public class Historia {
 				         + "||           2 - Volta para o Oeste (Fumaça) ||\n"
 				         + "||===========================================||\n";
 		
-		GameController.uteis.printaTexto(caminhoCachoeira, 15);
-		GameController.uteis.printaTexto(continuacaoCachoeira, 15);
+		Game.uteis.printaTexto(caminhoCachoeira, 15);
+		Game.uteis.printaTexto(continuacaoCachoeira, 15);
 		
-		int input = GameController.sc.nextInt();
+		int input = Game.sc.nextInt();
 		
 		switch (input) {
 		
 		case 1: 
-		GameController.uteis.limpaConsole();	
+		Game.uteis.limpaConsole();	
 		getCaminhoCaverna();
 		break;
 		
 		case 2:
-		GameController.uteis.limpaConsole();	
+		Game.uteis.limpaConsole();	
 		getCaminhoFumaca();
 		break;
 		
 		default: 
 		System.out.println("Opção inválida!");
-		GameController.uteis.limpaConsole();
+		Game.uteis.limpaConsole();
 		getCaminhoCachoeira();
 	}
 		
@@ -344,25 +344,25 @@ public class Historia {
 			   + "||    2 - Foge (Volta para cachoeira)        ||\n"
 			   + "||===========================================||\n";
 		
-		GameController.uteis.printaTexto(caminhoCaverna, 15);
+		Game.uteis.printaTexto(caminhoCaverna, 15);
 		
-		int input = GameController.sc.nextInt();
+		int input = Game.sc.nextInt();
 				
 				switch (input) {
 				
 				/*case 1: 
-				GameController.uteis.limpaConsole();	
+				Game.uteis.limpaConsole();	
 				--- MODO DE COMBATE ---;
 				break; */
 				
 				case 2:
-				GameController.uteis.limpaConsole();	
+				Game.uteis.limpaConsole();	
 				getCaminhoCachoeira();
 				break;
 				
 				default: 
 				System.out.println("Opção inválida!");
-				GameController.uteis.limpaConsole();
+				Game.uteis.limpaConsole();
 				getCaminhoCaverna();
 		
 		String continuacaoCaverna =
@@ -375,7 +375,7 @@ public class Historia {
 		
 				// Você adquiriu 1 fêmur e 1 latinha de querosene - Arma
 		
-		GameController.uteis.printaTexto(continuacaoCaverna, 15);
+		Game.uteis.printaTexto(continuacaoCaverna, 15);
 		
 			}
 	}
@@ -415,28 +415,28 @@ public class Historia {
 		
 				// Comida adquirida, falta abrigo e água.
 		
-		int input = GameController.sc.nextInt();
+		int input = Game.sc.nextInt();
 				
 				switch (input) {
 				
 				case 1: 
-				GameController.uteis.limpaConsole();	
+				Game.uteis.limpaConsole();	
 				getCaminhoCachoeira();
 				break;
 				
 				case 2:
-				GameController.uteis.limpaConsole();	
+				Game.uteis.limpaConsole();	
 				getCaminhoArvore();
 				break;
 				
 				default: 
 				System.out.println("Opção inválida!");
-				GameController.uteis.limpaConsole();
+				Game.uteis.limpaConsole();
 				getCaminhoFumaca();
 			}
 
-		GameController.uteis.printaTexto(caminhoFumaca, 15);
-		GameController.uteis.printaTexto(continuacaoFumaca, 15);
+		Game.uteis.printaTexto(caminhoFumaca, 15);
+		Game.uteis.printaTexto(continuacaoFumaca, 15);
 		
 	}
 	
@@ -459,23 +459,23 @@ public class Historia {
 		+ "||    2 - Foge (Desce para as abóboras)       ||\n"
 		+ "||============================================||\n";
 		
-		int input = GameController.sc.nextInt();
+		int input = Game.sc.nextInt();
 		
 		switch (input) {
 		
 		/*case 1: 
-		GameController.uteis.limpaConsole();	
+		Game.uteis.limpaConsole();	
 		--- MODO DE COMBATE ---;
 		break; */
 		
 		case 2:
-		GameController.uteis.limpaConsole();	
+		Game.uteis.limpaConsole();	
 		getCaminhoFumaca();
 		break;
 		
 		default: 
 		System.out.println("Opção inválida!");
-		GameController.uteis.limpaConsole();
+		Game.uteis.limpaConsole();
 		getCaminhoFumaca();
 			
 		String continuacaoArvore =
@@ -483,8 +483,8 @@ public class Historia {
 		
 				// Você adquiriu 1 pederneira e 1 faca - Arma
 		
-		GameController.uteis.printaTexto(caminhoArvore, 15);
-		GameController.uteis.printaTexto(continuacaoArvore, 15);
+		Game.uteis.printaTexto(caminhoArvore, 15);
+		Game.uteis.printaTexto(continuacaoArvore, 15);
 		
 	}
 }
@@ -508,29 +508,29 @@ public class Historia {
 				+ "||===========================================||\n";
 
 		
-		GameController.uteis.printaTexto(caminhosUnificados2, 15);
-		int input = GameController.sc.nextInt();
+		Game.uteis.printaTexto(caminhosUnificados2, 15);
+		int input = Game.sc.nextInt();
 		
 		switch (input) {
 			
 			case 1: 
-			GameController.uteis.limpaConsole();	
+			Game.uteis.limpaConsole();	
 			getFolhasDePalmeira();
 			break;
 			
 			case 2:
-			GameController.uteis.limpaConsole();	
+			Game.uteis.limpaConsole();	
 			getMadeira();
 			break;
 			
 			case 3:
-			GameController.uteis.limpaConsole();	
+			Game.uteis.limpaConsole();	
 			getCorda();
 			break;
 			
 			default: 
 			System.out.println("Opção inválida!");
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 		}
 		
 	}
@@ -568,28 +568,28 @@ public class Historia {
 				+ "||           2 - Ir atrás de Corda           ||\n"
 				+ "||===========================================||\n";
 		
-		int input = GameController.sc.nextInt();
+		int input = Game.sc.nextInt();
 		
 		switch (input) {
 			
 			case 1: 
-			GameController.uteis.limpaConsole();	
+			Game.uteis.limpaConsole();	
 			getMadeira();
 			break;
 			
 			case 2:
-			GameController.uteis.limpaConsole();	
+			Game.uteis.limpaConsole();	
 			getCorda();
 			break;
 			
 			default: 
 			System.out.println("Opção inválida!");
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 			getFolhasDePalmeira();
 		}
 		
-		 GameController.uteis.printaTexto(formigasGigantes, 15);
-		 GameController.uteis.printaTexto(continuacaoFormigasGigantes, 15);
+		 Game.uteis.printaTexto(formigasGigantes, 15);
+		 Game.uteis.printaTexto(continuacaoFormigasGigantes, 15);
 	
 	}
 	
@@ -622,23 +622,23 @@ public class Historia {
 				+ "||           1 - Ir atrás de Corda         ||\n"
 				+ "||=========================================||\n";
 		
-		int input = GameController.sc.nextInt();
+		int input = Game.sc.nextInt();
 		
 		switch (input) {
 			
 			case 1: 
-			GameController.uteis.limpaConsole();	
+			Game.uteis.limpaConsole();	
 			getCorda();
 			break;
 			
 			default: 
 			System.out.println("Opção inválida!");
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 			getMadeira();
 			}
 		
-		GameController.uteis.printaTexto(cupimGigante, 15);
-		GameController.uteis.printaTexto(continuacaoCupimGigante, 15);
+		Game.uteis.printaTexto(cupimGigante, 15);
+		Game.uteis.printaTexto(continuacaoCupimGigante, 15);
 		
 		}
 	
@@ -664,8 +664,8 @@ public class Historia {
 		
 				// Item: Cola Orgânica de Cupim (para revestimento)
 		
-		GameController.uteis.printaTexto(louvaDeusGigante, 15);
-		GameController.uteis.printaTexto(continuacaoLouvaDeusGigante, 15);
+		Game.uteis.printaTexto(louvaDeusGigante, 15);
+		Game.uteis.printaTexto(continuacaoLouvaDeusGigante, 15);
 		
 		}
 	
@@ -696,23 +696,23 @@ public class Historia {
 		
 		
 		
-		/*int input = GameController.sc.nextInt();
+		/*int input = Game.sc.nextInt();
 				
 				switch (input) {
 					
 					case 1: 
-					GameController.uteis.limpaConsole();	
+					Game.uteis.limpaConsole();	
 					-- 	MODO COMBATE --
 					break;
 					
 					case 2: 
-						GameController.uteis.limpaConsole();	
+						Game.uteis.limpaConsole();	
 						-- 	MODO COMBATE --
 						break;
 					
 					default: 
 					System.out.println("Opção inválida!");
-					GameController.uteis.limpaConsole();
+					Game.uteis.limpaConsole();
 					getPenultimoAto();*/
 		
 					}
@@ -729,8 +729,8 @@ public class Historia {
 				+ "||      2 - Ir Embora    ||\n"
 				+ "||=======================||\n";
 		
-		GameController.uteis.printaTexto(ultimaDecisao, 15);
-		int input = GameController.sc.nextInt();
+		Game.uteis.printaTexto(ultimaDecisao, 15);
+		int input = Game.sc.nextInt();
 		
 		if (input == 1) {
 			
@@ -739,7 +739,7 @@ public class Historia {
 				+ "Por pior que aquela situação tenha sido, você ainda manteve parte da sua humanidade. E, atacar um animal que não oferecia mais riscos parecia errado. Você senta na sua jangada contemplando o horizonte e sentindo a briza do mar, enquanto a criatura foge para longe.\n"
 				+ "Você sorri enquanto lágrimas escorrem em seu rosto, com um alívio e esperança de um novo recomeço…";
 			
-			GameController.uteis.printaTexto(finalMisericordioso, 15);
+			Game.uteis.printaTexto(finalMisericordioso, 15);
 			
 		}
 			
@@ -749,7 +749,7 @@ public class Historia {
 						  "Você mata a Lula sem piedade, fincando a arma em um só golpe em seu olho gigante.\n"
 						+ "Você se tornou tão selvagem quanto as criaturas que te atacaram enquanto estava na ilha. Sem remorso, você segue seu caminho. Você senta na jangada e chora… Será que a vida será a mesma daqui em diante?";
 			
-			GameController.uteis.printaTexto(finalRancoroso, 15);
+			Game.uteis.printaTexto(finalRancoroso, 15);
 			
 			}
 	}
@@ -758,7 +758,7 @@ public class Historia {
 		
 		String fim = 
 			 "F I M";
-		GameController.uteis.printaTexto(fim, 250);
+		Game.uteis.printaTexto(fim, 250);
 	}
 	
 	public void gameOver() {
@@ -766,7 +766,7 @@ public class Historia {
 		
 		try {
 			Thread.sleep(5000);
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 			getIntro();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

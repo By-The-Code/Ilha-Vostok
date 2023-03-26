@@ -1,13 +1,20 @@
 package Game;
+import java.util.Scanner;
 
 public class Game {
 	
-	public static GameController gc = new GameController();
+	public static Scanner sc = new Scanner(System.in);
+	public static Menu menu = new Menu();
+	public static Uteis uteis = new Uteis();
+	public static Inimigo inimigo;
+	public static Jogador jogador;
+	public static Historia historia = new Historia();
+	public static Combate combate = new Combate();
 	
 	public static void main(String [] args) {
-		gc.jogador = new Jogador ("Alfonse", "PROFESSOR");
+		jogador = new Jogador ("Alfonse", "PROFESSOR");
 		
-		System.out.println(gc.jogador.getStatus());
-		gc.historia.PrimeiroAto();
+		System.out.println(jogador.getStatus());
+		historia.PrimeiroAto();
 	}
 }

@@ -5,29 +5,29 @@ public class Combate {
 	private static int errarAtaque;
 	
 	public void escolherInimigo() {
-		int random = GameController.uteis.geraNumeroRandomico(0, 101);
-		int randomAtt = GameController.uteis.geraNumeroRandomico(-2, 3);
+		int random = Game.uteis.geraNumeroRandomico(0, 101);
+		int randomAtt = Game.uteis.geraNumeroRandomico(-2, 3);
 		
 		if (random >= 10 && random <= 65) {
 			System.out.println("Você encontrou um Macaco-Aranha enquanto andava");
-			istInimigo("Macaco-Aranha", 10 * GameController.jogador.getNivel() + randomAtt, 
-					2 + GameController.jogador.getNivel() + randomAtt, 
-					2 + GameController.jogador.getNivel() + randomAtt, 
-						GameController.jogador.getNivel() + randomAtt); 
+			istInimigo("Macaco-Aranha", 10 * Game.jogador.getNivel() + randomAtt, 
+					2 + Game.jogador.getNivel() + randomAtt, 
+					2 + Game.jogador.getNivel() + randomAtt, 
+						Game.jogador.getNivel() + randomAtt); 
 		}
 		else if (random >= 66 && random <= 85) {
 			System.out.println("Você encontrou uma Cobra-Voadora enquanto andava");
-			istInimigo("Cobra-Voadora", 10 * GameController.jogador.getNivel() + randomAtt, 
-					2 + GameController.jogador.getNivel() + randomAtt, 
-					2 + GameController.jogador.getNivel() + randomAtt, 
-						GameController.jogador.getNivel() + randomAtt); 
+			istInimigo("Cobra-Voadora", 10 * Game.jogador.getNivel() + randomAtt, 
+					2 + Game.jogador.getNivel() + randomAtt, 
+					2 + Game.jogador.getNivel() + randomAtt, 
+						Game.jogador.getNivel() + randomAtt); 
 		}
 		else if (random >= 86) {
 			System.out.println("Você encontrou uma Lacraia Gigante enquanto andava");
-			istInimigo("Lacraia", 10 * GameController.jogador.getNivel() + randomAtt, 
-					2 + GameController.jogador.getNivel() + randomAtt, 
-					2 + GameController.jogador.getNivel() + randomAtt, 
-						GameController.jogador.getNivel() + randomAtt); 
+			istInimigo("Lacraia", 10 * Game.jogador.getNivel() + randomAtt, 
+					2 + Game.jogador.getNivel() + randomAtt, 
+					2 + Game.jogador.getNivel() + randomAtt, 
+						Game.jogador.getNivel() + randomAtt); 
 		}
 		else {
 			return;
@@ -35,9 +35,9 @@ public class Combate {
 	}
 	
 	public static void istInimigo(String nomeInimigo, int vidaInimigo, int forcaInimigo, int resistenciaInimigo, int nivelInimigo) {
-		GameController.inimigo = new Inimigo(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
+		Game.inimigo = new Inimigo(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
 		
-		System.out.println("Você encontra o inimigo: " + GameController.inimigo.getNomeInimigo() + ".\n\n");
+		System.out.println("Você encontra o inimigo: " + Game.inimigo.getNomeInimigo() + ".\n\n");
 		combate();
 	}
 	
@@ -50,7 +50,7 @@ public class Combate {
 				         + "|| 2 - Fugir                                  ||\n"
 				         + "||============================================||\n");
 		
-		String input = GameController.sc.nextLine().toUpperCase();
+		String input = Game.sc.nextLine().toUpperCase();
 		
 		switch (input) {
 		case "1", "ATACAR":
@@ -67,51 +67,51 @@ public class Combate {
 	}
 	
 	public static void ataque() {
-		errarAtaque = GameController.uteis.geraNumeroRandomico(0, 11);
+		errarAtaque = Game.uteis.geraNumeroRandomico(0, 11);
 		
-		System.out.println(	"Você tenta atacar o(a) " + GameController.inimigo.getNomeInimigo() + ".\n"
-						  + "Seus Status: \n" + GameController.jogador.getStatus() + "\n"
-						  +	"Status Inimigo: \n" + GameController.inimigo.getStatusInimigo());
+		System.out.println(	"Você tenta atacar o(a) " + Game.inimigo.getNomeInimigo() + ".\n"
+						  + "Seus Status: \n" + Game.jogador.getStatus() + "\n"
+						  +	"Status Inimigo: \n" + Game.inimigo.getStatusInimigo());
 		
 		if (errarAtaque < 2) {
 			System.out.println("Você errou o ataque");
 			dano();
 		}
 		else {
-			GameController.inimigo.setVidaInimigo(GameController.jogador.getDanoJogador(GameController.inimigo.getResistenciaInimigo()));
-			System.out.println(	"Você deu " + GameController.jogador.getDanoJogador(GameController.inimigo.getResistenciaInimigo()) + " de dano.\n"
-							+	"Vida atual do inimigo: " + GameController.inimigo.getVidaInimigo());
+			Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()));
+			System.out.println(	"Você deu " + Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()) + " de dano.\n"
+							+	"Vida atual do inimigo: " + Game.inimigo.getVidaInimigo());
 			
-			if (GameController.inimigo.getVidaInimigo() > 0)
+			if (Game.inimigo.getVidaInimigo() > 0)
 			dano();
 			
 			else {
-				GameController.jogador.passaDeNivel(GameController.inimigo.getVidaInicialInimigo() / GameController.inimigo.getNivelInimigo());
-				System.out.println(GameController.jogador.getStatus());
+				Game.jogador.passaDeNivel(Game.inimigo.getVidaInicialInimigo() / Game.inimigo.getNivelInimigo());
+				System.out.println(Game.jogador.getStatus());
 			}
 		}
 	}
 	
 	public static void dano() {
-		errarAtaque = GameController.uteis.geraNumeroRandomico(0, 11);
+		errarAtaque = Game.uteis.geraNumeroRandomico(0, 11);
 		
-		System.out.println(	/*"Sua vida atual" + GameController.jogador.getVida() + ".\n"
-						+ 	"Vida do inimigo" + GameController.inimigo.getVidaInimigo()*/
-							"O " + GameController.inimigo.getNomeInimigo() + " tenta te atacar");
+		System.out.println(	/*"Sua vida atual" + Game.jogador.getVida() + ".\n"
+						+ 	"Vida do inimigo" + Game.inimigo.getVidaInimigo()*/
+							"O " + Game.inimigo.getNomeInimigo() + " tenta te atacar");
 		
 		if (errarAtaque < 2) {
-			System.out.println(GameController.inimigo.getNomeInimigo() + " errou o ataque");
+			System.out.println(Game.inimigo.getNomeInimigo() + " errou o ataque");
 			combate();
 		}
 		else {
-			GameController.jogador.setVidaDano(GameController.inimigo.danoInimigo(GameController.jogador.getDefesaJogador()));
-			System.out.println(	"Você recebeu " + GameController.inimigo.danoInimigo(GameController.jogador.getDefesaJogador()) + " de dano.\n"
-							+	"Sua vida atual: " + GameController.jogador.getVida());
+			Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()));
+			System.out.println(	"Você recebeu " + Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) + " de dano.\n"
+							+	"Sua vida atual: " + Game.jogador.getVida());
 			
-			if (GameController.jogador.getVida() > 0)
+			if (Game.jogador.getVida() > 0)
 			combate();
 			
-			else GameController.historia.gameOver();
+			else Game.historia.gameOver();
 		}
 	}
 }

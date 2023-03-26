@@ -16,10 +16,10 @@ public class Menu {
 				+       "|                                        |\n"
 				+ 		"+========================================+\n";
 		
-		GameController.uteis.printaTexto(texto, 25);
+		Game.uteis.printaTexto(texto, 25);
 		try {
 			Thread.sleep(2000);
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,31 +41,31 @@ public class Menu {
 				+ 		"|                                        |\n"
 				+ 		"+========================================+\n";
 		
-		GameController.uteis.printaTexto(menu, 15);
+		Game.uteis.printaTexto(menu, 15);
 		 
 		System.out.println("\nDigite uma opção:");
 		int opcao = entrada.nextInt();
 		
 		switch (opcao) {
 		case 1:
-			GameController.uteis.limpaConsole();
-			GameController.historia.getIntro();
+			Game.uteis.limpaConsole();
+			Game.historia.getIntro();
 			break;
 		case 2:
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 			instrucoes();
 			break;
 		case 3:
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 			creditos();
 			break;
 		case 4:
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 			sair();
 			break;
 		default:
 			System.out.println("Opção inválida!");
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 			getMenu();	
 		}
 	}
@@ -88,7 +88,7 @@ public class Menu {
 							+ " Exemplo: 1 - Jogar | 2 - Sair, se quiser jogar, digite 1, se quiser sair digite 2.				\n\n"
 							+ "+========================================+														\n\n";
 		
-		GameController.uteis.printaTexto(instrucoes, 5);
+		Game.uteis.printaTexto(instrucoes, 5);
 		voltar();	
 	}
 	
@@ -104,7 +104,7 @@ public class Menu {
 						+ " Vinicius Araujo da Silveira 					\n"
 						+ "+========================================+  		\n\n";
 	
-		GameController.uteis.printaTexto(creditos, 25);
+		Game.uteis.printaTexto(creditos, 25);
 		voltar();
 		
 	}
@@ -120,7 +120,7 @@ public class Menu {
 		int opcao = entrada.nextInt();
 		
 		if(opcao == 1)  {
-			GameController.uteis.limpaConsole();
+			Game.uteis.limpaConsole();
 			getMenu();
 		} else {
 			System.out.println("Opção Inválida!");
