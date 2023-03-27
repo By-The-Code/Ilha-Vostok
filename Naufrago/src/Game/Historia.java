@@ -123,7 +123,6 @@ public class Historia {
 
         switch (input) {
             case "1", "PRAIA":
-                Game.combate.escolherInimigo();
                 caminhoPraia();
                 break;
 
