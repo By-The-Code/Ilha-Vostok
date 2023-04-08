@@ -9,26 +9,6 @@ public class Inimigo {
 	private int resistenciaInimigo;
 	private int nivelInimigo;
 	
-	public String getStatusInimigo() {
-		String txt = 			"Nome Inimigo: " 		+ getNomeInimigo() 		  + "\n"
-							+ 	"Vida Inimigo: " 		+ getVidaInimigo() 		  + "\n"
-							+ 	"Força Inimigo: " 		+ getForcaInimigo()		  + "\n"
-							+ 	"Resistência Inimigo: " + getResistenciaInimigo() + "\n"
-							+ 	"Nível Inimigo: " 		+ getNivelInimigo() 	  + "\n";
-		
-		return txt;
-	}
-	
-	public float danoInimigo(int resistJogador) {
-		float danoInimigo = (getForcaInimigo() * getNivelInimigo()) / resistJogador;
-		return danoInimigo;
-	}
-	
-	public float defesaInimigo() {
-		float defesaInimigo = getResistenciaInimigo() * getNivelInimigo();
-		return defesaInimigo;
-	}
-	
 	public Inimigo (String nome, int vida, int forca, int resistencia, int nivel) {
 		this.nomeInimigo = nome;
 		this.vidaInimigo = vida;
@@ -40,7 +20,34 @@ public class Inimigo {
 		if (this.nivelInimigo <= 0) this.nivelInimigo = 1;
 	}
 	
-	public Inimigo () {}
+	public String getStatusInimigo() {
+		String txt = 			"Nome Inimigo: " 		+ getNomeInimigo() 		  + "\n"
+							+ 	"Vida Inimigo: " 		+ getVidaInimigo() 		  + "\n"
+							+ 	"Força Inimigo: " 		+ getForcaInimigo()		  + "\n"
+							+ 	"Resistência Inimigo: " + getResistenciaInimigo() + "\n"
+							+ 	"Nível Inimigo: " 		+ getNivelInimigo() 	  + "\n";
+		
+		return txt;
+	}
+	
+	public double dropExperiencia() {
+		double exp = (double) getVidaInicialInimigo() / (getNivelInimigo() + getForcaInimigo() + getResistenciaInimigo());
+		return exp;
+	}
+	
+	public double danoInimigo(int resistJogador) {
+		double danoInimigo = (double) (getForcaInimigo() * getNivelInimigo()) / resistJogador;
+		
+		if(danoInimigo < 1) {
+			return 1; 
+		}
+		else return danoInimigo;
+	}
+	
+	public double defesaInimigo() {
+		double defesaInimigo = (double) getResistenciaInimigo() * getNivelInimigo();
+		return defesaInimigo;
+	}
 
 	/*
 	private Inimigo(String nomeInimigo, int vidaInimigo, int forcaInimigo, int resistenciaInimigo, int nivelInimigo) {
@@ -71,7 +78,7 @@ public class Inimigo {
 		return vidaInimigo;
 	}
 
-	public void setVidaInimigo(float danoLevado) {
+	public void setVidaInimigo(double danoLevado) {
 		this.vidaInimigo -= danoLevado;
 	}
 

@@ -1,16 +1,19 @@
 package Game;
 
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Jogador {
 	
+	
+	
 	private int 	vidaMaxima = 100;
-	private float 	vida = 100;
+	private double 	vida = 100;
 	private int 	forca = 0;
 	private int 	resistencia = 0;
 	private int 	nivel = 1;
-	private float 	xp = 0.0f;
-	private float 	xpParaUpar = 10.0f;
+	private double 	xp = 0.0;
+	private double 	xpParaUpar = 10.0;
 	private String 	nome = "";
 	private String 	profissao = "";
 	private String 	arma = "Mãos";
@@ -21,20 +24,34 @@ public class Jogador {
 		this.nome = nome;
 		
 		switch(profissao) {
-			case "MÉDICO": this.profissao = "Médico";
-			atribuindoValoresBaseadoNaProfissao(this.profissao);
+			case "MÉDICO": 
+				this.profissao = "Médico";
+				//atribuindoValoresBaseadoNaProfissao(this.profissao);
+				setVidaMaxima(15);
+				setResistencia(5);
+				setVida(vidaMaxima);
 			break;
 			
-			case "SOLDADO": this.profissao = "Soldado";
-			atribuindoValoresBaseadoNaProfissao(this.profissao);
+			case "SOLDADO": 
+				this.profissao = "Soldado";
+				//atribuindoValoresBaseadoNaProfissao(this.profissao);
+				setVidaMaxima(15);
+				setVida(vidaMaxima);
+				setForca(5);
 			break;
 			
-			case "PROFESSOR": this.profissao = "Professor";
-			atribuindoValoresBaseadoNaProfissao(this.profissao);
+			case "PROFESSOR": 
+				this.profissao = "Professor";
+				//atribuindoValoresBaseadoNaProfissao(this.profissao);
+				setVidaMaxima(10);
+				setVida(vidaMaxima);
+				setForca(3);
+				setResistencia(3);
 			break;
 		}
 	}
 	
+	/*
 	private void atribuindoValoresBaseadoNaProfissao(String profissao) {
 		
 		switch (profissao) {
@@ -64,25 +81,27 @@ public class Jogador {
 			atribuindoValoresBaseadoNaProfissao("Professor");
 		}		
 	}
-
+	 */
+	
 	public String getStatus() {
 		
-		String txt = 		"Nome: "		+ nome 			+ " | Profissão: " + profissao + "\n"
-						+	"Vida Máxima: " + vidaMaxima	+ "\n"
-						+ 	"Vida: " 		+ vida 			+ "\n"
-						+ 	"Força: " 		+ forca 		+ "\n"
-						+ 	"Resistência: " + resistencia 	+ "\n"
-						+ 	"Nível: " 		+ nivel 		+ "\n"
-						+ 	"XP: " 			+ xp 			+ "\n"
-						+ 	"Arma: " 		+ arma			+ "\n"
-						+ 	"Armadura: " 	+ armadura 		+ "\n"
-						+ 	"XP p/ Upar: "  + xpParaUpar    + "\n";
+		String txt = 		"Nome: "			+ nome 							+ ""
+						+ 	" | Profissão: " 	+ profissao 					+ "\n"
+						+	"Vida Máxima: " 	+ vidaMaxima					+ "\n"
+						+ 	"Vida: " 			+ vida 							+ "\n"
+						+ 	"Força: " 			+ forca 						+ "\n"
+						+ 	"Resistência: " 	+ resistencia 					+ "\n"
+						+ 	"Nível: " 			+ nivel 						+ "\n"
+						+ 	"XP: " 				+ Game.dc.format(xp) 			+ "\n"
+						+ 	"Arma: " 			+ arma							+ "\n"
+						+ 	"Armadura: " 		+ armadura 						+ "\n"
+						+ 	"XP p/ Upar: "  	+ Game.dc.format(xpParaUpar)    + "\n";
 		
 		return txt;
 	}
 	
 	
-	public void passaDeNivel(float experiencia) {
+	public void passaDeNivel(double experiencia) {
 		
 		if(xp + experiencia >= xpParaUpar) {
 			setXp(xp + experiencia - xpParaUpar);			
@@ -96,12 +115,12 @@ public class Jogador {
 	
 	public void melhoraStatus() {
 		
-		System.out.println("||**********SUBIU DE NÍVEL************||"
+		System.out.println("||********** SUBIU DE NÍVEL **********||\n"
 						+  "|| Escolha o que você quer melhorar!  ||\n"
 						+  "|| 1. Vida                            ||\n"
 						+  "|| 2. Força                           ||\n"
 						+  "|| 3. Resistência                     ||\n"
-						+  "||************************************||\"");
+						+  "||************************************||\n");
 		
 		Scanner scan = new Scanner (System.in);
 		int escolha = scan.nextInt();
@@ -114,10 +133,12 @@ public class Jogador {
 				break;
 			case 2: 
 				setForca(1);
+				setVida(vidaMaxima);
 				getStatus();
 				break;
 			case 3: 
 				setResistencia(1);
+				setVida(vidaMaxima);
 				getStatus();
 				break;
 	
@@ -150,8 +171,9 @@ public class Jogador {
 		}
 	}
 	
-	public float getDanoJogador(int defesaInimigo) {
-		return (getForca() + getDanoArma(arma))/ defesaInimigo;
+	public double getDanoJogador(int defesaInimigo) {
+		double danoJogador = (double) (getForca() + getDanoArma(arma))/ defesaInimigo;
+		return danoJogador;
 	}
 	
 	public int getDefesaArmadura(String armadura) {
@@ -163,16 +185,16 @@ public class Jogador {
 			case "Boné":
 				return 5;
 			
-			case "A":
+			case "Capacete de Madeira":
 				return 10;
 			
-			case "B":
+			case "Capacete de Ossos":
 				return 10;
 				
-			case "C":
+			case "Capacete de Ferro":
 				return 15;
 			
-			case "D":
+			case "Carapaça de Cupim":
 				return 30;
 				
 			default: System.out.println("Esta armadura é inválida!");
@@ -188,23 +210,23 @@ public class Jogador {
 		return vidaMaxima;
 	}
 
-	public void setVidaMaxima(float vidaMaxima) {
+	public void setVidaMaxima(double vidaMaxima) {
 		this.vidaMaxima += vidaMaxima;
 	}
 
-	public float getVida() {
+	public double getVida() {
 		return vida;
 	}
 	
-	public void setVida(float vida) {
+	public void setVida(double vida) {
 		this.vida = vida;
 	}
 	
-	public void setVidaDano(float dano) {
+	public void setVidaDano(double dano) {
 		this.vida -= dano;
 	}
 	
-	public void setVidaCura(float vida) {
+	public void setVidaCura(double vida) {
 		this.vida += vida;
 	}
 
@@ -232,20 +254,20 @@ public class Jogador {
 		this.nivel += nivel;
 	}
 
-	public float getXp() {
+	public double getXp() {
 		return xp;
 	}
 
-	public void setXp(float xp) {
+	public void setXp(double xp) {
 		this.xp += xp;
 	}
 
-	public float getXpParaUpar() {
+	public double getXpParaUpar() {
 		return xpParaUpar;
 	}
 
 
-	public void setXpParaUpar(float xpParaUpar) {
+	public void setXpParaUpar(double xpParaUpar) {
 		this.xpParaUpar *= xpParaUpar;
 	}
 

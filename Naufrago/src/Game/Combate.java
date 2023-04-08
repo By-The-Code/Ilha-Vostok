@@ -6,35 +6,30 @@ public class Combate {
 	
 	public void escolherInimigo() {
 		int random = Game.uteis.geraNumeroRandomico(0, 101);
-		int randomAtt = Game.uteis.geraNumeroRandomico(-2, 3);
+		//int randomAtt = Game.uteis.geraNumeroRandomico(-1, 3);
+		String criatura = "";
 		
 		if (random >= 10 && random <= 65) {
-			System.out.println("Você encontrou um Macaco-Aranha enquanto andava");
-			istInimigo("Macaco-Aranha", 10 * Game.jogador.getNivel() + randomAtt, 
-					2 + Game.jogador.getNivel() + randomAtt, 
-					2 + Game.jogador.getNivel() + randomAtt, 
-						Game.jogador.getNivel() + randomAtt); 
+			criatura = "Macaco-Aranha";
 		}
 		else if (random >= 66 && random <= 85) {
-			System.out.println("Você encontrou uma Cobra-Voadora enquanto andava");
-			istInimigo("Cobra-Voadora", 10 * Game.jogador.getNivel() + randomAtt, 
-					2 + Game.jogador.getNivel() + randomAtt, 
-					2 + Game.jogador.getNivel() + randomAtt, 
-						Game.jogador.getNivel() + randomAtt); 
+			criatura = "Cobra Voadora";
 		}
 		else if (random >= 86) {
-			System.out.println("Você encontrou uma Lacraia Gigante enquanto andava");
-			istInimigo("Lacraia", 10 * Game.jogador.getNivel() + randomAtt, 
-					2 + Game.jogador.getNivel() + randomAtt, 
-					2 + Game.jogador.getNivel() + randomAtt, 
-						Game.jogador.getNivel() + randomAtt); 
+			criatura = "Lacraia Gigante";
 		}
 		else {
 			return;
 		}
+		
+		spawnaInimigo(criatura, 10 	* 	Game.jogador.getNivel(), //+ randomAtt, 
+								3 	*	Game.jogador.getNivel(), //+ randomAtt, 
+								3 	* 	Game.jogador.getNivel(), //+ randomAtt, 
+										Game.jogador.getNivel());
 	}
 	
-	public static void istInimigo(String nomeInimigo, int vidaInimigo, int forcaInimigo, int resistenciaInimigo, int nivelInimigo) {
+
+	public void spawnaInimigo(String nomeInimigo, int vidaInimigo, int forcaInimigo, int resistenciaInimigo, int nivelInimigo) {
 		Game.inimigo = new Inimigo(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
 		
 		System.out.println("Você encontra o inimigo: " + Game.inimigo.getNomeInimigo() + ".\n\n");
@@ -43,21 +38,22 @@ public class Combate {
 	
 	public static void combate() {
 		
-		System.out.println(
-						   "||*************  O QUE VOCÊ FAZ? *************||\n"
+		System.out.println("||*************  O QUE VOCÊ FAZ? *************||\n"
 				         + "||============================================||\n"
 				         + "|| 1 - Atacar                                 ||\n"
 				         + "|| 2 - Fugir                                  ||\n"
-				         + "||============================================||\n");
+				         + "||============================================||");
 		
 		String input = Game.sc.nextLine().toUpperCase();
 		
 		switch (input) {
 		case "1", "ATACAR":
-			ataque();
+			ataqueJogador();
 			break;
 		case "2", "FUGIR":
-			System.out.println("Você fugiu!");
+			System.out.println(	"||*******************||\n"
+							+ 	"||    VOCÊ FUGIU!    ||\n"
+							+ 	"||*******************||\n");
 			return;
 			
 		default: 
@@ -66,7 +62,7 @@ public class Combate {
 		}
 	}
 	
-	public static void ataque() {
+	public static void ataqueJogador() {
 		errarAtaque = Game.uteis.geraNumeroRandomico(0, 11);
 		
 		System.out.println(	"Você tenta atacar o(a) " + Game.inimigo.getNomeInimigo() + ".\n"
@@ -75,29 +71,27 @@ public class Combate {
 		
 		if (errarAtaque < 2) {
 			System.out.println("Você errou o ataque");
-			dano();
+			ataqueInimigo();
 		}
 		else {
 			Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()));
-			System.out.println(	"Você deu " + Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()) + " de dano.\n"
+			System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo())) + " de dano.\n"
 							+	"Vida atual do inimigo: " + Game.inimigo.getVidaInimigo());
 			
 			if (Game.inimigo.getVidaInimigo() > 0)
-			dano();
+				ataqueInimigo();
 			
 			else {
-				Game.jogador.passaDeNivel(Game.inimigo.getVidaInicialInimigo() / Game.inimigo.getNivelInimigo());
+				Game.jogador.passaDeNivel(Game.inimigo.dropExperiencia());
 				System.out.println(Game.jogador.getStatus());
 			}
 		}
 	}
 	
-	public static void dano() {
+	public static void ataqueInimigo() {
 		errarAtaque = Game.uteis.geraNumeroRandomico(0, 11);
 		
-		System.out.println(	/*"Sua vida atual" + Game.jogador.getVida() + ".\n"
-						+ 	"Vida do inimigo" + Game.inimigo.getVidaInimigo()*/
-							"O " + Game.inimigo.getNomeInimigo() + " tenta te atacar");
+		System.out.println("O " + Game.inimigo.getNomeInimigo() + " tenta te atacar");
 		
 		if (errarAtaque < 2) {
 			System.out.println(Game.inimigo.getNomeInimigo() + " errou o ataque");
@@ -105,7 +99,7 @@ public class Combate {
 		}
 		else {
 			Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()));
-			System.out.println(	"Você recebeu " + Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) + " de dano.\n"
+			System.out.println(	"Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
 							+	"Sua vida atual: " + Game.jogador.getVida());
 			
 			if (Game.jogador.getVida() > 0)

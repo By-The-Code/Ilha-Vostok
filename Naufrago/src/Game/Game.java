@@ -1,7 +1,10 @@
 package Game;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Game {
+	
+	public static final DecimalFormat dc = new DecimalFormat ("0.00");
 	
 	public static Scanner sc = new Scanner(System.in);
 	public static Menu menu = new Menu();
@@ -15,6 +18,6 @@ public class Game {
 		jogador = new Jogador ("Alfonse", "PROFESSOR");
 		
 		System.out.println(jogador.getStatus());
-		historia.PrimeiroAto();
+		historia.primeiroAto();
 	}
 }

@@ -30,7 +30,10 @@ public class Uteis {
 	
 	public boolean Continuar() {
 		
-		System.out.println("Precione 'ENTER' para continuar.\n");
+		System.out.println(	"||************************************||\n"
+						+ 	"||  Precione 'ENTER' para continuar.  ||\n"
+						+ 	"||************************************||\n");
+		
 		String input = Game.sc.nextLine();
 		
 		if (input == "" || input != "") return true;
@@ -47,47 +50,4 @@ public class Uteis {
 			e.printStackTrace();
 		}
 	}
-	
-	/*
-	public void escolha(String input, String caminho) {
-		switch (caminho) {
-		
-		case "PRAIA":
-			if (input == "1" || input == "PRAIA") Game.historia.caminhoPraia();
-			else if (input == "2" || input == "FLORESTA") Game.historia.caminhoPraia();
-			else {
-				System.out.println("Não entendi, tente novamente!");
-				String inp = Game.sc.nextLine().toUpperCase();
-				Game.uteis.escolha(inp, );
-			}
-			break;
-		case "FLORESTA":
-			break;
-		case "FUMACA":
-			break;
-		case "CACHOEIRA":
-			break;
-		case "ARVORE":
-			break;
-		case "CAVERNA":
-			break;
-		case "MADEIRA":
-			break;
-		case "CORDA":
-			break;
-		case "FOLHAS":
-			break;
-		case "TENTACULOS":
-			break;
-		case "OLHO":
-			break;
-		case "PARTIR":
-			break;
-		case "MATAR":
-			break;
-		
-		}
-		
-		
-	}*/
 }
