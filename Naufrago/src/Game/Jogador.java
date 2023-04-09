@@ -160,7 +160,7 @@ public class Jogador {
 			case "Pedaço de Madeira":
 				return 10;
 				
-			case "Osso Humano":
+			case "Osso Humano", "Faca":
 				return 15;
 			
 			case "Pinças de Formiga Gigante":

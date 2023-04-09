@@ -20,7 +20,7 @@ public class Historia {
                 + "|| a água, um breve vislumbre de um imenso buraco negro no meio do nada, é visto através de uma  ||\n"
                 + "|| pequena janela por um dos tripulantes que ainda mantinha o pouco de sua sanidade intacta.     ||\n"
                 + "|| E então, a colisão.                                                                           ||\n"
-                + "||***********************************************************************************************||\n";
+                + "||***********************************************************************************************||\n\n";
 
         Game.uteis.printaTexto(intro, 15);
         try {
@@ -157,11 +157,14 @@ public class Historia {
         Game.jogador.setResistencia(1);
         String caminhoItem = "";
         caminhoItem
-                = "Apesar da queda, você encontra um item que pode te auxiliar naquele lugar.\n"
-                + "Um boné! Vai ser bom para se proteger do sol!\n"
-                + "Você aumentou sua resistência!\n"
-                + "RESISTÊNCIA: " + Game.jogador.getResistencia()
-                + "\nAndando mais a frente, você nota uma mata fechada ao norte, mas também nota que a praia se estende ao redor de toda a ilha.\n\n";
+                = "||****************************************************************************||\n"
+                + "|| Apesar da queda, você encontra um item que pode te auxiliar naquele lugar. ||\n"
+                + "|| Um boné! Vai ser bom para se proteger do sol!                              ||\n"
+                + "|| Você aumentou sua resistência!                                             ||\n"
+                + "|| RESISTÊNCIA: " + Game.jogador.getResistencia()
+                + "|| Andando mais a frente, você nota uma mata fechada ao norte,                ||\n"
+                + "|| mas também nota que a praia se estende ao redor de toda a ilha.            ||\n"
+                + "||****************************************************************************||\n\n";
 
         Game.uteis.printaTexto(caminhoItem, 15);
         Game.jogador.setArmadura("Boné");
@@ -170,9 +173,12 @@ public class Historia {
     public void caminhoNormal() {
         String caminhoNormal = "";
         caminhoNormal
-                = "Era apenas um pedaço de folha atolado na areia, que pena.\n"
-                + "Aparentemente, tudo de útil que estava no avião se perdeu.\n"
-                + "Andando mais a frente, você nota uma mata fechada ao norte, mas também nota que a praia se estende ao redor de toda a ilha.\n\n";
+                = "||*******************************************************************||\n"
+                + "|| Era apenas um pedaço de folha atolado na areia, que pena.         ||\n"
+                + "|| Aparentemente, tudo de útil que estava no avião se perdeu.        ||\n"
+                + "|| Andando mais a frente, você nota uma mata fechada ao norte,       ||\n"
+                + "|| mas também nota que a praia se estende ao redor de toda a ilha.   ||\n"
+                + "||*******************************************************************||\n\n";
 
         Game.uteis.printaTexto(caminhoNormal, 15);
     }
@@ -413,20 +419,20 @@ public class Historia {
                 String continuacaoCaverna
                 = "||***********************************************************************************************||\n"
                 + "|| Após você enfrentar e matar a mãe de todos, seus filhotes voam para fora da caverna,          ||\n"
-                + "|| fugindo com medo, agora que sua mãe está morta. 						    					||\n"
+                + "|| fugindo com medo, agora que sua mãe está morta.                                               ||\n"
                 + "|| Agora mais calmo, você consegue notar alguns objetos do que um dia pertenceram a um humano,   ||\n"
-                + "|| que não teve tanta sorte quanto você. Pela insígnia em sua roupa desgastada,	            	||\n"
-                + "|| ele era um piloto, o que justificava alguns itens espalhados ao seu redor...		    		||\n"
+                + "|| que não teve tanta sorte quanto você. Pela insígnia em sua roupa desgastada,                  ||\n"
+                + "|| ele era um piloto, o que justificava alguns itens espalhados ao seu redor...                  ||\n"
                 + "|| Havia uma lata de querosene ao lado do corpo agora cavérico do piloto, que você logo recupera ||\n"
                 + "|| para si. Avaliando mais de perto vê que o osso fêmural do piloto também poderia ser útil.     ||\n"
-                + "ARMAS: \n"
-                + Game.jogador.getArma()
                 + "||***********************************************************************************************||\n";
-
-      
+                
                 Game.uteis.printaTexto(continuacaoCaverna, 15);
+                System.out.println("Arma Atualizada: " + Game.jogador.getArma() + "\n");
+                
                 control = false;
                 break;
+                 
             case 2:
                 Game.uteis.limpaConsole();
                 caminhoCachoeira();
@@ -464,7 +470,7 @@ public class Historia {
                 + "|| Você precisa de um lugar para passar a noite e, para se proteger do frio, poderia colocar     ||\n"
                 + "|| algumas abóboras quentinhas e folhagens sob você.                                             ||\n"
                 + "||***********************************************************************************************||\n";
-               
+                
 	        Game.uteis.printaTexto(caminhoFumaca, 15);
 	        Game.uteis.printaTexto(continuacaoFumaca, 15);
 	        
@@ -508,6 +514,7 @@ public class Historia {
 
     public void caminhoArvore() {
 
+    	if (!control) {
         String caminhoArvore
                 = "||***********************************************************************************************||\n"
                 + "|| Você colocou algumas folhagens e abóboras na base da árvore e irá subi-las pouco a pouco.     ||\n"
@@ -517,38 +524,60 @@ public class Historia {
                 + "|| um cavalo, com cabeça e asas de àguia está voando a toda velocidade na sua direção,           ||\n"
                 + "|| aparentemente aquele ninho pertence a ela. Você se lembra de histórias antigas e de um animal ||\n"
                 + "|| assim… Um Hipogrifo, é isso que você enfrentará.                                              ||\n"
-                + "||***********************************************************************************************||\n"
-                + "||*************  O QUE VOCÊ FAZ? *************||\n"
-                + "||============================================||\n"
-                + "||    1 - Ataca/Se Protege com o que tem      ||\n"
-                + "||    2 - Foge (Desce para as abóboras)       ||\n"
-                + "||============================================||\n";
+                + "||***********************************************************************************************||\n";
+                
+        	Game.uteis.printaTexto(caminhoArvore, 15);
+        	control = true;
+    	}
+                System.out.println(  
+                	"||*************  O QUE VOCÊ FAZ? *************||\n"
+                + 	"||============================================||\n"
+                + 	"||    1 - Ataca/Se Protege com o que tem      ||\n"
+                + 	"||    2 - Foge (Desce para as abóboras)       ||\n"
+                + 	"||============================================||\n");
 
         int input = Game.sc.nextInt();
 
         switch (input) {
 
             case 1: 
-		Game.uteis.limpaConsole();	
-		Game.combate.escolherInimigo();
-		break;
+				Game.uteis.limpaConsole();
+				
+				/***************************************************/
+		        //SPAWN BOSS
+		        /***************************************************/
+
+				Game.jogador.setArma("Faca");
+				
+                String continuacaoArvore
+                        = "||***************************************************************************||\n"
+                        + "|| Após você enfrentar e matar a ave, agora mais calmo,                      ||\n"
+                        + "|| você consegue notar alguns objetos do que um dia pertenceram a um humano, ||\n"
+                        + "|| que não teve tanta sorte quanto você.                                     ||\n"
+                        + "||***************************************************************************||\n\n";
+                
+                Game.uteis.printaTexto(continuacaoArvore, 15);
+           
+                // Você adquiriu 1 pederneira e 1 faca - Arma
+                System.out.println("Arma Atualizada: " + Game.jogador.getArma() + "\n");
+				control = false;
+				
+				/***************************************************/
+				//CHAMA A CONTINUAÇÃO DA HISTÓRIA, SE NÃO TRAVA O FLUXO DO JOGO.
+				/***************************************************/
+
+				
+			break;
             case 2:
                 Game.uteis.limpaConsole();
+                control = false;
                 caminhoFumaca();
-                break;
+            break;
 
             default:
-                System.out.println("Opção inválida!");
                 Game.uteis.limpaConsole();
-                caminhoFumaca();
-
-                String continuacaoArvore
-                        = "Após você enfrentar e matar a ave, agora mais calmo, você consegue notar alguns objetos do que um dia pertenceram a um humano, que não teve tanta sorte quanto você.";
-
-                // Você adquiriu 1 pederneira e 1 faca - Arma
-                Game.uteis.printaTexto(caminhoArvore, 15);
-                Game.uteis.printaTexto(continuacaoArvore, 15);
-
+                System.out.println("Opção inválida!");
+                caminhoArvore();
         }
     }
 
@@ -725,8 +754,9 @@ public class Historia {
     }
 
     public void penultimoAto() {
-
-        String finalBoss
+    	
+    	if(!control) {
+    		String finalBoss
                 = "||***********************************************************************************************||\n"
                 + "|| Após conseguir todos os itens da lista, você começa a montar sua jangada…                     ||\n"
                 + "|| Você utiliza as madeiras, cola, folhas de palmeira e os cipós para construir a jangada que te ||\n"
@@ -741,12 +771,17 @@ public class Historia {
                 + "|| Diante de você uma criatura enorme emerge das águas, os tentáculos da criatura envolvem toda a||\n"
                 + "|| jangada e um olho do tamanho da sua cabeça está diante de você, te olhando fixamente.         ||\n"
                 + "|| Você precisa tomar uma atitude rápida.                                                        ||\n"
-                + "||***********************************************************************************************||\n"
-                + "||************* O QUE VOCÊ FAZ? *************||\n"
-                + "||===========================================||\n"
-                + "||       1 - Bate com a arma nos Tentáculos  ||\n"
-                + "||       2 - Fura o olho da Criatura         ||\n"
-                + "||===========================================||\n";
+                + "||***********************************************************************************************||\n";
+                
+            control = true;  
+    	}
+    	
+        System.out.println(
+        	"||************* O QUE VOCÊ FAZ? *************||\n"
+        +	"||===========================================||\n"
+        +	"||       1 - Bate com a arma nos Tentáculos  ||\n"
+        +	"||       2 - Fura o olho da Criatura         ||\n"
+        +	"||===========================================||\n");
 
         /*int input = Game.sc.nextInt();
 				
@@ -771,7 +806,11 @@ public class Historia {
     public void ultimoAto() {
 
         String ultimaDecisao
-                = "Você venceu, garantindo suas chances de sobrevivência e podendo fugir sem maiores obstáculos da ilha. Você vê a Lula Gigante ainda próxima, mas ela já está fraca e bastante ferida, se você deixá-la em paz, ela irá sobreviver, mas você pode decidir terminar o serviço…\n"
+                = "||*********************************************************************************************************||\n"
+                + "|| Você venceu, garantindo suas chances de sobrevivência e podendo fugir sem maiores obstáculos da ilha.   ||\n"
+                + "|| Você vê a Lula Gigante ainda próxima, mas ela já está fraca e bastante ferida, se você deixá-la em paz, ||\n"
+                + "|| ela irá sobreviver, mas você pode decidir terminar o serviço…                                           ||\n"
+                + "||*********************************************************************************************************||\n\n"
                 + "||*** O QUE VOCÊ FAZ? ***||\n"
                 + "||=======================||\n"
                 + "||      1 - Matar        ||\n"
@@ -784,37 +823,53 @@ public class Historia {
         if (input == 1) {
 
             String finalMisericordioso
-                    = "Você poupa o animal.\n"
-                    + "Por pior que aquela situação tenha sido, você ainda manteve parte da sua humanidade. E, atacar um animal que não oferecia mais riscos parecia errado. Você senta na sua jangada contemplando o horizonte e sentindo a briza do mar, enquanto a criatura foge para longe.\n"
-                    + "Você sorri enquanto lágrimas escorrem em seu rosto, com um alívio e esperança de um novo recomeço…";
+                    = "||********************************************************************************************************************||\n"
+                    + "|| Você poupa o animal.                                                                                               ||\n"
+                    + "|| Por pior que aquela situação tenha sido, você ainda manteve parte da sua humanidade                                ||\n "
+                    + "|| e atacar um animal que não oferecia mais riscos parecia errado.                                                    ||\n"
+                    + "|| Você senta na sua jangada contemplando o horizonte e sentindo a briza do mar, enquanto a criatura foge para longe. ||\n"
+                    + "|| Você sorri enquanto lágrimas escorrem em seu rosto, com um alívio e esperança de um novo recomeço…                 ||\n"
+                    + "||********************************************************************************************************************||\n\n";
 
             Game.uteis.printaTexto(finalMisericordioso, 15);
+            fim();
 
         } else {
 
             String finalRancoroso
-                    = "Você mata a Lula sem piedade, fincando a arma em um só golpe em seu olho gigante.\n"
-                    + "Você se tornou tão selvagem quanto as criaturas que te atacaram enquanto estava na ilha. Sem remorso, você segue seu caminho. Você senta na jangada e chora… Será que a vida será a mesma daqui em diante?";
+            		= "||********************************************************************************************************************||\n"
+                    + "|| Você mata a Lula sem piedade, fincando a arma em um só golpe em seu olho gigante.                                  ||\n"
+                    + "|| Você se tornou tão selvagem quanto as criaturas que te atacaram enquanto estava na ilha.                           ||\n"
+                    + "|| Sem remorso, você segue seu caminho. Você senta na jangada e se pergunta…                                          ||\n"
+                    + "|| 'Será que a vida será a mesma daqui em diante?'                                                                    ||\n"
+                    + "||********************************************************************************************************************||\n\n";
 
             Game.uteis.printaTexto(finalRancoroso, 15);
-
+            
+            fim();
         }
     }
 
-    public void getFim() {
+    public void fim() {
 
         String fim
-                = "F I M";
+                = "||******************||\n"
+                + "||      F I M       ||\n"
+                + "||******************||";
+        
         Game.uteis.printaTexto(fim, 250);
     }
 
     public void gameOver() {
-        System.out.println("Você morreu");
+        System.out.println(
+        			"||********************||\n"
+        		+ 	"||    VOCÊ MORREU!    ||\n"
+        		+ 	"||********************||");
 
         try {
             Thread.sleep(5000);
             Game.uteis.limpaConsole();
-            intro();
+            Game.menu.intro();
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -15,9 +15,12 @@ public class Game {
 	public static Combate combate = new Combate();
 	
 	public static void main(String [] args) {
+		/*
 		jogador = new Jogador ("Alfonse", "PROFESSOR");
 		
 		System.out.println(jogador.getStatus());
 		historia.primeiroAto();
+		*/
+		menu.intro();
 	}
 }

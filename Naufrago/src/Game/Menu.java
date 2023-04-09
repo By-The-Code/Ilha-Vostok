@@ -8,7 +8,7 @@ public class Menu {
 	Scanner entrada = new Scanner(System.in);
 	
 	public void intro() {
-		String texto = 	"||****************************************||\\n+\n" 
+		String texto = 	"||****************************************||\n" 
 				+ 		"||         By The Code - Apresenta        ||\n"
 				+ 		"||========================================||\n"
 				+ 		"||                                        ||\n"
@@ -16,7 +16,7 @@ public class Menu {
 				+       "||                                        ||\n"
 				+ 		"||****************************************||\n";
 		
-		Game.uteis.printaTexto(texto, 25);
+		Game.uteis.printaTexto(texto, 20);
 		Game.uteis.delayParaProximoComando(20);
 		Game.uteis.limpaConsole();
 		menu();
@@ -65,7 +65,7 @@ public class Menu {
 	}
 	
 	public void instrucoes() {
-		String instrucoes 	= "||*******************************************INSTRUÇÕES********************************************||\n"
+		String instrucoes 	= "||****************************************** INSTRUÇÕES *******************************************||\n"
 							+ "|| VidaMaxima: Vida máxima do jogador;                                                             ||\n"
 							+ "|| Vida: Vida atual do jogador;                                                                    ||\n"
 							+ "|| Força: Força atual do jogador, utilizada para o cálculo de dano;                                ||\n"
@@ -83,10 +83,10 @@ public class Menu {
 	}
 	
 	public void creditos() {
-		String creditos = "||***************CRÉDITOS***************||\n"
+		String creditos = "||************** CRÉDITOS **************||\n"
 						+ "||               NAUFRAGO 			   ||\n"
 						+ "||======================================||\n"
-						+ "|| Uma produção de By The Code          ||\n"
+						+ "|| Uma produção By The Code             ||\n"
 						+ "||                                      ||\n"
 						+ "|| Uma criação de:                      ||\n"
 						+ "|| Eduardo Ribeiro Torquato             ||\n"
