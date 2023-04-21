@@ -177,7 +177,7 @@ public class Jogador {
 	}
 	
 	public int getDefesaArmadura(String armadura) {
-		
+
 		switch(armadura) {
 			case "":
 				return 0;

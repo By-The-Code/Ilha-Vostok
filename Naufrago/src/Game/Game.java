@@ -15,12 +15,29 @@ public class Game {
 	public static Combate combate = new Combate();
 	
 	public static void main(String [] args) {
-		/*
+		
 		jogador = new Jogador ("Alfonse", "PROFESSOR");
 		
 		System.out.println(jogador.getStatus());
-		historia.primeiroAto();
-		*/
+		historia.segundoAto();
+		
 		menu.intro();
 	}
+	
+	public static void gameOver() {
+        System.out.println(
+        			"||********************||\n"
+        		+ 	"||    VOCÊ MORREU!    ||\n"
+        		+ 	"||    FIM DE JOGO     ||\n"
+        		+ 	"||********************||");
+
+        try {
+            Thread.sleep(5000);
+            Game.uteis.limpaConsole();
+            Game.menu.intro();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }

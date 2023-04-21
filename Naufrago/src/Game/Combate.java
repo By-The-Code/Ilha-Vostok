@@ -105,7 +105,7 @@ public class Combate {
 			if (Game.jogador.getVida() > 0)
 			combate();
 			
-			else Game.historia.gameOver();
+			else Game.gameOver();
 		}
 	}
 }

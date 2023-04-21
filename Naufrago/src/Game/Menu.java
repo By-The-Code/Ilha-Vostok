@@ -84,7 +84,7 @@ public class Menu {
 	
 	public void creditos() {
 		String creditos = "||************** CRÉDITOS **************||\n"
-						+ "||               NAUFRAGO 			   ||\n"
+						+ "||               NAUFRAGO               ||\n"
 						+ "||======================================||\n"
 						+ "|| Uma produção By The Code             ||\n"
 						+ "||                                      ||\n"

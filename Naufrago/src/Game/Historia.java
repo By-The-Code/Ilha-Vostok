@@ -161,7 +161,7 @@ public class Historia {
                 + "|| Apesar da queda, você encontra um item que pode te auxiliar naquele lugar. ||\n"
                 + "|| Um boné! Vai ser bom para se proteger do sol!                              ||\n"
                 + "|| Você aumentou sua resistência!                                             ||\n"
-                + "|| RESISTÊNCIA: " + Game.jogador.getResistencia()
+                + "|| RESISTÊNCIA: " + Game.jogador.getResistencia() +                           ".\n"
                 + "|| Andando mais a frente, você nota uma mata fechada ao norte,                ||\n"
                 + "|| mas também nota que a praia se estende ao redor de toda a ilha.            ||\n"
                 + "||****************************************************************************||\n\n";
@@ -396,11 +396,12 @@ public class Historia {
         	control = true;
     	}
      
-        System.out.println( "||************* O QUE VOCÊ FAZ? *************||\n"
-                + "||===========================================||\n"
-                + "||    1 - Ataca/Se Protege com o que tem     ||\n"
-                + "||    2 - Foge (Volta para cachoeira)        ||\n"
-                + "||===========================================||\n");
+        System.out.println(
+        			"||************* O QUE VOCÊ FAZ? *************||\n"
+                + 	"||===========================================||\n"
+                + 	"||    1 - Ataca/Se Protege com o que tem     ||\n"
+                + 	"||    2 - Foge (Volta para cachoeira)        ||\n"
+                + 	"||===========================================||\n");
 
         int input = Game.sc.nextInt();
 
@@ -858,21 +859,5 @@ public class Historia {
                 + "||******************||";
         
         Game.uteis.printaTexto(fim, 250);
-    }
-
-    public void gameOver() {
-        System.out.println(
-        			"||********************||\n"
-        		+ 	"||    VOCÊ MORREU!    ||\n"
-        		+ 	"||********************||");
-
-        try {
-            Thread.sleep(5000);
-            Game.uteis.limpaConsole();
-            Game.menu.intro();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 }
