@@ -31,8 +31,15 @@ public class Inimigo {
 	}
 	
 	public double dropExperiencia() {
-		double exp = (double) getVidaInicialInimigo() / (getNivelInimigo() + getForcaInimigo() + getResistenciaInimigo());
-		return exp;
+			
+		if(getForcaInimigo() > getResistenciaInimigo()) {
+				double exp = (double) getVidaInicialInimigo() / (getNivelInimigo() + getResistenciaInimigo());
+				return exp;
+		} 
+		else {
+				double exp = (double) getVidaInicialInimigo() / (getNivelInimigo() + getForcaInimigo());
+				return exp;
+		}
 	}
 	
 	public double danoInimigo(int resistJogador) {
@@ -82,7 +89,7 @@ public class Inimigo {
 		this.vidaInimigo -= danoLevado;
 	}
 
-	private int getForcaInimigo() {
+	public int getForcaInimigo() {
 		return forcaInimigo;
 	}
 

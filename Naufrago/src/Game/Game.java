@@ -11,6 +11,7 @@ public class Game {
 	public static Uteis uteis = new Uteis();
 	public static Inimigo inimigo;
 	public static Jogador jogador;
+	public static Boss boss;
 	public static Historia historia = new Historia();
 	public static Combate combate = new Combate();
 	
@@ -19,7 +20,7 @@ public class Game {
 		jogador = new Jogador ("Alfonse", "PROFESSOR");
 		
 		System.out.println(jogador.getStatus());
-		historia.segundoAto();
+		historia.primeiroAto();
 		
 		menu.intro();
 	}
@@ -31,13 +32,8 @@ public class Game {
         		+ 	"||    FIM DE JOGO     ||\n"
         		+ 	"||********************||");
 
-        try {
-            Thread.sleep(5000);
-            Game.uteis.limpaConsole();
-            Game.menu.intro();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        uteis.delayParaProximoComando(50);
+        uteis.limpaConsole();
+        menu.intro();
     }
 }
