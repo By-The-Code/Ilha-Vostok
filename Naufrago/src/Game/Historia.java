@@ -22,7 +22,7 @@ public class Historia {
                 + "|| E então, a colisão.                                                                           ||\n"
                 + "||***********************************************************************************************||\n\n";
 
-        Game.uteis.printaTexto(intro, 15);
+        Game.uteis.printaTexto(intro, 5);
         try {
             Thread.sleep(2000);
             apresentacao();
@@ -42,7 +42,7 @@ public class Historia {
                 + "|| Você tenta se lembrar de coisas básicas como o seu nome. ||\n"
                 + "||**********************************************************||\n\n";
 
-        Game.uteis.printaTexto(apresentacaoNome, 15);
+        Game.uteis.printaTexto(apresentacaoNome, 5);
 
         System.out.println(	"||*********************||\n"
         				+ 	"|| COMO VOCÊ SE CHAMA: ||\n"
@@ -56,7 +56,7 @@ public class Historia {
                 + "|| Você também tenta lembrar de outras coisas                ||\n"
                 + "|| básicas da sua vida para garantir que está tudo bem,      ||\n"
                 + "|| você tenta se recordar do que fazia:                      ||\n"
-                + "||                                                           ||\n"
+                + "||***********************************************************||\n\n\n"
                 + "||****************** ESCOLHA SUA PROFISSÃO ******************||\n"
                 + "||===========================================================||\n"
                 + "||   PROFI/STATUS  |   VIDA   |    FORÇA   |   RESISTÊNCIA   ||\n"

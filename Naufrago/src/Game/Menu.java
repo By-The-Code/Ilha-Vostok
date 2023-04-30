@@ -16,8 +16,8 @@ public class Menu {
 				+       "||                                        ||\n"
 				+ 		"||****************************************||\n";
 		
-		Game.uteis.printaTexto(texto, 20);
-		Game.uteis.delayParaProximoComando(20);
+		Game.uteis.printaTexto(texto, 10);
+		Game.uteis.delayParaProximoComando(30);
 		Game.uteis.limpaConsole();
 		menu();
 	}
