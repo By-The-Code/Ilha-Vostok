@@ -17,10 +17,12 @@ public class Game {
 	
 	public static void main(String [] args) {
 		
+		/*
 		jogador = new Jogador ("Alfonse", "PROFESSOR");
-		
+		 
 		System.out.println(jogador.getStatus());
 		historia.primeiroAto();
+		*/
 		
 		menu.intro();
 	}
@@ -32,8 +34,11 @@ public class Game {
         		+ 	"||    FIM DE JOGO     ||\n"
         		+ 	"||********************||");
 
+        /*
         uteis.delayParaProximoComando(50);
         uteis.limpaConsole();
-        menu.intro();
+        new Game();
+        */
+        System.exit(1);
     }
 }

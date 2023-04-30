@@ -16,7 +16,7 @@ public class Menu {
 				+       "||                                        ||\n"
 				+ 		"||****************************************||\n";
 		
-		Game.uteis.printaTexto(texto, 10);
+		Game.uteis.printaTexto(texto, 5);
 		Game.uteis.delayParaProximoComando(30);
 		Game.uteis.limpaConsole();
 		menu();
@@ -35,7 +35,7 @@ public class Menu {
 				+ 		"||                                        ||\n"
 				+ 		"||****************************************||\n";
 		
-		Game.uteis.printaTexto(menu, 15);
+		Game.uteis.printaTexto(menu, 5);
 		 
 		System.out.println("\nDigite uma opção:");
 		int opcao = entrada.nextInt();

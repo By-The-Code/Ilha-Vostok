@@ -249,7 +249,7 @@ public class Historia {
         
         if (Game.jogador.getVida() != Game.jogador.getVidaMaxima()) {
     		Game.jogador.setVida(Game.jogador.getVidaMaxima());
-        	System.out.println("Vida Atual: " + Game.jogador.getVida());
+        	System.out.println("Vida Atual: " + Game.jogador.getVida() + "\n");
     	}
         
         segundoAto();
@@ -552,7 +552,7 @@ public class Historia {
                 + "|| um cavalo, com cabeça e asas de àguia está voando a toda velocidade na sua direção,           ||\n"
                 + "|| aparentemente aquele ninho pertence a ela. Você se lembra de histórias antigas e de um animal ||\n"
                 + "|| assim… Um Hipogrifo, é isso que você enfrentará.                                              ||\n"
-                + "||***********************************************************************************************||\n";
+                + "||***********************************************************************************************||\n\n";
                 
         	Game.uteis.printaTexto(caminhoArvore, 5);
         	control = true;
@@ -580,11 +580,11 @@ public class Historia {
 				Game.jogador.setArma("Faca");
 				
                 String continuacaoArvore
-                        = "||***************************************************************************||\n"
-                        + "|| Após você enfrentar e matar a ave, agora mais calmo,                      ||\n"
-                        + "|| você consegue notar alguns objetos do que um dia pertenceram a um humano, ||\n"
-                        + "|| que não teve tanta sorte quanto você.                                     ||\n"
-                        + "||***************************************************************************||\n\n";
+                        = "||*********************************************************************************||\n"
+                        + "|| Após você enfrentar e matar o Hipogrifo, agora mais calmo,                      ||\n"
+                        + "|| você consegue notar alguns objetos do que um dia pertenceram a um humano,       ||\n"
+                        + "|| que não teve tanta sorte quanto você.                                           ||\n"
+                        + "||*********************************************************************************||\n\n";
                 
                 Game.uteis.printaTexto(continuacaoArvore, 5);
            
@@ -615,9 +615,12 @@ public class Historia {
     	
     	if (!control) {
     		if (agua == false || comida == false) {
-        		System.out.println("Você dormiu sem achar uma fonte de água ou comida, você acorda se sentindo um pouco mais fraco. -15 de Vida.\n");
+        		System.out.println(	"||***********************************************************||\n"
+        						+ 	"|| Você dormiu sem achar uma fonte de água ou comida,        ||\n"
+        						+ 	"|| você acorda se sentindo um pouco mais fraco. -15 de Vida. ||\n"
+        						+ 	"||***********************************************************||\n");
         		Game.jogador.setVidaDano(15);
-        		System.out.println(Game.jogador.getVida() + ".\n\n");
+        		System.out.println("Vida Atual: " + Game.jogador.getVida() + ".\n\n");
         	}
     		
     		String caminhosUnificados2
@@ -694,14 +697,25 @@ public class Historia {
                 + "||*****************************************************************************************************||\n\n";
         
         Game.uteis.printaTexto(formigasGigantes, 5);
-        // - BATALHA -
         
+        /***************************************************/
+        //SPAWN BOSS
+		Game.combate.inimigo("boss", "Formiga Gigante");
+        /***************************************************/
         
         String continuacaoFormigasGigantes
-                = "Você conseguiu derrotá-lo! Você pega todas as folhas necessárias para sua jangada e leva para a praia.\n\n";
+                = "||************************************************************************************||\n"
+                + "|| Você conseguiu derrotá-lo!                                                         ||\n"
+                + "|| Você pega todas as folhas necessárias para sua jangada e leva para a praia.        ||\n"
+                + "|| Além disso você decide remover as pinças da formiga, aparentam ser uma ótima arma. ||\n"
+                + "||************************************************************************************||\n\n";
                 // Item: Pinça de formiga - Arma (Formiga que foi derrotada em uma briga) / Folhas de Palmeira
                 
         Game.uteis.printaTexto(continuacaoFormigasGigantes, 5);
+        Game.jogador.setArma("Pinças de Formiga Gigante");
+        
+        System.out.println(	"Arma Atualizada: " + Game.jogador.getArma() + " | Dano: "
+			 	+ Game.jogador.getDanoArma(Game.jogador.getArma()) + "\n");   
         
         caminhosJangada(); 
     }
@@ -725,15 +739,21 @@ public class Historia {
                 + "|| lutar pelas madeiras.                                                                         ||\n"
                 + "||***********************************************************************************************||\n";
 
-        // - BATALHA -
+        /***************************************************/
+        //SPAWN BOSS
+		Game.combate.inimigo("boss", "Cupim-Ácido Gigante");
+        /***************************************************/
+		
         String continuacaoCupimGigante
-                = "Você conseguiu derrotá-lo! Você pega todas as madeiras necessárias para sua jangada e leva para a praia."
-                // Item: Cola Orgânica de Cupim (para revestimento)
-
-                + "||******** PARA ONDE QUER IR AGORA? *******||\n"
-                + "||=========================================||\n"
-                + "||           1 - Ir atrás de Corda         ||\n"
-                + "||=========================================||\n";
+        		= "||************************************************************************************||\n"
+                + "|| Você conseguiu derrotá-lo!                                                         ||\n"
+                + "|| Você pega todas as madeiras necessárias para sua jangada e leva para a praia.      ||\n"
+                + "||************************************************************************************||\n\n";
+                
+        		// Item: Cola Orgânica de Cupim (para revestimento)
+        /*
+        Adicionar uma armadura?
+        */
 
         int input = Game.sc.nextInt();
 
@@ -772,7 +792,10 @@ public class Historia {
                 + "|| fuja, mas não tem como fugir, você precisa dos cipós.                                         ||\n"
                 + "||***********************************************************************************************||\n";
 
-        // - BATALHA -
+        /***************************************************/
+        //SPAWN BOSS
+		Game.combate.inimigo("boss", "Louva-Deus Gigante");
+        /***************************************************/
         String continuacaoLouvaDeusGigante
                 = "Você conseguiu derrotá-lo! Você pega todas as cordas necessárias para sua jangada e leva para a praia. Aparentemente agora você tem tudo que necessita";
 

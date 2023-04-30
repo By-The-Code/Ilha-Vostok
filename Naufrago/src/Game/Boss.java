@@ -7,11 +7,19 @@ public class Boss extends Inimigo {
 		// TODO Auto-generated constructor stub
 	}
 
+    /*
 	@Override
     public double danoInimigo(int resistJogador) {
-    	double danoInimigo = ((getForcaInimigo() * getNivelInimigo() + 10) / resistJogador) * 2;
+    	double danoInimigo = ((getForcaInimigo() * getNivelInimigo() + 5) / resistJogador) * 2;
         return danoInimigo;
     }
+	
+	@Override
+	public double defesaInimigo() {
+		double defesaInimigo = (double) getResistenciaInimigo() * getNivelInimigo() + 5;
+		return defesaInimigo;
+	}
+	*/
 
 	
 	@Override

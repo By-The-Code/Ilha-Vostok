@@ -3,7 +3,9 @@ package Game;
 public class Combate {
 	
 	private static int errarAtaque;
+	private static int danoCritico;
 	private static int inimigoSpawnControl = 0;
+	
 	
 	public void inimigo(String tipoInimigo, String nomeBoss) {
 		
@@ -144,11 +146,21 @@ public class Combate {
 		}
 		
 		else {
+			danoCritico = Game.uteis.geraNumeroRandomico(0, 11);
 			
 			if (tipoInimigo == "inimigo") {
-				Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()));
-				System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo())) + " de dano.\n"
-								+	"Vida atual do inimigo: " + Game.inimigo.getVidaInimigo() + "\n");
+				
+				if (danoCritico > 8) {
+					Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()) * 2);
+					System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()) * 2) + " de dano.\n"
+									+	"Vida atual do inimigo: " + Game.inimigo.getVidaInimigo() + "\n");
+				}
+					
+				else {
+					Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()));
+					System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo())) + " de dano.\n"
+									+	"Vida atual do inimigo: " + Game.inimigo.getVidaInimigo() + "\n");
+				}
 				
 				if (Game.inimigo.getVidaInimigo() > 0)
 					ataqueInimigo(tipoInimigo);
@@ -196,11 +208,20 @@ public class Combate {
 		}
 		
 		else {
+			danoCritico = Game.uteis.geraNumeroRandomico(0, 11);
 			
 			if(tipoInimigo == "inimigo") {
-				Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()));
-				System.out.println(	"Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
-								+	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+				
+				if (danoCritico > 8) {
+					Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) * 2);
+					System.out.println(	"Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) * 2) + " de dano.\n"
+									+	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+				}
+				else {
+					Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()));
+					System.out.println(	"Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
+									+	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+				}
 				
 				if (Game.jogador.getVida() > 0)
 					combate(tipoInimigo);
@@ -209,9 +230,16 @@ public class Combate {
 			}
 			
 			else {
-				Game.jogador.setVidaDano(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()));
-				System.out.println(	"Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
-								+	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+				if (danoCritico > 8) {
+					Game.jogador.setVidaDano(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()) * 2);
+					System.out.println(	"Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()) * 2) + " de dano.\n"
+									+	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+				}
+				else {
+					Game.jogador.setVidaDano(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()));
+					System.out.println(	"Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
+									+	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+				}
 				
 				if (Game.jogador.getVida() > 0)
 					combate(tipoInimigo);
