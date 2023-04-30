@@ -31,7 +31,7 @@ public class Uteis {
 	public boolean Continuar() {
 		
 		System.out.println(	"||************************************||\n"
-						+ 	"||  Precione 'ENTER' para continuar.  ||\n"
+						+ 	"||  Pressione 'ENTER' para continuar. ||\n"
 						+ 	"||************************************||\n");
 		
 		String input = Game.sc.nextLine();

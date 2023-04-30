@@ -2,7 +2,7 @@ package Game;
 
 public class Historia {
 
-    boolean control = false;
+    boolean control, agua, comida, folhas, madeira, corda;
 
     public void intro() {
 
@@ -69,7 +69,7 @@ public class Historia {
                 + "||===========================================================||\n"
                 + "||***********************************************************||\n";
 
-        Game.uteis.printaTexto(apresentacaoProfissao, 10);
+        Game.uteis.printaTexto(apresentacaoProfissao, 5);
 
         System.out.println("\nQual é sua profissão?");
         String input = Game.sc.nextLine().toUpperCase();
@@ -105,7 +105,7 @@ public class Historia {
                 + "|| objeto útil um pouco atolado na areia.                                  ||\n"
                 + "||*************************************************************************||\n\n";
         
-        Game.uteis.printaTexto(lembranca, 15);
+        Game.uteis.printaTexto(lembranca, 5);
 
         if (Game.uteis.Continuar()) {
             Game.uteis.limpaConsole();
@@ -137,13 +137,13 @@ public class Historia {
 
         switch (input) {
             case "1", "PRAIA":
-                caminhoPraia();
             	control = false;
+                caminhoPraia();
                 break;
 
             case "2", "FLORESTA":
-                caminhoFloresta();
             	control = false;
+                caminhoFloresta();
                 break;
 
             default:
@@ -161,12 +161,12 @@ public class Historia {
                 + "|| Apesar da queda, você encontra um item que pode te auxiliar naquele lugar. ||\n"
                 + "|| Um boné! Vai ser bom para se proteger do sol!                              ||\n"
                 + "|| Você aumentou sua resistência!                                             ||\n"
-                + "|| RESISTÊNCIA: " + Game.jogador.getResistencia()
+                + "|| RESISTÊNCIA: " + Game.jogador.getResistencia() +                           ".\n"
                 + "|| Andando mais a frente, você nota uma mata fechada ao norte,                ||\n"
                 + "|| mas também nota que a praia se estende ao redor de toda a ilha.            ||\n"
                 + "||****************************************************************************||\n\n";
 
-        Game.uteis.printaTexto(caminhoItem, 15);
+        Game.uteis.printaTexto(caminhoItem, 5);
         Game.jogador.setArmadura("Boné");
     }
 
@@ -180,7 +180,7 @@ public class Historia {
                 + "|| mas também nota que a praia se estende ao redor de toda a ilha.   ||\n"
                 + "||*******************************************************************||\n\n";
 
-        Game.uteis.printaTexto(caminhoNormal, 15);
+        Game.uteis.printaTexto(caminhoNormal, 5);
     }
 
     public void caminhoPraia() {
@@ -203,17 +203,18 @@ public class Historia {
                 + "|| está avançando em sua direção com um par de asas abertas e por mais jovem que seja, é um      ||\n"
                 + "|| animal extremamente violento, você já notou que as histórias sobre esse lugar aparentavam     ||\n"
                 + "|| ser verdadeiras                                                                               ||\n"
-                + "||***********************************************************************************************||\n";
+                + "||***********************************************************************************************||\n\n";
 
-        Game.uteis.printaTexto(caminhoPraia, 15);
+        Game.uteis.printaTexto(caminhoPraia, 5);
         Game.jogador.setArma("Braço do Assento");
-        System.out.println("Arma Atualizada: " + Game.jogador.getArma() + "\n");
-        Game.uteis.printaTexto(continuacaoPraia, 15);
+        System.out.println(	"Arma Atualizada: " + Game.jogador.getArma() + " | Dano: "
+        				 	+ Game.jogador.getDanoArma(Game.jogador.getArma()) + "\n");
+        Game.uteis.printaTexto(continuacaoPraia, 5);
         
         Game.combate.spawnaInimigo("Cobra-Voadora", 10 	* 	Game.jogador.getNivel(), 
 													3 	*	Game.jogador.getNivel(), 
 													3 	* 	Game.jogador.getNivel(),
-															Game.jogador.getNivel());
+															Game.jogador.getNivel(), "inimigo");
 
         //- Você come e recupera 1 de vida. --
         /*Game.jogador.setVida(1);
@@ -230,22 +231,26 @@ public class Historia {
                 + "|| Apesar de sua estatura, o macaco possui 6 braços e 8 pontos vermelhos no rosto que te encaram ||\n"
                 + "|| com bastante raiva, você já notou que as histórias sobre esse lugar aparentavam ser           ||\n"
                 + "|| verdadeiras.”                                                                                 ||\n"
-                + "||***********************************************************************************************||\n";
+                + "||***********************************************************************************************||\n\n";
 
         String continuacaoFloresta
-        		= "||***********************************************************************************************||\n"
-        		+ "|| Você pega o coco que o macaco havia jogado em você. Parece seguro comer.                      ||\n"
-        		+ "||***********************************************************************************************||\n";
+        		= "||*************************************************************************************************||\n"
+        		+ "|| Você pega o coco que o macaco havia jogado em você. Parece seguro comer. Você se sente renovado ||\n"
+        		+ "||*************************************************************************************************||\n\n";
         
-        Game.uteis.printaTexto(caminhoFloresta, 15);
+        Game.uteis.printaTexto(caminhoFloresta, 5);
         
         Game.combate.spawnaInimigo("Macaco-Aranha", 10 	* 	Game.jogador.getNivel(), 
 													3 	*	Game.jogador.getNivel(), 
 													3 	* 	Game.jogador.getNivel(),
-															Game.jogador.getNivel());
+															Game.jogador.getNivel(), "inimigo");
         
         Game.uteis.printaTexto(continuacaoFloresta, 15);
-        Game.jogador.setVida(Game.jogador.getVidaMaxima());
+        
+        if (Game.jogador.getVida() != Game.jogador.getVidaMaxima()) {
+    		Game.jogador.setVida(Game.jogador.getVidaMaxima());
+        	System.out.println("Vida Atual: " + Game.jogador.getVida());
+    	}
         
         segundoAto();
     }
@@ -257,11 +262,15 @@ public class Historia {
                 = "||***********************************************************************************************||\n"
                 + "|| Você continua floresta adentro, ao retirar alguns galhos e folhas do caminho, você            ||\n"
                 + "|| acidentalmente se depara com um, ou melhor, centenas de patas pertencentes a uma lacraia      ||\n"
-                + "|| gigante, com aproximadamente 1,50m de comprimento bem próximo a você. Ela não gostou de você  ||\n"
+                + "|| gigante, com aproximadamente 3,50m de comprimento bem próximo a você. Ela não gostou de você  ||\n"
                 + "|| por ter descoberto o esconderijo dela, expondo-a à luz do dia. Enquanto ela se contorce para  ||\n"
                 + "|| cima para te amedrontar, a única coisa que vem a sua mente é que este inseto aparentava ser   ||\n"
                 + "|| bem mais forte do que a última criatura que enfrentou.                                        ||\n"
-                + "|| Diante de uma criatura aterrorizante daquela, você decide fugir. Você corre até uma clareira, ||\n"
+                + "||***********************************************************************************************||\n\n";
+        
+        String caminhosUnificadosContinuacao
+        		= "||***********************************************************************************************||\n"
+        		+ "|| Diante de uma criatura aterrorizante daquela, você decide fugir. Você corre até uma clareira, ||\n"
                 + "|| onde seus passos desesperados conseguiram te levar, pois percebeu que aquela criatura não     ||\n"
                 + "|| gostava muito da luz do sol portanto ela não te seguiu.                                       ||\n"
                 + "|| Chegando naquele espaço aberto, você começa a raciocinar sobre seu real estado, onde você se  ||\n"
@@ -272,9 +281,16 @@ public class Historia {
                 + "|| abrigo. Porém, duas coisas chamam sua atenção.                                                ||\n"
                 + "|| Ao leste você ouve um som de água, aparentemente vindo de uma cachoeira. E, ao oeste você     ||\n"
                 + "|| consegue ver um sinal de fumaça entre a copa das árvores.                                     ||\n"
-                + "||***********************************************************************************************||\n";
+                + "||***********************************************************************************************||\n\n";
 
-        	Game.uteis.printaTexto(caminhosUnificados, 15);
+        	Game.uteis.printaTexto(caminhosUnificados, 5);
+        	
+        	Game.combate.spawnaInimigo("Lacraia-Gigante", 	50 	* 	Game.jogador.getNivel(), 
+															10 	*	Game.jogador.getNivel(), 
+															10 	* 	Game.jogador.getNivel(),
+															12	+	Game.jogador.getNivel(), "inimigo");
+        	
+        	Game.uteis.printaTexto(caminhosUnificadosContinuacao, 5);
         	
         	control = true;
     	}
@@ -291,17 +307,17 @@ public class Historia {
         switch (input) {
 
             case 1:
-                Game.uteis.limpaConsole();
-                Game.combate.escolherInimigo();
-                caminhoCachoeira();
                 control = false;
+                Game.uteis.limpaConsole();
+                Game.combate.inimigo("inimigo", "");
+                caminhoCachoeira();
                 break;
 
             case 2:
-                Game.uteis.limpaConsole();
-                Game.combate.escolherInimigo();
-                caminhoFumaca();
                 control = false;
+                Game.uteis.limpaConsole();
+                Game.combate.inimigo("inimigo", "");
+                caminhoFumaca();
                 break;
 
             default:
@@ -312,6 +328,8 @@ public class Historia {
     }
 
     public void caminhoCachoeira() {
+    	
+    	agua = true;
 
     	if(!control) {
     		String caminhoCachoeira
@@ -320,7 +338,7 @@ public class Historia {
                 + "|| não lembrasse das possíveis lacraias gigantes que poderiam existir por ali, te deixando        ||\n"
                 + "|| alerta. Além disso você consegue ver a extensão do rio levando até a praia, você está          ||\n"
                 + "|| morrendo de sede e precisa se hidratar, mesmo com os riscos você decide beber a água.          ||\n"
-                + "||************************************************************************************************||\n";
+                + "||************************************************************************************************||\n\n";
 
     		//-Se vidaMaxima não faz nada, se vida < vidaMaxima restaura vida-
         	String continuacaoCachoeira
@@ -331,21 +349,24 @@ public class Historia {
                 + "|| criaturas desconhecidas como as vistas até aqui.                                               ||\n"
                 + "|| Você pode ir para a caverna ou você pode voltar para a clareira e seguir o sinal de fumaça que ||\n"
                 + "|| viu mais cedo.                                                                                 ||\n"
-                + "||************************************************************************************************||\n";
+                + "||************************************************************************************************||\n\n";
             
 
-        	Game.uteis.printaTexto(caminhoCachoeira, 15);
-        	Game.uteis.printaTexto(continuacaoCachoeira, 15);
-        
+        	Game.uteis.printaTexto(caminhoCachoeira, 5);
+        	
         	if (Game.jogador.getVida() != Game.jogador.getVidaMaxima()) {
         		Game.jogador.setVida(Game.jogador.getVidaMaxima());
+            	System.out.println("Vida Atual: " + Game.jogador.getVida() + ".\n");
         	}
+        	
+        	Game.uteis.printaTexto(continuacaoCachoeira, 5);
+       
         
         	control = true;
     	}
         
         
-        System.out.println(//Água adquirida, falta comida e abrigo.
+        System.out.println(
                   "||********* O QUE VOCÊ FAZ? *********||\n"
                 + "||===================================||\n"
                 + "||  1 - Entra na caverna             ||\n"
@@ -357,15 +378,16 @@ public class Historia {
         switch (input) {
 
             case 1:
+            	//Água adquirida, falta comida e abrigo.
+                control = false;
                 Game.uteis.limpaConsole();
                 caminhoCaverna();
-                control = false;
                 break;
 
             case 2:
+                control = false;
                 Game.uteis.limpaConsole();
                 caminhoFumaca();
-                control = false;
                 break;
 
             default:
@@ -377,40 +399,43 @@ public class Historia {
     }
 
     public void caminhoCaverna() {
-
+    	
     	if (!control) {
         String caminhoCaverna
-                = "||***********************************************************************************************||\n"
-                + "|| Se esgueirando pelos cantos até entrar na caverna, você acha estranho o fato dela ser quente e||\n"
-                + "|| pensa que passar a noite ali seria realmente bem agradável, afinal, você já estaria protegido ||\n"
-                + "|| do frio, porém, não é só você que teve essa ideia…                                            ||\n"
-                + "|| No teto da caverna, de cabeça para baixo, estão pendurados o que parecem ser uma família      ||\n"
-                + "|| enorme de morcegos fluorescentes e no meio deles, existe um que se destaca, aparentemente a   ||\n"
-                + "|| mãe de todos aqueles filhotes.                                                                ||\n"
-                + "|| Ela acorda com um grito amedrontador e feroz quando te vê, abre as asas iluminando ainda mais ||\n"
-                + "|| toda a caverna e avança na sua direção.                                                       ||\n"
-                + "||***********************************************************************************************||\n";
+                = "||************************************************************************************************||\n"
+                + "|| Se esgueirando pelos cantos até entrar na caverna, você acha estranho o fato dela ser quente e ||\n"
+                + "|| pensa que passar a noite ali seria realmente bem agradável, afinal, você já estaria protegido  ||\n"
+                + "|| do frio, porém, não é só você que teve essa ideia…                                             ||\n"
+                + "|| No teto da caverna, de cabeça para baixo, está pendurado o que parece ser uma família          ||\n"
+                + "|| enorme de morcegos fluorescentes e no meio deles, existe um que se destaca, aparentemente a    ||\n"
+                + "|| mãe de todos aqueles animais exóticos.                                                         ||\n"
+                + "|| Ela acorda com um grito amedrontador e feroz quando te vê, abre as asas iluminando ainda mais  ||\n"
+                + "|| toda a caverna e avança na sua direção.                                                        ||\n"
+                + "||************************************************************************************************||\n\n";
         
-        	Game.uteis.printaTexto(caminhoCaverna, 15);
+        	Game.uteis.printaTexto(caminhoCaverna, 5);
         	
         	control = true;
     	}
      
-        System.out.println( "||************* O QUE VOCÊ FAZ? *************||\n"
-                + "||===========================================||\n"
-                + "||    1 - Ataca/Se Protege com o que tem     ||\n"
-                + "||    2 - Foge (Volta para cachoeira)        ||\n"
-                + "||===========================================||\n");
+        System.out.println(
+        			"||************* O QUE VOCÊ FAZ? *************||\n"
+                + 	"||===========================================||\n"
+                + 	"||    1 - Ataca/Se Protege com o que tem     ||\n"
+                + 	"||    2 - Foge (Volta para cachoeira)        ||\n"
+                + 	"||===========================================||\n");
 
         int input = Game.sc.nextInt();
 
         switch (input) {
 
             case 1:
+                control = false;
                 Game.uteis.limpaConsole();
                 
                 /***************************************************/
                 //SPAWN BOSS
+                Game.combate.inimigo("boss", "Mãe Morcego-Fluorescentes");
                 /***************************************************/
                 
                 //Game.jogador.setArma("+1 OSSO FÊMUR e +1 LATA DE QUEROSENE");
@@ -425,18 +450,19 @@ public class Historia {
                 + "|| ele era um piloto, o que justificava alguns itens espalhados ao seu redor...                  ||\n"
                 + "|| Havia uma lata de querosene ao lado do corpo agora cavérico do piloto, que você logo recupera ||\n"
                 + "|| para si. Avaliando mais de perto vê que o osso fêmural do piloto também poderia ser útil.     ||\n"
-                + "||***********************************************************************************************||\n";
+                + "||***********************************************************************************************||\n\n";
                 
-                Game.uteis.printaTexto(continuacaoCaverna, 15);
-                System.out.println("Arma Atualizada: " + Game.jogador.getArma() + "\n");
+                Game.uteis.printaTexto(continuacaoCaverna, 5);
+                System.out.println(	"Arma Atualizada: " + Game.jogador.getArma()
+                					+ " | Dano: " + Game.jogador.getDanoArma(Game.jogador.getArma()) + ".\n\n");
                 
-                control = false;
+                terceiroAto();
                 break;
                  
             case 2:
+                control = false;
                 Game.uteis.limpaConsole();
                 caminhoCachoeira();
-                control = false;
                 break;
 
             default:
@@ -448,16 +474,18 @@ public class Historia {
 
     public void caminhoFumaca() {
 
+    	comida = true;
+    	
     	if (!control) {
     		String caminhoFumaca
-        		= "||***********************************************************************************************||\n"
-                + "|| Ao chegar no local da fumaça, além de ter o que te chamou atenção a distância, você nota que  ||\n"
-                + "|| há muitas abóboras, de variados tamanhos, até mesmo algumas gigantes e bem maduras espalhadas ||\n"
-                + "|| no chão, como uma plantação bem sucedida. Porém, você nota que aquela fumaça está emergindo   ||\n"
-                + "|| do chão envolvendo os legumes e não há sinal de fogo aparente, apenas aquela nuvem branca.    ||\n"
-                + "|| Você se aproxima e percebe que elas estão quentes, assim como o chão, e os legumes devidamente||\n"
-                + "|| assados. Essa ilha é realmente mágica! Você decide comê-las antes que desmaie de fome.        ||\n"
-                + "||***********************************************************************************************||\n";
+        		= "||************************************************************************************************||\n"
+                + "|| Ao chegar no local da fumaça, além de ter o que te chamou atenção a distância, você nota que   ||\n"
+                + "|| há muitas abóboras, de variados tamanhos, até mesmo algumas gigantes e bem maduras espalhadas  ||\n"
+                + "|| no chão, como uma plantação bem sucedida. Porém, você nota que aquela fumaça está emergindo    ||\n"
+                + "|| do chão envolvendo os legumes e não há sinal de fogo aparente, apenas aquela nuvem branca.     ||\n"
+                + "|| Você se aproxima e percebe que elas estão quentes, assim como o chão, e os legumes devidamente ||\n"
+                + "|| assados. Essa ilha é realmente mágica! Você decide comê-las antes que desmaie de fome.         ||\n"
+                + "||************************************************************************************************||\n\n";
 
     		// -Se vidaMaxima não faz nada, se vida < vidaMáxima restaura vida.
         	String continuacaoFumaca
@@ -469,10 +497,10 @@ public class Historia {
                 + "|| dispostos nas árvores de madeira que formam perfeitamente degraus até o topo.                 ||\n"
                 + "|| Você precisa de um lugar para passar a noite e, para se proteger do frio, poderia colocar     ||\n"
                 + "|| algumas abóboras quentinhas e folhagens sob você.                                             ||\n"
-                + "||***********************************************************************************************||\n";
+                + "||***********************************************************************************************||\n\n";
                 
-	        Game.uteis.printaTexto(caminhoFumaca, 15);
-	        Game.uteis.printaTexto(continuacaoFumaca, 15);
+	        Game.uteis.printaTexto(caminhoFumaca, 5);
+	        Game.uteis.printaTexto(continuacaoFumaca, 5);
 	        
 	        if (Game.jogador.getVida() != Game.jogador.getVidaMaxima()) {
 	        	Game.jogador.setVida(Game.jogador.getVidaMaxima());
@@ -484,7 +512,7 @@ public class Historia {
         System.out.println( 
         			"||************ O QUE VOCÊ FAZ? ************||\n"
                 + 	"||=========================================||\n"
-                + 	"||	1 - Vai em direção a Cachoeira (Leste)  ||\n"
+                + 	"|| 1 - Vai em direção a Cachoeira (Leste)  ||\n"
                 + 	"|| 2 - Fica e sobe na Árvore               ||\n"
                 + 	"||=========================================||\n");
         
@@ -494,15 +522,15 @@ public class Historia {
         switch (input) {
 
             case 1:
+				control = false;
                 Game.uteis.limpaConsole();
                 caminhoCachoeira();
-                control = false;
                 break;
 
             case 2:
+				control = false;
                 Game.uteis.limpaConsole();
                 caminhoArvore();
-                control = false;
                 break;
 
             default:
@@ -513,20 +541,20 @@ public class Historia {
     }
 
     public void caminhoArvore() {
-
+    	
     	if (!control) {
         String caminhoArvore
                 = "||***********************************************************************************************||\n"
                 + "|| Você colocou algumas folhagens e abóboras na base da árvore e irá subi-las pouco a pouco.     ||\n"
                 + "|| Na primeira leva de materiais, você se depara com um ninho do que aparenta ser alguma ave,    ||\n"
                 + "|| você até pensa por um instante que pode ser inabitado, entretanto, este pensamento não dura   ||\n"
-                + "|| muito, pois, você sente um vulto passando no céu atrás de você, ao se virar o que parece ser  ||\n"
+                + "|| muito, pois você sente um vulto passando no céu atrás de você, ao se virar o que parece ser   ||\n"
                 + "|| um cavalo, com cabeça e asas de àguia está voando a toda velocidade na sua direção,           ||\n"
                 + "|| aparentemente aquele ninho pertence a ela. Você se lembra de histórias antigas e de um animal ||\n"
                 + "|| assim… Um Hipogrifo, é isso que você enfrentará.                                              ||\n"
                 + "||***********************************************************************************************||\n";
                 
-        	Game.uteis.printaTexto(caminhoArvore, 15);
+        	Game.uteis.printaTexto(caminhoArvore, 5);
         	control = true;
     	}
                 System.out.println(  
@@ -541,10 +569,12 @@ public class Historia {
         switch (input) {
 
             case 1: 
+				control = false;
 				Game.uteis.limpaConsole();
 				
 				/***************************************************/
 		        //SPAWN BOSS
+				Game.combate.inimigo("boss", "Hipogrifo de Ónix");
 		        /***************************************************/
 
 				Game.jogador.setArma("Faca");
@@ -556,21 +586,21 @@ public class Historia {
                         + "|| que não teve tanta sorte quanto você.                                     ||\n"
                         + "||***************************************************************************||\n\n";
                 
-                Game.uteis.printaTexto(continuacaoArvore, 15);
+                Game.uteis.printaTexto(continuacaoArvore, 5);
            
                 // Você adquiriu 1 pederneira e 1 faca - Arma
                 System.out.println("Arma Atualizada: " + Game.jogador.getArma() + "\n");
-				control = false;
+
 				
 				/***************************************************/
 				//CHAMA A CONTINUAÇÃO DA HISTÓRIA, SE NÃO TRAVA O FLUXO DO JOGO.
 				/***************************************************/
-
-				
+                terceiroAto();
+                
 			break;
             case 2:
+				control = false;
                 Game.uteis.limpaConsole();
-                control = false;
                 caminhoFumaca();
             break;
 
@@ -582,38 +612,55 @@ public class Historia {
     }
 
     public void terceiroAto() {
-
-        String caminhosUnificados2
+    	
+    	if (!control) {
+    		if (agua == false || comida == false) {
+        		System.out.println("Você dormiu sem achar uma fonte de água ou comida, você acorda se sentindo um pouco mais fraco. -15 de Vida.\n");
+        		Game.jogador.setVidaDano(15);
+        		System.out.println(Game.jogador.getVida() + ".\n\n");
+        	}
+    		
+    		String caminhosUnificados2
                 = //Você acabou passando a noite com fome/ sede/ sem abrigo, você se sente um pouco debilitado ao acordar” -> vida -= x
                 	"||***********************************************************************************************||\n"
                 + 	"|| Após acordar, você decide ir até a outra extremidade da ilha para explorar um pouco mais e    ||\n"
                 + 	"|| decidir quais serão os próximos passos. Chegando na praia você elabora uma lista na areia dos ||\n"
                 + 	"|| itens que precisa para construir sua jangada:                                                 ||\n"
                 + 	"|| FOLHAS DE PALMEIRA, MADEIRAS E CORDAS.                                                        ||\n"
-                + 	"||***********************************************************************************************||\n"
-                + 	"||********* O QUE VOCÊ FAZ PRIMEIRO? ********||\n"
-                + 	"||===========================================||\n"
-                + 	"||     1 - Vou procurar Folhas de Palmeira   ||\n"
-                + 	"||     2 - Vou procurar as Madeiras          ||\n"
-                + 	"||     3 - Vou procurar as Cordas            ||\n"
-                + 	"||===========================================||\n";
-
-        Game.uteis.printaTexto(caminhosUnificados2, 15);
+                + 	"||***********************************************************************************************||\n\n";
+    	
+        	control = true;
+        	
+        	Game.uteis.printaTexto(caminhosUnificados2, 5);
+    	}
+    	
+    	System.out.println(
+    		"||********* O QUE VOCÊ FAZ PRIMEIRO? ********||\n"
+         + 	"||===========================================||\n"
+         + 	"||     1 - Vou procurar Folhas de Palmeira   ||\n"
+         + 	"||     2 - Vou procurar as Madeiras          ||\n"
+         + 	"||     3 - Vou procurar as Cordas            ||\n"
+         + 	"||===========================================||\n");
+    	
+    	
         int input = Game.sc.nextInt();
 
         switch (input) {
 
             case 1:
+            	control = false;
                 Game.uteis.limpaConsole();
                 folhasDePalmeira();
                 break;
 
             case 2:
+            	control = false;
                 Game.uteis.limpaConsole();
                 madeira();
                 break;
 
             case 3:
+            	control = false;
                 Game.uteis.limpaConsole();
                 corda();
                 break;
@@ -626,63 +673,43 @@ public class Historia {
     }
 
     public void folhasDePalmeira() {
+    	
+    	folhas = true;
 
         String formigasGigantes
-                = "||***********************************************************************************************||\n"
-                + "|| Você decide ir atrás de folhas de palmeira.                                                   ||\n"
-                + "|| Você sabe que achar tecidos por aqui seria pedir demais, já é incrível ter permanecido vivo.  ||\n"
-                + "|| Então, você se lembra do coco que o macaco-aranha havia arremessado em você, então, deviam    ||\n"
-                + "|| haver palmeiras por perto, você anda um pouco até encontrá-las, mas o som de outros           ||\n"
-                + "|| macaco-aranhas te ajudou a achar o que procurava. Você vê uma trilha que te leva para uma     ||\n"
-                + "|| espécie de “montanha”, como se algo passasse ali com bastante frequência, a sua esquerda uma  ||\n"
-                + "|| montanha de terra é um cenário diferente das árvores do local, à sua direita você vê uma folha||\n"
-                + "|| bem grande, o suficiente para te cobrir, sendo carregada por uma formiga tão grande quanto a  ||\n"
-                + "|| folha.                                                                                        ||\n"
-                + "|| Ao detectar sua presença e proximidade do que agora você sabe ser um formigueiro, o inseto    ||\n"
-                + "|| exala um odor diferente, o que atrai outra formiga tão grande quanto ela, essa outra formiga  ||\n"
-                + "|| porém possuía pinças bem maiores, claramente era responsável pela defesa do formigueiro e das ||\n"
-                + "|| demais formigas, você se prepara para atacar, pois agora aquelas formigas estão logo a frente ||\n"
-                + "|| das palmeiras que você tanto precisa                                                          ||\n"
-                + "||***********************************************************************************************||\n";
-
+                = "||*****************************************************************************************************||\n"
+                + "|| Você decide ir atrás de folhas de palmeira.                                                         ||\n"
+                + "|| Você sabe que achar tecidos por aqui seria pedir demais, já é incrível ter permanecido vivo.        ||\n"
+                + "|| Então, você se lembra do coco que o macaco-aranha havia arremessado em você, então, deviam          ||\n"
+                + "|| haver palmeiras por perto, você anda um pouco até encontrá-las, mas o som de outros                 ||\n"
+                + "|| macaco-aranhas te ajudou a achar o que procurava. Você vê uma trilha que te leva para uma           ||\n"
+                + "|| espécie de “montanha”, como se algo passasse ali com bastante frequência, a sua esquerda uma        ||\n"
+                + "|| montanha de terra é um cenário diferente das árvores do local, à sua direita você vê uma folha      ||\n"
+                + "|| bem grande, o suficiente para te cobrir, sendo carregada por uma formiga tão grande quanto a folha. ||\n"
+                + "|| Ao detectar sua presença e proximidade do que agora você sabe ser um formigueiro, o inseto          ||\n"
+                + "|| exala um odor diferente, o que atrai outra formiga tão grande quanto ela, essa outra formiga        ||\n"
+                + "|| porém possuía pinças bem maiores, claramente era responsável pela defesa do formigueiro e das       ||\n"
+                + "|| demais formigas, você se prepara para atacar, pois agora aquelas formigas estão logo a frente       ||\n"
+                + "|| das palmeiras que você tanto precisa                                                                ||\n"
+                + "||*****************************************************************************************************||\n\n";
+        
+        Game.uteis.printaTexto(formigasGigantes, 5);
         // - BATALHA -
+        
+        
         String continuacaoFormigasGigantes
-                = "Você conseguiu derrotá-lo! Você pega todas as folhas necessárias para sua jangada e leva para a praia."
+                = "Você conseguiu derrotá-lo! Você pega todas as folhas necessárias para sua jangada e leva para a praia.\n\n";
                 // Item: Pinça de formiga - Arma (Formiga que foi derrotada em uma briga) / Folhas de Palmeira
-
-                + "||********* PARA ONDE QUER IR AGORA? ********||\n"
-                + "||===========================================||\n"
-                + "||           1 - Ir atrás de Madeira         ||\n"
-                + "||           2 - Ir atrás de Corda           ||\n"
-                + "||===========================================||\n";
-
-        int input = Game.sc.nextInt();
-
-        switch (input) {
-
-            case 1:
-                Game.uteis.limpaConsole();
-                madeira();
-                break;
-
-            case 2:
-                Game.uteis.limpaConsole();
-                corda();
-                break;
-
-            default:
-                System.out.println("Opção inválida!");
-                Game.uteis.limpaConsole();
-                folhasDePalmeira();
-        }
-
-        Game.uteis.printaTexto(formigasGigantes, 15);
-        Game.uteis.printaTexto(continuacaoFormigasGigantes, 15);
-
+                
+        Game.uteis.printaTexto(continuacaoFormigasGigantes, 5);
+        
+        caminhosJangada(); 
     }
 
     public void madeira() {
-
+    	
+    	madeira = true;
+    	
         String cupimGigante
                 = "||***********************************************************************************************||\n"
                 + "|| Você decide ir atrás de madeira.                                                              ||\n"
@@ -723,12 +750,14 @@ public class Historia {
                 madeira();
         }
 
-        Game.uteis.printaTexto(cupimGigante, 15);
-        Game.uteis.printaTexto(continuacaoCupimGigante, 15);
+        Game.uteis.printaTexto(cupimGigante, 5);
+        Game.uteis.printaTexto(continuacaoCupimGigante, 5);
 
     }
 
     public void corda() {
+    	
+    	corda = true;
 
         String louvaDeusGigante
                 = "||***********************************************************************************************||\n"
@@ -748,8 +777,8 @@ public class Historia {
                 = "Você conseguiu derrotá-lo! Você pega todas as cordas necessárias para sua jangada e leva para a praia. Aparentemente agora você tem tudo que necessita";
 
         // Item: Cola Orgânica de Cupim (para revestimento)
-        Game.uteis.printaTexto(louvaDeusGigante, 15);
-        Game.uteis.printaTexto(continuacaoLouvaDeusGigante, 15);
+        Game.uteis.printaTexto(louvaDeusGigante, 5);
+        Game.uteis.printaTexto(continuacaoLouvaDeusGigante, 5);
 
     }
 
@@ -817,7 +846,7 @@ public class Historia {
                 + "||      2 - Ir Embora    ||\n"
                 + "||=======================||\n";
 
-        Game.uteis.printaTexto(ultimaDecisao, 15);
+        Game.uteis.printaTexto(ultimaDecisao, 5);
         int input = Game.sc.nextInt();
 
         if (input == 1) {
@@ -831,7 +860,7 @@ public class Historia {
                     + "|| Você sorri enquanto lágrimas escorrem em seu rosto, com um alívio e esperança de um novo recomeço…                 ||\n"
                     + "||********************************************************************************************************************||\n\n";
 
-            Game.uteis.printaTexto(finalMisericordioso, 15);
+            Game.uteis.printaTexto(finalMisericordioso, 5);
             fim();
 
         } else {
@@ -844,7 +873,7 @@ public class Historia {
                     + "|| 'Será que a vida será a mesma daqui em diante?'                                                                    ||\n"
                     + "||********************************************************************************************************************||\n\n";
 
-            Game.uteis.printaTexto(finalRancoroso, 15);
+            Game.uteis.printaTexto(finalRancoroso, 5);
             
             fim();
         }
@@ -859,20 +888,81 @@ public class Historia {
         
         Game.uteis.printaTexto(fim, 250);
     }
+    
+    
+    public void caminhosJangada() {
+    	
+    	 if (folhas == false && madeira == false && corda == true) {
+    		System.out.println(
+        			"||********* O QUE VOCÊ FAZ PRIMEIRO? ********||\n"
+                + 	"||===========================================||\n"
+                + 	"||     1 - Vou procurar Folhas de Palmeira   ||\n"
+                + 	"||     2 - Vou procurar as Madeiras          ||\n"
+                + 	"||===========================================||\n");
+    	}
+    	else if (folhas == false && madeira == true && corda == false) {
+    		System.out.println(
+        			"||********* O QUE VOCÊ FAZ PRIMEIRO? ********||\n"
+                + 	"||===========================================||\n"
+                + 	"||     1 - Vou procurar Folhas de Palmeira   ||\n"
+                + 	"||     2 - Vou procurar as Cordas            ||\n"
+                + 	"||===========================================||\n");
+    	}
+    	else if (folhas == true && madeira == false && corda == false) {
+    		System.out.println(
+        			"||********* O QUE VOCÊ FAZ PRIMEIRO? ********||\n"
+                + 	"||===========================================||\n"
+                + 	"||     1 - Vou procurar as Madeiras          ||\n"
+                + 	"||     2 - Vou procurar as Cordas            ||\n"
+                + 	"||===========================================||\n");
+    	}
+    	else if (folhas == true && madeira == true && corda == false) {
+    		System.out.println(
+        			"||********* O QUE VOCÊ FAZ PRIMEIRO? ********||\n"
+                + 	"||===========================================||\n"
+                + 	"||     1 - Vou procurar as Cordas            ||\n"
+                + 	"||===========================================||\n");
+    	}
+    	else if (folhas == true && madeira == false && corda == true) {
+    		System.out.println(
+        			"||********* O QUE VOCÊ FAZ PRIMEIRO? ********||\n"
+                + 	"||===========================================||\n"
+                + 	"||     1 - Vou procurar as Madeiras          ||\n"
+                + 	"||===========================================||\n");
+    	}
+    	else if (folhas == false && madeira == true && corda == true) {
+    		System.out.println(
+        			"||********* O QUE VOCÊ FAZ PRIMEIRO? ********||\n"
+                + 	"||===========================================||\n"
+                + 	"||     1 - Vou procurar Folhas de Palmeira   ||\n"
+                + 	"||===========================================||\n");
+    	}
+    	else {
+    		penultimoAto();
+    	}
+    	 
+    	 int input = Game.sc.nextInt();
 
-    public void gameOver() {
-        System.out.println(
-        			"||********************||\n"
-        		+ 	"||    VOCÊ MORREU!    ||\n"
-        		+ 	"||********************||");
+         switch (input) {
 
-        try {
-            Thread.sleep(5000);
-            Game.uteis.limpaConsole();
-            Game.menu.intro();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+             case 1:
+                 Game.uteis.limpaConsole();
+                 madeira();
+                 break;
+
+             case 2:
+                 Game.uteis.limpaConsole();
+                 corda();
+                 break;
+                 
+             case 3:
+                 Game.uteis.limpaConsole();
+                 folhasDePalmeira();
+                 break;
+             default:
+                 System.out.println("Opção inválida!");
+                 Game.uteis.limpaConsole();
+                 caminhosJangada();
+         }
     }
 }
