@@ -9,8 +9,8 @@ public class Jogador {
 	
 	private int 	vidaMaxima = 100;
 	private double 	vida = 100;
-	private int 	forca = 0;
-	private int 	resistencia = 0;
+	private int 	forca = 1;
+	private int 	resistencia = 1;
 	private int 	nivel = 1;
 	private double 	xp = 0.0;
 	private double 	xpParaUpar = 10.0;
@@ -85,17 +85,17 @@ public class Jogador {
 	
 	public String getStatus() {
 		
-		String txt = 		"Nome: "			+ nome 							+ ""
-						+ 	" | Profissão: " 	+ profissao 					+ "\n"
-						+	"Vida Máxima: " 	+ vidaMaxima					+ "\n"
-						+ 	"Vida: " 			+ vida 							+ "\n"
-						+ 	"Força: " 			+ forca 						+ "\n"
-						+ 	"Resistência: " 	+ resistencia 					+ "\n"
-						+ 	"Nível: " 			+ nivel 						+ "\n"
+		String txt = 		"NOME: "			+ nome 							+ ""
+						+ 	" | PROFISSÃO: " 	+ profissao 					+ "\n"
+						//+	"Vida Máxima: " 	+ vidaMaxima					+ "\n"
+						+ 	"VIDA: " 			+ vida 							+ "\n"
+						+ 	"FORÇA: " 			+ forca 						+ "\n"
+						+ 	"RESISTÊNCIA: " 	+ resistencia 					+ "\n"
+						+ 	"NÍVEL: " 			+ nivel 						+ "\n"
 						+ 	"XP: " 				+ Game.dc.format(xp) 			+ "\n"
-						+ 	"Arma: " 			+ arma							+ "\n"
-						+ 	"Armadura: " 		+ armadura 						+ "\n"
-						+ 	"XP p/ Upar: "  	+ Game.dc.format(xpParaUpar)    + "\n";
+						+ 	"ARMA: " 			+ arma							+ "\n"
+						+ 	"ARMADURA: " 		+ armadura 						+ "\n";
+						//+ 	"XP p/ Upar: "  	+ Game.dc.format(xpParaUpar)    + "\n";
 		
 		return txt;
 	}
@@ -185,7 +185,7 @@ public class Jogador {
 			case "Boné":
 				return 5;
 			
-			case "Capacete de Madeira":
+			case "Capacete de Coco":
 				return 10;
 			
 			case "Capacete de Ossos":

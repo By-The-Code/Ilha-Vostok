@@ -21,11 +21,11 @@ public class Inimigo {
 	}
 	
 	public String getStatusInimigo() {
-		String txt = 			"Nome Inimigo: " 		+ getNomeInimigo() 		  + "\n"
-							+ 	"Vida Inimigo: " 		+ getVidaInimigo() 		  + "\n"
-							+ 	"Força Inimigo: " 		+ getForcaInimigo()		  + "\n"
-							+ 	"Resistência Inimigo: " + getResistenciaInimigo() + "\n"
-							+ 	"Nível Inimigo: " 		+ getNivelInimigo() 	  + "\n";
+		String txt 			= 	"INIMIGO: " 		+ getNomeInimigo() 		  + "\n"
+							+ 	"VIDA: " 			+ getVidaInimigo() 		  + "\n"
+							+ 	"FORÇA: " 			+ getForcaInimigo()		  + "\n"
+							+ 	"RESISTÊNCIA: " 	+ getResistenciaInimigo() + "\n"
+							+ 	"NÍVEL: " 			+ getNivelInimigo() 	  + "\n";
 		
 		return txt;
 	}

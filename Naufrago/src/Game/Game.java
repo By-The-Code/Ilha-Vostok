@@ -17,17 +17,17 @@ public class Game {
 	
 	public static void main(String [] args) {
 		
-		/*
+		
 		jogador = new Jogador ("Alfonse", "PROFESSOR");
 		 
 		System.out.println(jogador.getStatus());
 		historia.primeiroAto();
-		*/
 		
-		menu.intro();
+		
+		//menu.intro();
 	}
 	
-	public static void gameOver() {
+	public static void fimDeJogo() {
         System.out.println(
         			"||********************||\n"
         		+ 	"||    VOCÊ MORREU!    ||\n"

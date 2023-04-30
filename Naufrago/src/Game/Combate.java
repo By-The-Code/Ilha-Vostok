@@ -29,27 +29,27 @@ public class Combate {
 				return;
 			}
 			
-			spawnaInimigo(criatura, 10 	* 	Game.jogador.getNivel(), //+ randomAtt, 
-									3 	*	Game.jogador.getNivel(), //+ randomAtt, 
-									3 	* 	Game.jogador.getNivel(), //+ randomAtt, 
-											Game.jogador.getNivel() + randomAtt,
-											tipoInimigo);
+			spawnaInimigo(criatura, //10 	* 	Game.jogador.getNivel(), //+ randomAtt, 
+									//3 	*	Game.jogador.getNivel(), //+ randomAtt, 
+									//3 	* 	Game.jogador.getNivel(), //+ randomAtt, 
+									10, 2, 2, 	Game.jogador.getNivel() + randomAtt,
+											 tipoInimigo);
 		}
 		
 		else {
 			if (random <= 50) {
-				spawnaInimigo(nomeBoss, 25 	* 	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
-										4 	*	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
-										4 	* 	Game.jogador.getNivel() , //+ randomAtt, 
-												Game.jogador.getNivel() + bossStatus + randomAtt * 2,
+				spawnaInimigo(nomeBoss, //25 	* 	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
+										//4 	*	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
+										//4 	* 	Game.jogador.getNivel() , //+ randomAtt, 
+									25, 2, 2,	Game.jogador.getNivel() + bossStatus + randomAtt * 2,
 												tipoInimigo);
 				bossStatus++;
 			}
 			else {
-				spawnaInimigo(nomeBoss, 25 	* 	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
-										4 	*	Game.jogador.getNivel() , //+ randomAtt, 
-										4 	* 	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
-												Game.jogador.getNivel() + bossStatus + randomAtt * 2,
+				spawnaInimigo(nomeBoss, //25 	* 	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
+										//4 	*	Game.jogador.getNivel() , //+ randomAtt, 
+										//4 	* 	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
+									25, 2, 2,	Game.jogador.getNivel() + bossStatus + randomAtt * 2,
 												tipoInimigo);
 				bossStatus++;
 			}
@@ -73,8 +73,7 @@ public class Combate {
 		combate(tipoInimigo);
 	}
 	
-	public static void combate(String tipoInimigo) {
-		
+	public static void combate(String tipoInimigo) {	
 		
 		if (inimigoSpawnControl == 0) {
 			System.out.println("||*************  O QUE VOCÊ FAZ? *************||\n"
@@ -82,13 +81,45 @@ public class Combate {
 					         + "|| 1 - Atacar                                 ||\n"
 					         + "||============================================||"
 					         );
+			
+			String input = Game.sc.next().toUpperCase();
+			
+			switch (input) {
+			case "1", "ATACAR":
+				ataqueJogador(tipoInimigo);
+				break;
+			default: 
+				System.out.println("Opção Inválida");
+				combate(tipoInimigo);
+			}
 		}
 		
 		else if (inimigoSpawnControl == 1) { 
 			System.out.println("||*************  O QUE VOCÊ FAZ? *************||\n"
 					         + "||============================================||\n"
-					         + "|| 2 - Fugir                                  ||\n"
+					         + "|| 1 - Fugir                                  ||\n"
 					         + "||============================================||");
+			
+			String input = Game.sc.next().toUpperCase();
+			
+			switch (input) {
+			case "1", "FUGIR":
+				if (tipoInimigo == "boss") {
+					System.out.println(	"Você não pode fugir!\n\n");
+					combate(tipoInimigo);
+				}
+				else {
+				inimigoSpawnControl++;
+				System.out.println(	"||*******************||\n"
+								+ 	"||    VOCÊ FUGIU!    ||\n"
+								+ 	"||*******************||\n");
+				}
+				return;
+					
+			default: 
+				System.out.println("Opção Inválida");
+				combate(tipoInimigo);
+			}
 		}
 		
 		else {
@@ -98,30 +129,29 @@ public class Combate {
 					         + "|| 2 - Fugir                                  ||\n"
 					         + "||============================================||");
 			
-		}
-		
-		String input = Game.sc.next().toUpperCase();
+			String input = Game.sc.next().toUpperCase();
 			
-		switch (input) {
-		case "1", "ATACAR":
-			ataqueJogador(tipoInimigo);
-			break;
-		case "2", "FUGIR":
-			if (tipoInimigo == "boss") {
-				System.out.println(	"Você não pode fugir!\n\n");
+			switch (input) {
+			case "1", "ATACAR":
+				ataqueJogador(tipoInimigo);
+				break;
+			case "2", "FUGIR":
+				if (tipoInimigo == "boss") {
+					System.out.println(	"Você não pode fugir!\n\n");
+					combate(tipoInimigo);
+				}
+				else {
+				inimigoSpawnControl++;
+				System.out.println(	"||*******************||\n"
+								+ 	"||    VOCÊ FUGIU!    ||\n"
+								+ 	"||*******************||\n");
+				}
+				return;
+					
+			default: 
+				System.out.println("Opção Inválida");
 				combate(tipoInimigo);
 			}
-			else {
-			inimigoSpawnControl++;
-			System.out.println(	"||*******************||\n"
-							+ 	"||    VOCÊ FUGIU!    ||\n"
-							+ 	"||*******************||\n");
-			}
-			return;
-				
-		default: 
-			System.out.println("Opção Inválida");
-			combate(tipoInimigo);
 		}
 	}
 	
@@ -172,16 +202,24 @@ public class Combate {
 					System.out.println(Game.jogador.getStatus() + "\n");
 				}
 			}
+			
 			else {
-				Game.boss.setVidaInimigo(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()));
-				System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo())) + " de dano.\n"
-								+	"Vida atual do inimigo: " + Game.boss.getVidaInimigo() + "\n");
+				if (danoCritico > 8) {
+					Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()) * 2);
+					System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()) * 2) + " de dano.\n"
+									+	"Vida atual do inimigo: " + Game.boss.getVidaInimigo() + "\n");
+				}
+				else {
+					Game.boss.setVidaInimigo(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()));
+					System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo())) + " de dano.\n"
+									+	"Vida atual do inimigo: " + Game.boss.getVidaInimigo() + "\n");
+				}
 				
 				if (Game.boss.getVidaInimigo() > 0)
 					ataqueInimigo(tipoInimigo);
 				
 				else {
-					System.out.println("Você derrotou o(a)) ;" + Game.boss.getNomeInimigo());
+					System.out.println("Você derrotou o(a)): " + Game.boss.getNomeInimigo());
 					Game.jogador.passaDeNivel(Game.boss.dropExperiencia());
 					System.out.println(Game.jogador.getStatus() + "\n");
 				}
@@ -226,7 +264,7 @@ public class Combate {
 				if (Game.jogador.getVida() > 0)
 					combate(tipoInimigo);
 				
-				else Game.gameOver();
+				else Game.fimDeJogo();
 			}
 			
 			else {
@@ -244,7 +282,7 @@ public class Combate {
 				if (Game.jogador.getVida() > 0)
 					combate(tipoInimigo);
 				
-				else Game.gameOver();
+				else Game.fimDeJogo();
 			}
 		}
 	}
