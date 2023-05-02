@@ -1,12 +1,8 @@
 package Game;
 
-import java.util.Scanner;
-
-
 public class Menu {
 	
-	Scanner entrada = new Scanner(System.in);
-	
+	//INTRO - COM O NOME DO GRUPO + JOGO
 	public void intro() {
 		String texto = 	"||****************************************||\n" 
 				+ 		"||         By The Code - Apresenta        ||\n"
@@ -22,6 +18,7 @@ public class Menu {
 		menu();
 	}
 
+	//MENU
 	public void menu() {
 		
 		 String menu = 	"||****************************************||\n" 
@@ -37,8 +34,9 @@ public class Menu {
 		
 		Game.uteis.printaTexto(menu, 5);
 		 
+		//OPÇÕES
 		System.out.println("\nDigite uma opção:");
-		int opcao = entrada.nextInt();
+		int opcao = Game.sc.nextInt();
 		
 		switch (opcao) {
 		case 1:
@@ -64,6 +62,7 @@ public class Menu {
 		}
 	}
 	
+	//INSTRUÇÕES
 	public void instrucoes() {
 		String instrucoes 	= "||****************************************** INSTRUÇÕES *******************************************||\n"
 							+ "|| VidaMaxima: Vida máxima do jogador;                                                             ||\n"
@@ -79,9 +78,12 @@ public class Menu {
 							+ "||*************************************************************************************************||\n\n";
 		
 		Game.uteis.printaTexto(instrucoes, 5);
+		
 		voltar();	
 	}
 	
+	
+	//CRÉDITOS
 	public void creditos() {
 		String creditos = "||************** CRÉDITOS **************||\n"
 						+ "||               NAUFRAGO               ||\n"
@@ -101,7 +103,7 @@ public class Menu {
 		
 	}
 	
-	
+	//SAIR
 	public void sair() {
 		System.out.println(	"||*************************************||\n"
 						+ 	"||         OBRIGADO POR JOGAR!         ||\n"
@@ -109,11 +111,13 @@ public class Menu {
 		System.exit(1);
 	}
 	
+	
+	//VOLTAR - INFORMA AO JOGADOR PARA DIGITAR 1 PARA VOLTAR
 	public void voltar() {
 		System.out.println(	"||*************************************||\n"
 						+ 	"||         DIGITE 1 PARA VOLTAR!       ||\n"
 						+ 	"||*************************************||\n");
-		int opcao = entrada.nextInt();
+		int opcao = Game.sc.nextInt();
 		
 		if(opcao == 1)  {
 			Game.uteis.limpaConsole();

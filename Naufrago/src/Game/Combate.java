@@ -1,289 +1,386 @@
 package Game;
 
 public class Combate {
-	
-	private static int errarAtaque;
-	private static int danoCritico;
-	private static int inimigoSpawnControl = 0;
-	
-	
-	public void inimigo(String tipoInimigo, String nomeBoss) {
-		
-		String criatura = "";
-		int bossStatus = 1;
-		int randomAtt = Game.uteis.geraNumeroRandomico(0, 3);
-		int random = Game.uteis.geraNumeroRandomico(0, 101);
-		
-		if(tipoInimigo == "inimigo") {
-			
-			if (random >= 10 && random <= 65) {
-				criatura = "Macaco-Aranha";
-			}
-			else if (random >= 66 && random <= 85) {
-				criatura = "Cobra-Voadora";
-			}
-			else if (random >= 86) {
-				criatura = "Lacraia-Maior";
-			}
-			else {
-				return;
-			}
-			
-			spawnaInimigo(criatura, //10 	* 	Game.jogador.getNivel(), //+ randomAtt, 
-									//3 	*	Game.jogador.getNivel(), //+ randomAtt, 
-									//3 	* 	Game.jogador.getNivel(), //+ randomAtt, 
-									10, 2, 2, 	Game.jogador.getNivel() + randomAtt,
-											 tipoInimigo);
-		}
-		
-		else {
-			if (random <= 50) {
-				spawnaInimigo(nomeBoss, //25 	* 	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
-										//4 	*	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
-										//4 	* 	Game.jogador.getNivel() , //+ randomAtt, 
-									25, 2, 2,	Game.jogador.getNivel() + bossStatus + randomAtt * 2,
-												tipoInimigo);
-				bossStatus++;
-			}
-			else {
-				spawnaInimigo(nomeBoss, //25 	* 	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
-										//4 	*	Game.jogador.getNivel() , //+ randomAtt, 
-										//4 	* 	Game.jogador.getNivel() + bossStatus, //+ randomAtt, 
-									25, 2, 2,	Game.jogador.getNivel() + bossStatus + randomAtt * 2,
-												tipoInimigo);
-				bossStatus++;
-			}
-		}
-	}
-	
 
-	public void spawnaInimigo(String nomeInimigo, int vidaInimigo, int forcaInimigo, int resistenciaInimigo, int nivelInimigo, String tipoInimigo) {
-		
-		if (tipoInimigo == "inimigo")
-		{
-			Game.inimigo = new Inimigo(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
-			System.out.println("Você encontra o inimigo: " + Game.inimigo.getNomeInimigo() + ".\n\n");
-		}
-		
-		else {
-			Game.boss = new Boss(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
-			System.out.println("Você encontra o inimigo: " + Game.boss.getNomeInimigo() + ".\n\n");
-		}
-		
-		combate(tipoInimigo);
-	}
-	
-	public static void combate(String tipoInimigo) {	
-		
-		if (inimigoSpawnControl == 0) {
-			System.out.println("||*************  O QUE VOCÊ FAZ? *************||\n"
-					         + "||============================================||\n"
-					         + "|| 1 - Atacar                                 ||\n"
-					         + "||============================================||"
-					         );
-			
-			String input = Game.sc.next().toUpperCase();
-			
-			switch (input) {
-			case "1", "ATACAR":
-				ataqueJogador(tipoInimigo);
-				break;
-			default: 
-				System.out.println("Opção Inválida");
-				combate(tipoInimigo);
-			}
-		}
-		
-		else if (inimigoSpawnControl == 1) { 
-			System.out.println("||*************  O QUE VOCÊ FAZ? *************||\n"
-					         + "||============================================||\n"
-					         + "|| 1 - Fugir                                  ||\n"
-					         + "||============================================||");
-			
-			String input = Game.sc.next().toUpperCase();
-			
-			switch (input) {
-			case "1", "FUGIR":
-				if (tipoInimigo == "boss") {
-					System.out.println(	"Você não pode fugir!\n\n");
-					combate(tipoInimigo);
-				}
-				else {
-				inimigoSpawnControl++;
-				System.out.println(	"||*******************||\n"
-								+ 	"||    VOCÊ FUGIU!    ||\n"
-								+ 	"||*******************||\n");
-				}
-				return;
-					
-			default: 
-				System.out.println("Opção Inválida");
-				combate(tipoInimigo);
-			}
-		}
-		
-		else {
-			System.out.println("||*************  O QUE VOCÊ FAZ? *************||\n"
-					         + "||============================================||\n"
-					         + "|| 1 - Atacar                                 ||\n"
-					         + "|| 2 - Fugir                                  ||\n"
-					         + "||============================================||");
-			
-			String input = Game.sc.next().toUpperCase();
-			
-			switch (input) {
-			case "1", "ATACAR":
-				ataqueJogador(tipoInimigo);
-				break;
-			case "2", "FUGIR":
-				if (tipoInimigo == "boss") {
-					System.out.println(	"Você não pode fugir!\n\n");
-					combate(tipoInimigo);
-				}
-				else {
-				inimigoSpawnControl++;
-				System.out.println(	"||*******************||\n"
-								+ 	"||    VOCÊ FUGIU!    ||\n"
-								+ 	"||*******************||\n");
-				}
-				return;
-					
-			default: 
-				System.out.println("Opção Inválida");
-				combate(tipoInimigo);
-			}
-		}
-	}
-	
-	public static void ataqueJogador(String tipoInimigo) {
-		errarAtaque = Game.uteis.geraNumeroRandomico(0, 11);
-		
-		if(tipoInimigo == "inimigo") {
-			System.out.println(	"Você tenta atacar o(a) " + Game.inimigo.getNomeInimigo() + ".\n"
-					  		+ 	"Seus Status: \n" + Game.jogador.getStatus() + "\n"
-					  		+	"Status Inimigo: \n" + Game.inimigo.getStatusInimigo() + "\n");
-		}
-		else {
-			System.out.println(	"Você tenta atacar o(a) " + Game.boss.getNomeInimigo() + ".\n"
-					  		+ 	"Seus Status: \n" + Game.jogador.getStatus() + "\n"
-					  		+	"Status Inimigo: \n" + Game.boss.getStatusInimigo() + "\n");
-		}
-		
-		
-		if (errarAtaque < 2) {
-			System.out.println("Você errou o ataque");
-			ataqueInimigo(tipoInimigo);
-		}
-		
-		else {
-			danoCritico = Game.uteis.geraNumeroRandomico(0, 11);
-			
-			if (tipoInimigo == "inimigo") {
-				
-				if (danoCritico > 8) {
-					Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()) * 2);
-					System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()) * 2) + " de dano.\n"
-									+	"Vida atual do inimigo: " + Game.inimigo.getVidaInimigo() + "\n");
-				}
-					
-				else {
-					Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()));
-					System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo())) + " de dano.\n"
-									+	"Vida atual do inimigo: " + Game.inimigo.getVidaInimigo() + "\n");
-				}
-				
-				if (Game.inimigo.getVidaInimigo() > 0)
-					ataqueInimigo(tipoInimigo);
-				
-				else {
-					inimigoSpawnControl++;
-					System.out.println("Você derrotou o(a)) " + Game.inimigo.getNomeInimigo() + ".\n");
-					Game.jogador.passaDeNivel(Game.inimigo.dropExperiencia());
-					System.out.println(Game.jogador.getStatus() + "\n");
-				}
-			}
-			
-			else {
-				if (danoCritico > 8) {
-					Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()) * 2);
-					System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()) * 2) + " de dano.\n"
-									+	"Vida atual do inimigo: " + Game.boss.getVidaInimigo() + "\n");
-				}
-				else {
-					Game.boss.setVidaInimigo(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()));
-					System.out.println(	"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo())) + " de dano.\n"
-									+	"Vida atual do inimigo: " + Game.boss.getVidaInimigo() + "\n");
-				}
-				
-				if (Game.boss.getVidaInimigo() > 0)
-					ataqueInimigo(tipoInimigo);
-				
-				else {
-					System.out.println("Você derrotou o(a)): " + Game.boss.getNomeInimigo());
-					Game.jogador.passaDeNivel(Game.boss.dropExperiencia());
-					System.out.println(Game.jogador.getStatus() + "\n");
-				}
-			}
-		}
-	}
-	
-	public static void ataqueInimigo(String tipoInimigo) {
-		errarAtaque = Game.uteis.geraNumeroRandomico(0, 11);
-		
-		if(tipoInimigo == "inimigo")
-			System.out.println("O " + Game.inimigo.getNomeInimigo() + " tenta te atacar");
-		
-		else 
-			System.out.println("O " + Game.boss.getNomeInimigo() + " tenta te atacar");
-		
-		if (errarAtaque < 2 && tipoInimigo == "inimigo") {
-			System.out.println(Game.inimigo.getNomeInimigo() + " errou o ataque\n");
-			combate(tipoInimigo);
-		}
-		else if (errarAtaque < 2 && tipoInimigo == "boss") {
-			System.out.println(Game.boss.getNomeInimigo() + " errou o ataque\n");
-			combate(tipoInimigo);
-		}
-		
-		else {
-			danoCritico = Game.uteis.geraNumeroRandomico(0, 11);
-			
-			if(tipoInimigo == "inimigo") {
-				
-				if (danoCritico > 8) {
-					Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) * 2);
-					System.out.println(	"Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) * 2) + " de dano.\n"
-									+	"Sua vida atual: " + Game.jogador.getVida() + "\n");
-				}
-				else {
-					Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()));
-					System.out.println(	"Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
-									+	"Sua vida atual: " + Game.jogador.getVida() + "\n");
-				}
-				
-				if (Game.jogador.getVida() > 0)
-					combate(tipoInimigo);
-				
-				else Game.fimDeJogo();
-			}
-			
-			else {
-				if (danoCritico > 8) {
-					Game.jogador.setVidaDano(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()) * 2);
-					System.out.println(	"Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()) * 2) + " de dano.\n"
-									+	"Sua vida atual: " + Game.jogador.getVida() + "\n");
-				}
-				else {
-					Game.jogador.setVidaDano(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()));
-					System.out.println(	"Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
-									+	"Sua vida atual: " + Game.jogador.getVida() + "\n");
-				}
-				
-				if (Game.jogador.getVida() > 0)
-					combate(tipoInimigo);
-				
-				else Game.fimDeJogo();
-			}
-		}
-	}
+    private static int errarAtaque;
+    private static int danoCritico;
+    private static int inimigoSpawnControl = 0;
+
+    public void inimigo(String tipoInimigo, String nomeBoss) {
+
+        String criatura = "";
+        //int bossStatus = 1;
+        //int randomAtt = Game.uteis.geraNumeroRandomico(0, 3);
+        int random = Game.uteis.geraNumeroRandomico(0, 101);
+
+        //SE FOR INIMIGO COMUM
+        if (tipoInimigo == "inimigo") {
+
+        	//DEFININDO UM NOME ALEATÓRIO PARA O INÍMIGO (TEM % DE CHANCE DE NÃO APARECER)
+            if (random >= 10 && random <= 40) {
+                criatura = "Macaco-Aranha";
+            } else if (random >= 41 && random <= 75) {
+                criatura = "Cobra-Voadora";
+            } else if (random >= 76) {
+                criatura = "Lacraia-Maior";
+            } else {
+                return;
+            }
+
+            //CRIA UM INIMIGO COM OS STATUS ABAIXO
+            spawnaInimigo(criatura,
+                    //vidaInimigo
+                    Game.jogador.getVidaMaxima() * 0.25,
+                    //forcaInimigo
+                    Game.jogador.getForca() * 0.50,
+                    //resistenciaInimigo
+                    Game.jogador.getResistencia() * 0.50,
+                    //nivelInimigo
+                    Game.jogador.getNivel(),
+                    tipoInimigo);
+        } 
+        
+        //SEE NÃO FOR INIMIGO COMUM É BOSS
+        else {
+        	//INIMIGO COM MAIS FORÇA
+            if (random <= 50) {
+                spawnaInimigo(
+                	nomeBoss,
+                    //vidaInimigo
+                    Game.jogador.getVidaMaxima() * 0.75,
+                    //forcaInimigo
+                    Game.jogador.getForca() * 0.75,
+                    //resistenciaInimigo
+                    Game.jogador.getResistencia() * 0.50,
+                    //nivelInimigo
+                    Game.jogador.getNivel() * 2,
+                    tipoInimigo);
+
+            } 
+            
+            //INIMIGO COM MAIS RESISTÊNCIA
+            else {
+                spawnaInimigo(
+                	nomeBoss,
+                    //vidaInimigo
+                    Game.jogador.getVidaMaxima() * 0.75,
+                    //forcaInimigo
+                    Game.jogador.getForca() * 0.50,
+                    //resistenciaInimigo
+                    Game.jogador.getResistencia() * 0.75,
+                    Game.jogador.getNivel() * 2,
+                    tipoInimigo);
+
+            }
+        }
+    }
+
+    //FAZ APARECER O INIMIGO / BOSS COM OS STATUS PASSADOS
+    public void spawnaInimigo(String nomeInimigo, double vidaInimigo, double forcaInimigo, double resistenciaInimigo, int nivelInimigo, String tipoInimigo) {
+
+    	//CRIA UMA NOVA INSTÂNCIA COM OS STATUS DO NOVO INIMIGO
+        if (tipoInimigo == "inimigo") {
+            Game.inimigo = new Inimigo(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
+            System.out.println("Você encontra o inimigo: " + Game.inimigo.getNomeInimigo() + ".\n\n");
+        } 
+        //CRIA UMA NOVA INSTÂNCIA COM OS STATUS DO NOVO BOSS
+        else {
+            Game.boss = new Boss(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
+            System.out.println("Você encontra o inimigo: " + Game.boss.getNomeInimigo() + ".\n\n");
+        }
+
+        combate(tipoInimigo);
+    }
+
+    public static void combate(String tipoInimigo) {
+    	
+    	String input = "";
+
+    	//OPÇÕES QUE IRÃO APARECER PARA O PRIMEIRO ÍNIMIGO - TUTORIAL
+        if (inimigoSpawnControl == 0) {
+            System.out.println(
+            			"||*************  O QUE VOCÊ FAZ? *************||\n"
+                    + 	"||============================================||\n"
+                    + 	"|| 1 - Atacar                                 ||\n"
+                    + 	"||============================================||"
+            );
+
+            input = Game.sc.next().toUpperCase();
+
+            switch (input) {
+                case "1", "ATACAR":
+                    ataqueJogador(tipoInimigo);
+                    break;
+                    
+                default:
+                    System.out.println("Opção Inválida");
+                    combate(tipoInimigo);
+            }
+        } 
+        
+        //OPÇÕES QUE IRÃO APARECER PARA O SEGUNDO INIMIGO - TUTORIAL
+        else if (inimigoSpawnControl == 1) {
+            System.out.println(
+            			"||*************  O QUE VOCÊ FAZ? *************||\n"
+                    + 	"||============================================||\n"
+                    + 	"|| 1 - Fugir                                  ||\n"
+                    + 	"||============================================||");
+
+            input = Game.sc.next().toUpperCase();
+
+            switch (input) {
+                case "1", "FUGIR":
+                    if (tipoInimigo == "boss") {
+                        System.out.println("Você não pode fugir!\n\n");
+                        combate(tipoInimigo);
+                    } else {
+                        inimigoSpawnControl++;
+                        System.out.println(
+                        			"||*******************||\n"
+                                + 	"||    VOCÊ FUGIU!    ||\n"
+                                + 	"||*******************||\n");
+                    }
+                    return;
+
+                default:
+                    System.out.println("Opção Inválida");
+                    combate(tipoInimigo);
+            }
+        } 
+        
+      //OPÇÕES QUE IRÃO APARECER PARA OS DEMAIS INIMIGOS
+        else {
+            System.out.println(
+            			"||*************  O QUE VOCÊ FAZ? *************||\n"
+                    + 	"||============================================||\n"
+                    + 	"|| 1 - Atacar                                 ||\n"
+                    + 	"|| 2 - Fugir                                  ||\n"
+                    + 	"||============================================||");
+
+            input = Game.sc.next().toUpperCase();
+
+            switch (input) {
+                case "1", "ATACAR":
+                    ataqueJogador(tipoInimigo);
+                    break;
+                case "2", "FUGIR":
+                    if (tipoInimigo == "boss") {
+                        System.out.println("Você não pode fugir!\n\n");
+                        combate(tipoInimigo);
+                    } else {
+                        inimigoSpawnControl++;
+                        System.out.println(
+                        			"||*******************||\n"
+                                + 	"||    VOCÊ FUGIU!    ||\n"
+                                + 	"||*******************||\n");
+                    }
+                    return;
+
+                default:
+                    System.out.println("Opção Inválida");
+                    combate(tipoInimigo);
+            }
+        }
+    }
+
+    
+    //ATAQUE DO JOGADOR
+    public static void ataqueJogador(String tipoInimigo) {
+    	
+        //VARIÁVEL PARA DEFINIR A CHANCE DE ERRO
+    	errarAtaque = Game.uteis.geraNumeroRandomico(0, 11);
+
+        //PRINTA INFORMAÇÕES DO INIMIGO ATUAL OU DO BOSS
+    	//INFO INIMIGO
+        if (tipoInimigo == "inimigo") {
+            System.out.println(
+            			"Você tenta atacar o(a) " + Game.inimigo.getNomeInimigo() + ".\n"
+                    + 	"Seus Status: \n" + Game.jogador.getStatus() + "\n"
+                    + 	"Status Inimigo: \n" + Game.inimigo.getStatusInimigo() + "\n");
+        } 
+        
+        //INFO BOSS
+        else {
+            System.out.println(
+            			"Você tenta atacar o(a) " + Game.boss.getNomeInimigo() + ".\n"
+                    + 	"Seus Status: \n" + Game.jogador.getStatus() + "\n"
+                    + 	"Status Inimigo: \n" + Game.boss.getStatusInimigo() + "\n");
+        }
+
+        //SE A VARIÁVEL FOI MENOR QUE 2, ERRA O ATAQUE
+        if (errarAtaque < 2) {
+            System.out.println("Você errou o ataque");
+            ataqueInimigo(tipoInimigo);
+        } 
+        
+        //SE A VARIÁVEL FOR MAIOR OU IGUAL A 2, ACERTA O ATAQUE
+        else {
+        	
+        	//VARIÁVEL PARA DEFINIR A CHANCE DE DAR DANO CRÍTICO
+            danoCritico = Game.uteis.geraNumeroRandomico(0, 11);
+
+            //DANO INIMIGO
+            if (tipoInimigo == "inimigo") {
+
+            	//SE A VARIÁVEL FOR MAIOR QUE 8, DÁ O ATAQUE CRÍTICO
+                if (danoCritico > 8) {
+                    Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()) * 2);
+                    System.out.println(
+                    			"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()) * 2) + " de dano.\n"
+                            + 	"Vida atual do inimigo: " + Game.dc.format(Game.inimigo.getVidaInimigo()) + "\n");
+                } 
+                
+                //SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
+                else {
+                    Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()));
+                    System.out.println(
+                    			"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo())) + " de dano.\n"
+                            + 	"Vida atual do inimigo: " + Game.dc.format(Game.inimigo.getVidaInimigo()) + "\n");
+                }
+
+                //SE A VIDA DO INIMIGO FOR MAIOR QUE 0 (ESTÁ VIVO, O INIMIGO ATACA APÓS O JOGADOR)
+                if (Game.inimigo.getVidaInimigo() > 0) {
+                    ataqueInimigo(tipoInimigo);
+                } 
+                
+                //SE A VIDA DO INIMIGO FOR MENOR OU IGUAL A 0, ADICIONA A XP DROPADA PELO INIMIGO AO XP DO JOGADOR E,
+                	//SE FOR SUFICIENTE O JOGADOR PASSA DE NÍVEL
+                else {
+                    inimigoSpawnControl++;
+                    System.out.println("Você derrotou o(a)) " + Game.inimigo.getNomeInimigo() + ".\n");
+                    Game.jogador.passaDeNivel(Game.inimigo.dropExperiencia());
+                    System.out.println(Game.jogador.getStatus() + "\n");
+                }
+            } 
+            
+            //DANO BOSS
+            else {
+            	
+            	//SE A VARIÁVEL FOR MAIOR QUE 8, DÁ O ATAQUE CRÍTICO
+                if (danoCritico > 8) {
+                    Game.boss.setVidaInimigo(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()) * 2);
+                    System.out.println(
+                    			"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()) * 2) + " de dano.\n"
+                            + 	"Vida atual do inimigo: " + Game.dc.format(Game.boss.getVidaInimigo()) + "\n");
+                } 
+                
+                //SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
+                else {
+                    Game.boss.setVidaInimigo(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()));
+                    System.out.println(
+                    			"Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo())) + " de dano.\n"
+                            + 	"Vida atual do inimigo: " + Game.dc.format(Game.boss.getVidaInimigo()) + "\n");
+                }
+
+                //SE A VIDA DO BOSS FOR MAIOR QUE 0 (ESTÁ VIVO, O BOSS ATACA APÓS O JOGADOR)
+                if (Game.boss.getVidaInimigo() > 0) {
+                    ataqueInimigo(tipoInimigo);
+                } 
+                
+                //SE A VIDA DO BOSS FOR MENOR OU IGUAL A 0, ADICIONA A XP DROPADA PELO BOSS AO XP DO JOGADOR E,
+            		//SE FOR SUFICIENTE O JOGADOR PASSA DE NÍVEL
+                else {
+                    System.out.println("Você derrotou o(a)): " + Game.boss.getNomeInimigo());
+                    Game.jogador.passaDeNivel(Game.boss.dropExperiencia());
+                    System.out.println(Game.jogador.getStatus() + "\n");
+                }
+            }
+        }
+    }
+
+    //ATAQUE DO INIMIGO
+    public static void ataqueInimigo(String tipoInimigo) {
+    	
+    	//VARIÁVEL PARA DEFINIR A CHANCE DE ERRO
+        errarAtaque = Game.uteis.geraNumeroRandomico(0, 11);
+        
+        //SE FOR INÍMIGO PRINTA O NOME DO INÍMIGO QUE APARECEU
+        if (tipoInimigo == "inimigo") {
+            System.out.println("O " + Game.inimigo.getNomeInimigo() + " tenta te atacar");
+        } 
+        
+        //SE FOR BOSS PRINTA O NOME DO BOSS
+        else {
+            System.out.println("O " + Game.boss.getNomeInimigo() + " tenta te atacar");
+        }
+
+        //INIMIGO ERROU O ATAQUE
+        if (errarAtaque < 2 && tipoInimigo == "inimigo") {
+            System.out.println(Game.inimigo.getNomeInimigo() + " errou o ataque\n");
+            combate(tipoInimigo);
+        }
+        
+      	//BOSS ERROU O ATAQUE
+        else if (errarAtaque < 2 && tipoInimigo == "boss") {
+            System.out.println(Game.boss.getNomeInimigo() + " errou o ataque\n");
+            combate(tipoInimigo);
+        }
+        
+        //SE NÃO ERRAR O ATAQUE
+        else {
+        	
+        	//VARIÁVEL PARA DEFINIR A CHANCE DE DAR DANO CRÍTICO
+            danoCritico = Game.uteis.geraNumeroRandomico(0, 11);
+
+            //SE FOR O INÍMIGO
+            if (tipoInimigo == "inimigo") {
+
+            	//SE A VARIÁVEL FOR MAIOR QUE 8, DÁ O ATAQUE CRÍTICO
+                if (danoCritico > 8) {
+                    Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) * 2);
+                    System.out.println(
+                    			"Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) * 2) + " de dano.\n"
+                            + 	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+                } 
+                
+                //SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
+                else {
+                    Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()));
+                    System.out.println(
+                    			"Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
+                            + 	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+                }
+
+                //SE A VIDA DO JOGADOR FOR MAIOR QUE 0, RETORNA PARA O MÉTODO DO COMBATE PARA ESCOLHER NOVAMENTE
+                if (Game.jogador.getVida() > 0) {
+                    combate(tipoInimigo);
+                } 
+                
+                //SE A VIDA DO JOGADOR FOR MENOR OU IGUAL A 0, O JOGO TERMINA
+                else {
+                    Game.fimDeJogo();
+                }
+            } 
+            
+          //SE FOR O BOSS
+            else {
+            	
+            	//SE A VARIÁVEL FOR MAIOR QUE 8, DÁ O ATAQUE CRÍTIC
+                if (danoCritico > 8) {
+                    Game.jogador.setVidaDano(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()) * 2);
+                    System.out.println(
+                    			"Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()) * 2) + " de dano.\n"
+                            + 	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+                } 
+                
+                //SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
+                else {
+                    Game.jogador.setVidaDano(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()));
+                    System.out.println(
+                    			"Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
+                            + 	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+                }
+
+                //SE A VIDA DO JOGADOR FOR MAIOR QUE 0, RETORNA PARA O MÉTODO DO COMBATE PARA ESCOLHER NOVAMENTE
+                if (Game.jogador.getVida() > 0) {
+                    combate(tipoInimigo);
+                } 
+                
+                //SE A VIDA DO JOGADOR FOR MENOR OU IGUAL A 0, O JOGO TERMINA
+                else {
+                    Game.fimDeJogo();
+                }
+            }
+        }
+    }
 }

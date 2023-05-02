@@ -4,8 +4,10 @@ import java.util.Random;
 
 public class Uteis {
 	
+	//VARIAVÉIS
 	Random random = new Random();
 
+	//PRINTA O TEXTO LETRA POR LETRA, PARA FAZER UMA 'ANIMAÇÃO' AO INVÉS DO PRINT PADRÃO
 	public void printaTexto(String texto, int tempo) {
 		for(int i = 0; i < texto.length(); i++) {
 			System.out.print(texto.charAt(i));
@@ -17,6 +19,8 @@ public class Uteis {
 		}
 	}
 	
+	
+	//"LIMPA O CONSOLE", PRINTANDO 50 LINHAS EM BRANCO.
 	public void limpaConsole() { 
 		
 		for (int i = 0; i <= 50; i++) {
@@ -24,10 +28,13 @@ public class Uteis {
 		}
 	}
 	
+	//GERA UM NÚMERO 'ALEATÓRIO' ENTRE OS VALORES PASSADOS
 	public int geraNumeroRandomico(int valorMin, int valorMax) {
 		return random.nextInt(valorMin, valorMax);
 	}
 	
+	
+	//CONTINUA COM O MÉTODO SEGUINTE APERTANDO QUALQUER TECLA, DEFINIMOS 'ENTER' APENAS PARA FACILITAR AO JOGADOR
 	public boolean Continuar() {
 		
 		System.out.println(	"||************************************||\n"
@@ -40,6 +47,7 @@ public class Uteis {
 		else return true;
 	}
 	
+	//EXECUTA O PRÓXIMO COMANDO APÓS X PERÍODO DE TEMPO, 25 = 2500 = 2 SEGUNDOS E 5 MILÉSSIMOS
 	public void delayParaProximoComando(int tempo) {
 		
 		tempo *= 100;

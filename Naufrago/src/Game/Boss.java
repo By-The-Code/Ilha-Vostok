@@ -2,7 +2,8 @@ package Game;
 
 public class Boss extends Inimigo {
 
-    public Boss(String nome, int vida, int forca, int resistencia, int nivel) {
+	//CONSTRUTOR DO BOSS
+    public Boss(String nome, double vida, double forca, double resistencia, int nivel) {
 		super(nome, vida, forca, resistencia, nivel);
 		// TODO Auto-generated constructor stub
 	}
@@ -21,7 +22,7 @@ public class Boss extends Inimigo {
 	}
 	*/
 
-	
+	//OVERRIDE PARA RETORNAR MAIS XP QUANDO DERROTAR O BOSS, POIS OS INÍMIGOS COMUM DROPAM MENOS XP 
 	@Override
 	public double dropExperiencia() {
 		
