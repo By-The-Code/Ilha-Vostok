@@ -21,27 +21,11 @@ public class Game {
     //INICIA O JOGO CHAMANDO O MÉTODO 'INTRO' DA CLASSE 'MENU'
     public static void main(String[] args) {
 
+    	/*
 		jogador = new Jogador ("Alfonse", "PROFESSOR");
 		System.out.println(jogador.getStatus());
 		historia.penultimoAto();
-       
-		// menu.intro();
-    }
-
-    
-    //SE O JOGADOR MORRER O JOGO ACABA
-    public static void fimDeJogo() {
-        System.out.println(
-                  "||********************||\n"
-                + "||    VOCÊ MORREU!    ||\n"
-                + "||    FIM DE JOGO     ||\n"
-                + "||********************||");
-
-        uteis.delayParaProximoComando(50);
-        /*
-        uteis.limpaConsole();
-        new Game();
-         */
-        System.exit(1);
+       */
+		 menu.intro();
     }
 }

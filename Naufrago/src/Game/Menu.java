@@ -35,23 +35,27 @@ public class Menu {
 		Game.uteis.printaTexto(menu, 5);
 		 
 		//OPÇÕES
-		System.out.println("\nDigite uma opção:");
-		int opcao = Game.sc.nextInt();
+		System.out.println(
+				  "||*************************************||\n"
+				+ "||          DIGITE UMA OPÇÃO!          ||\n"
+				+ "||*************************************||\n");
+		
+		String opcao = Game.sc.next().toUpperCase();
 		
 		switch (opcao) {
-		case 1:
+		case "1", "JOGAR":
 			Game.uteis.limpaConsole();
 			Game.historia.intro();
 			break;
-		case 2:
+		case "2", "INSTRUCOES":
 			Game.uteis.limpaConsole();
 			instrucoes();
 			break;
-		case 3:
+		case "3", "CREDITOS":
 			Game.uteis.limpaConsole();
 			creditos();
 			break;
-		case 4:
+		case "4", "SAIR":
 			Game.uteis.limpaConsole();
 			sair();
 			break;

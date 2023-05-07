@@ -30,7 +30,6 @@ public class Historia {
             Thread.sleep(2000);
             apresentacao();
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -54,7 +53,7 @@ public class Historia {
                 + 	"||*********************||\n");
 
         //ESCOLHE O NOME
-        String nome = Game.sc.nextLine();
+        String nome = Game.sc.next();
 
         String apresentacaoProfissao
                 = "\n\n"
@@ -83,7 +82,7 @@ public class Historia {
                 + 	"||**********************||\n");
    
         //ESCOLHE A PROFISSÃO
-        input = Game.sc.nextLine().toUpperCase();
+        input = Game.sc.next().toUpperCase();
         String profissao = "";
 
         //INSTANCIA O JOGADOR
@@ -129,7 +128,7 @@ public class Historia {
     //PRIMEIRO ATO
     public void primeiroAto() {
 
-    	//A VARIÁVEL DE CONTROLE SERVE PARA NÃO PRINTAR TODO O TEXTO NOVAMENTE CASO O JOGADOR SELECIONE UMA OPÇÃO INVÁLIDA
+    	//A VARIÁVEL DE CONTROLE SERVE PARA NÃO PRINTAR O TEXTO NOVAMENTE CASO O JOGADOR SELECIONE UMA OPÇÃO INVÁLIDA
         if (!control) {
             double random = Game.uteis.geraNumeroRandomico(0, 101);
 
@@ -242,10 +241,11 @@ public class Historia {
         Game.uteis.printaTexto(continuacaoPraia, 5);
 
         //SPAWNA O INÍMIGO DE FORMA MANUAL, POIS SEMPRE QUEREMOS QUE SEJA ESSE
-        Game.combate.spawnaInimigo("Cobra-Voadora", Game.jogador.getVida() * 0.25,
+        Game.inimigo = new Inimigo("Cobra-Voadora", Game.jogador.getVida() * 0.25,
                 3 * Game.jogador.getNivel(),
                 3 * Game.jogador.getNivel(),
-                Game.jogador.getNivel(), "inimigo");
+                Game.jogador.getNivel());
+        Combate.combate("inimigo");
         
         //CHAMA O PRÓXIMO ATO AO DERROTAR O INÍMIGO
         segundoAto();
@@ -256,14 +256,13 @@ public class Historia {
     	
     	//VARIÁVEIS CONTENDO OS TEXTOS DO MÉTODO
         String caminhoFloresta
-                = "||***********************************************************************************************||\n"
-                + "|| Ao entrar na floresta você é quase atingido por um coco, vindo do alto. Buscando o que        ||\n"
-                + "|| poderia ter acontecido ao ser quase atingido por aquele coco, você avista um pequeno macaco,  ||\n"
-                + "|| mas ele possui características que te deixam amedrontado.                                     ||\n"
-                + "|| Apesar de sua estatura, o macaco possui 6 braços e 8 pontos vermelhos no rosto que te encaram ||\n"
-                + "|| com bastante raiva, você já notou que as histórias sobre esse lugar aparentavam ser           ||\n"
-                + "|| verdadeiras.”                                                                                 ||\n"
-                + "||***********************************************************************************************||\n\n";
+                = "||**************************************************************************************************||\n"
+                + "|| Ao entrar na floresta você é quase atingido por um coco, vindo do alto.                          ||\n"
+                + "|| Tentando entender o que poderia ter jogado aquilo, você avista um pequeno macaco,                ||\n"
+                + "|| mas ele possui características que te deixam amedrontado.                                        ||\n"
+                + "|| Apesar de sua estatura, o macaco possui 6 braços e 8 pontos vermelhos no rosto que te encaram    ||\n"
+                + "|| com bastante raiva, você já notou que as histórias sobre esse lugar aparentavam ser verdadeiras. ||\n"
+                + "||**************************************************************************************************||\n\n";
 
         String continuacaoFloresta
                 = "||*************************************************************************************************||\n"
@@ -274,10 +273,11 @@ public class Historia {
         Game.uteis.printaTexto(caminhoFloresta, 5);
 
         //SPAWNA O INÍMIGO DE FORMA MANUAL, POIS SEMPRE QUEREMOS QUE SEJA ESSE
-        Game.combate.spawnaInimigo("Macaco-Aranha", Game.jogador.getVida() * 0.25,
+        Game.inimigo = new Inimigo("Macaco-Aranha", Game.jogador.getVida() * 0.25,
                 3 * Game.jogador.getNivel(),
                 3 * Game.jogador.getNivel(),
-                Game.jogador.getNivel(), "inimigo");
+                Game.jogador.getNivel());
+        Combate.combate("inimigo");
 
         Game.uteis.printaTexto(continuacaoFloresta, 15);
 
@@ -331,12 +331,14 @@ public class Historia {
             Game.uteis.printaTexto(caminhosUnificados, 5);
 
             //SPAWNA O INÍMIGO DE FORMA MANUAL, POIS SEMPRE QUEREMOS QUE SEJA ESSE
-            Game.combate.spawnaInimigo("Lacraia-Gigante", 50 * Game.jogador.getNivel(),
+            Game.inimigo = new Inimigo ("Lacraia-Gigante", 50 * Game.jogador.getNivel(),
                     10 * Game.jogador.getNivel(),
                     10 * Game.jogador.getNivel(),
-                    12 + Game.jogador.getNivel(), "inimigo");
+                    12 + Game.jogador.getNivel());
+            Combate.combate("inimigo");
 
             Game.uteis.printaTexto(caminhosUnificadosContinuacao, 5);
+            
 
             control = true;
         }
@@ -356,14 +358,14 @@ public class Historia {
             case "1", "CACHOEIRA":
                 control = false;
                 Game.uteis.limpaConsole();
-                Game.combate.inimigo("inimigo", "");
+                Combate.inimigo("inimigo", "");
                 caminhoCachoeira();
                 break;
 
             case "2", "FUMAÇA":
                 control = false;
                 Game.uteis.limpaConsole();
-                Game.combate.inimigo("inimigo", "");
+                Combate.inimigo("inimigo", "");
                 caminhoFumaca();
                 break;
 
@@ -482,7 +484,7 @@ public class Historia {
                 Game.uteis.limpaConsole();
 
                 //SPAWNA BOSS
-                Game.combate.inimigo("boss", "Morcego-Fluorescentes");
+                Combate.inimigo("boss", "Morcego-Fluorescentes");
 
                 //SE DERROTAR O BOSS: 
                 //DEFINE A NOVA ARMADURA
@@ -629,7 +631,7 @@ public class Historia {
                 Game.uteis.limpaConsole();
 
                 //SPAWNA BOSS
-                Game.combate.inimigo("boss", "Hipogrifo de Ónix");
+                Combate.inimigo("boss", "Hipogrifo de Ónix");
                 
 
                 //SE DERROTAR O BOSS: 
@@ -739,7 +741,7 @@ public class Historia {
         Game.uteis.printaTexto(formigasGigantes, 5);
 
         //SPAWNA BOSS
-        Game.combate.inimigo("boss", "Formiga Gigante");
+        Combate.inimigo("boss", "Formiga Gigante");
 
         
         Game.uteis.printaTexto(continuacaoFormigasGigantes, 5);
@@ -787,7 +789,7 @@ public class Historia {
         Game.uteis.printaTexto(cupimGigante, 5);
         
         //SPAWNA BOSS
-        Game.combate.inimigo("boss", "Cupim-Ácido Gigante");
+        Combate.inimigo("boss", "Cupim-Ácido Gigante");
         
         Game.uteis.printaTexto(continuacaoCupimGigante, 5);
         
@@ -827,7 +829,7 @@ public class Historia {
         Game.uteis.printaTexto(louvaDeusGigante, 5);
         
         //SPAWNA BOSS
-        Game.combate.inimigo("boss", "Louva-Deus Gigante");
+        Combate.inimigo("boss", "Louva-Deus Gigante");
 
         Game.uteis.printaTexto(continuacaoLouvaDeusGigante, 5);
 
@@ -875,15 +877,15 @@ public class Historia {
             
             	//INSTANCIA O BOSS DE FORMA MANUAL POIS NESSE MODO ELE TEM MAIS DEFESA
                 //--MODO COMBATE - TENTÁCULOS--
-                Game.combate.spawnaInimigo("Lula Colossal",
+            	Game.boss = new Boss("Lula Colossal",
                         //vidaInimigo
                         Game.jogador.getVidaMaxima() * 0.75,
                         //forcaInimigo
                         Game.jogador.getForca() * 0.50,
                         //resistenciaInimigo
                         Game.jogador.getResistencia() * 0.90,
-                        Game.jogador.getNivel() * 2,
-                        "boss");
+                        Game.jogador.getNivel() * 2);
+                Combate.combate("boss");
                 break;
 
             case "2", "OLHO":
@@ -891,15 +893,17 @@ public class Historia {
             
             	//INSTANCIA O BOSS DE FORMA MANUAL POIS NESSE MODO ELE TEM MAIS ATAQUE
                 //--MODO COMBATE - OLHO DA CRIATURA--
-                Game.combate.spawnaInimigo("Lula Colossal",
+                Game.boss = new Boss("Lula Colossal",
                         //vidaInimigo
                         Game.jogador.getVidaMaxima() * 0.75,
                         //forcaInimigo
                         Game.jogador.getForca() * 0.90,
                         //resistenciaInimigo
                         Game.jogador.getResistencia() * 0.50,
-                        Game.jogador.getNivel() * 2,
-                        "boss");
+                        Game.jogador.getNivel() * 2
+                       );
+                
+                Combate.combate("boss");
                 break;
 
             default:
@@ -910,6 +914,7 @@ public class Historia {
         }
         
         //CHAMA O PRÓXIMO ATO
+        control = false;
         ultimoAto();
     }
 
@@ -987,11 +992,13 @@ public class Historia {
         String fim
                 = "||******************||\n"
                 + "||      F I M       ||\n"
-                + "||******************||";
+                + "||******************||\n\n\n\n";
 
         Game.uteis.printaTexto(fim, 25);
         Game.uteis.delayParaProximoComando(50);
-        System.exit(1);
+        
+        Game.menu.creditos();
+        //System.exit(1);
     }
 
     
@@ -1015,18 +1022,21 @@ public class Historia {
 	             case "1", "FOLHAS":
 	                 control = false;
 	                 Game.uteis.limpaConsole();
+	                 control = false;
 	                 folhasDePalmeira();
 	                 break;
 	
 	             case "2", "MADEIRAS":
 	                 control = false;
 	                 Game.uteis.limpaConsole();
+	                 control = false;
 	                 madeira();
 	                 break;
 	
 	             case "3", "CORDAS":
 	                 control = false;
 	                 Game.uteis.limpaConsole();
+	                 control = false;
 	                 corda();
 	                 break;
 	
@@ -1051,11 +1061,13 @@ public class Historia {
 
                 case "1", "FOLHAS":
                     Game.uteis.limpaConsole();
+                	control = false;
                     madeira();
                     break;
 
                 case "2", "MADEIRAS":
                     Game.uteis.limpaConsole();
+                	control = false;
                     folhasDePalmeira();
                     break;
                 default:
@@ -1079,11 +1091,13 @@ public class Historia {
 
                 case "1", "FOLHAS":
                     Game.uteis.limpaConsole();
+                	control = false;
                     corda();
                     break;
 
                 case "2", "CORDAS":
                     Game.uteis.limpaConsole();
+                	control = false;
                     folhasDePalmeira();
                     break;
 
@@ -1108,11 +1122,13 @@ public class Historia {
 
                 case "1", "MADEIRAS":
                     Game.uteis.limpaConsole();
+                	control = false;
                     madeira();
                     break;
 
                 case "2", "CORDAS":
                     Game.uteis.limpaConsole();
+                	control = false;
                     corda();
                     break;
 
@@ -1128,6 +1144,7 @@ public class Historia {
                     	"||*************************************************||\n"
                     + 	"|| Só restaram as cordas e é para lá que você vai. ||\n"
                     + 	"||*************************************************||\n\n");
+            corda();
         } 
         
         else if (folhas == true && madeira == false && corda == true) {
@@ -1135,7 +1152,8 @@ public class Historia {
             			"||***************************************************||\n"
                      + 	"|| Só restaram as madeiras e é para lá que você vai. ||\n"
                      + 	"||***************************************************||\n\n");
-
+            
+            madeira();
         } 
         
         else if (folhas == false && madeira == true && corda == true) {
@@ -1143,6 +1161,7 @@ public class Historia {
             			"||*************************************************||\n"
                      + 	"|| Só restaram as folhas e é para lá que você vai. ||\n"
                      + 	"||*************************************************||\n\n");
+            folhasDePalmeira();
         } 
         
         //SE TODAS AS VARIÁVEIS FOREM TRUE, CHAMA O PRÓXIMO ATO
@@ -1152,6 +1171,7 @@ public class Historia {
         				"||******************************************************||\n"
                     + 	"|| Parece que você tem tudo que precisa para continuar. ||\n"
                     + 	"||******************************************************||\n\n");
+        	control = false;
             penultimoAto();
         }
     }

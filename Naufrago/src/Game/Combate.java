@@ -6,7 +6,7 @@ public class Combate {
     private static int danoCritico;
     private static int inimigoSpawnControl = 0;
 
-    public void inimigo(String tipoInimigo, String nomeBoss) {
+    public static void inimigo(String tipoInimigo, String nomeBoss) {
 
         String criatura = "";
         //int bossStatus = 1;
@@ -28,7 +28,7 @@ public class Combate {
             }
 
             //CRIA UM INIMIGO COM OS STATUS ABAIXO
-            spawnaInimigo(criatura,
+            /*spawnaInimigo(criatura,
                     //vidaInimigo
                     Game.jogador.getVidaMaxima() * 0.25,
                     //forcaInimigo
@@ -38,12 +38,19 @@ public class Combate {
                     //nivelInimigo
                     Game.jogador.getNivel(),
                     tipoInimigo);
+           */
+            
+            Game.inimigo = new Inimigo(criatura,   Game.jogador.getVidaMaxima() * 0.25, Game.jogador.getForca() * 0.50, Game.jogador.getResistencia() * 0.50, Game.jogador.getNivel());
+            System.out.println("Você encontra o inimigo: " + Game.inimigo.getNomeInimigo() + ".\n\n");
+            
+            combate(tipoInimigo);
         } 
         
-        //SEE NÃO FOR INIMIGO COMUM É BOSS
+        //SE NÃO FOR INIMIGO COMUM É BOSS
         else {
         	//INIMIGO COM MAIS FORÇA
             if (random <= 50) {
+            	/*
                 spawnaInimigo(
                 	nomeBoss,
                     //vidaInimigo
@@ -55,11 +62,17 @@ public class Combate {
                     //nivelInimigo
                     Game.jogador.getNivel() * 2,
                     tipoInimigo);
-
+				*/
+            	
+            	 Game.boss = new Boss(nomeBoss, Game.jogador.getVidaMaxima() * 0.75,  Game.jogador.getForca() * 0.75, Game.jogador.getResistencia() * 0.50, Game.jogador.getNivel() * 2);
+                 System.out.println("Você encontra o inimigo: " + Game.boss.getNomeInimigo() + ".\n\n");
+                 
+                 combate(tipoInimigo);
             } 
             
             //INIMIGO COM MAIS RESISTÊNCIA
-            else {
+            else  	{
+            	/*
                 spawnaInimigo(
                 	nomeBoss,
                     //vidaInimigo
@@ -70,11 +83,17 @@ public class Combate {
                     Game.jogador.getResistencia() * 0.75,
                     Game.jogador.getNivel() * 2,
                     tipoInimigo);
-
+				*/
+            	
+            	 Game.boss = new Boss(nomeBoss,Game.jogador.getVidaMaxima() * 0.75, Game.jogador.getForca() * 0.50,  Game.jogador.getResistencia() * 0.75, Game.jogador.getNivel() * 2);
+                 System.out.println("Você encontra o inimigo: " + Game.boss.getNomeInimigo() + ".\n\n");
+                 
+                 combate(tipoInimigo);
             }
         }
     }
 
+    /*
     //FAZ APARECER O INIMIGO / BOSS COM OS STATUS PASSADOS
     public void spawnaInimigo(String nomeInimigo, double vidaInimigo, double forcaInimigo, double resistenciaInimigo, int nivelInimigo, String tipoInimigo) {
 
@@ -90,7 +109,7 @@ public class Combate {
         }
 
         combate(tipoInimigo);
-    }
+    }*/
 
     public static void combate(String tipoInimigo) {
     	
@@ -348,7 +367,7 @@ public class Combate {
                 
                 //SE A VIDA DO JOGADOR FOR MENOR OU IGUAL A 0, O JOGO TERMINA
                 else {
-                    Game.fimDeJogo();
+                    fimDeJogo();
                 }
             } 
             
@@ -378,9 +397,22 @@ public class Combate {
                 
                 //SE A VIDA DO JOGADOR FOR MENOR OU IGUAL A 0, O JOGO TERMINA
                 else {
-                    Game.fimDeJogo();
+                    fimDeJogo();
                 }
             }
         }
+    }
+    
+    //SE O JOGADOR MORRER O JOGO ACABA
+    public static void fimDeJogo() {
+        System.out.println(
+                  "||********************||\n"
+                + "||    VOCÊ MORREU!    ||\n"
+                + "||    FIM DE JOGO     ||\n"
+                + "||********************||\n\n");
+
+        Game.uteis.delayParaProximoComando(50);
+        Game.uteis.limpaConsole();
+        Game.menu.menu();
     }
 }
