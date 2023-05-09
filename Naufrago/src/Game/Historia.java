@@ -682,10 +682,6 @@ public class Historia {
     // TERCEIRO ATO
     public void terceiroAto() {
 
-        for (int i = 0; i < relatorio.size(); i++) {
-            System.out.println(relatorio.get(i));
-        }
-
         if (!control) {
 
             // SE NÃO ACHAR ÀGUA OU COMIDA, O JOGADOR ACORDA PERDENDO UM POUCO DE VIDA,
@@ -834,6 +830,10 @@ public class Historia {
         // ESCOLHAS DO JOGADOR
         caminhosJangada();
 
+        String relatorioPronto = "||*************** RELATÓRIO DO JOGO ***************||\n"
+                + "||" + relatorio.toString() + "||";
+
+        Game.uteis.printaTexto(relatorioPronto, 5);
     }
 
     public void penultimoAto() {
@@ -871,7 +871,8 @@ public class Historia {
 
             case "1", "TENTACULOS":
                 Game.uteis.limpaConsole();
-
+                relatorio.add(
+                        "Você quis começar atacando a criatura pelos tentáculos, definitivamente você sabe como imobilizar alguém.");
                 // INSTANCIA O BOSS DE FORMA MANUAL POIS NESSE MODO ELE TEM MAIS DEFESA
                 // --MODO COMBATE - TENTÁCULOS--
                 Game.combate.spawnaInimigo("Lula Colossal",
@@ -887,6 +888,7 @@ public class Historia {
 
             case "2", "OLHO":
                 Game.uteis.limpaConsole();
+                relatorio.add("Você começou atacando a criatura pelos olhos, como você é cruel!!");
 
                 // INSTANCIA O BOSS DE FORMA MANUAL POIS NESSE MODO ELE TEM MAIS ATAQUE
                 // --MODO COMBATE - OLHO DA CRIATURA--
@@ -1009,18 +1011,22 @@ public class Historia {
 
                 case "1", "FOLHAS":
                     control = false;
+                    relatorio.add(
+                            "Você preferiu construir a jangada começando pelas folha de Palmeira, então pra você a direção é o mais importante.");
                     Game.uteis.limpaConsole();
                     folhasDePalmeira();
                     break;
 
                 case "2", "MADEIRAS":
                     control = false;
+                    relatorio.add("Você decidiu construir a jangada começando pela base, excelente escolha!");
                     Game.uteis.limpaConsole();
                     madeira();
                     break;
 
                 case "3", "CORDAS":
                     control = false;
+                    relatorio.add("Você decidiu ir atrás das cordas primeiro, a união é importante pra você!");
                     Game.uteis.limpaConsole();
                     corda();
                     break;
