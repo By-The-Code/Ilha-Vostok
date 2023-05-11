@@ -1,6 +1,5 @@
 package Game;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Historia {
@@ -8,11 +7,6 @@ public class Historia {
     // VARIÁVEIS DE CONTROLE DA HISTÓRIA
     boolean control, agua, comida, folhas, madeira, corda;
     String input = "";
-
-    // VARIÁVEIS PARA O RELATÓRIO
-    List<String> relatorio = new ArrayList<String>();
-    int ataques = 0;
-    int fugas = 0;
 
     // INTRO
     public void intro() {
@@ -33,9 +27,17 @@ public class Historia {
                 + "||***********************************************************************************************||\n\n";
 
         Game.uteis.printaTexto(intro, 0);
+
+        Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
+        Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
+        Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
+        Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
+        Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
+        Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
+
         try {
             Thread.sleep(2000);
-            apresentacao();
+            ultimoAto();
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -96,21 +98,21 @@ public class Historia {
             case "1", "MEDICO", "MÉDICO":
                 profissao = "MÉDICO";
                 Game.jogador = new Jogador(nome, profissao);
-                relatorio.add(
+                Game.uteis.addRelatorios(
                         "Você escolheu ser um médico, definitivamente é uma pessoa que gosta de estar preparada para os problemas, com ou sem kits médicos.");
                 break;
 
             case "2", "SOLDADO":
                 profissao = "SOLDADO";
                 Game.jogador = new Jogador(nome, profissao);
-                relatorio.add(
+                Game.uteis.addRelatorios(
                         "Você escolheu ser um soldado, já passou por várias guerras, esse teste com certeza foi fácil pra você.");
                 break;
 
             case "3", "PROFESSOR":
                 profissao = "PROFESSOR";
                 Game.jogador = new Jogador(nome, profissao);
-                relatorio.add(
+                Game.uteis.addRelatorios(
                         "Professoer, pra você a estratégia é fundamental para resovler os problemas, muito esperto!");
                 break;
 
@@ -170,13 +172,16 @@ public class Historia {
         switch (input) {
             case "1", "PRAIA":
                 control = false;
-                relatorio.add("Você escolheu seguir pela praia, com certeza esse é o seu roteiro preferido de férias!");
+                Game.uteis.addRelatorios(
+                        "Você escolheu seguir pela praia, com certeza esse é o seu roteiro preferido de férias!");
+                Game.uteis.mostraRelatorio();
                 caminhoPraia();
                 break;
 
             case "2", "FLORESTA":
                 control = false;
-                relatorio.add("Você com certeza é uma pessoa que gosta de se conectar com a natureza.");
+                Game.uteis.addRelatorios("Você com certeza é uma pessoa que gosta de se conectar com a natureza.");
+                Game.uteis.mostraRelatorio();
                 caminhoFloresta();
                 break;
 
@@ -360,15 +365,18 @@ public class Historia {
 
             case "1", "CACHOEIRA":
                 control = false;
-                relatorio.add("Você decidiu seguir pela cachoeira, é um sinal que talvez você precise relaxar");
+                Game.uteis.addRelatorios(
+                        "Você decidiu seguir pela cachoeira, é um sinal que talvez você precise relaxar");
                 Game.uteis.limpaConsole();
+                Game.uteis.mostraRelatorio();
                 Game.combate.inimigo("inimigo", "");
                 caminhoCachoeira();
                 break;
 
             case "2", "FUMAÇA":
                 control = false;
-                relatorio.add("Você seguiu o caminho do sinal de fumaça, portanto você odeia ficar sozinho!");
+                Game.uteis
+                        .addRelatorios("Você seguiu o caminho do sinal de fumaça, portanto você odeia ficar sozinho!");
                 Game.uteis.limpaConsole();
                 Game.combate.inimigo("inimigo", "");
                 caminhoFumaca();
@@ -430,7 +438,7 @@ public class Historia {
 
             case "1", "CAVERNA":
                 control = false;
-                relatorio.add(
+                Game.uteis.addRelatorios(
                         "Você decidiu ir pela caverna, isso mostra que após qualquer momento de descanso você se renova e consegue correr qualquer maratona");
                 Game.uteis.limpaConsole();
                 caminhoCaverna();
@@ -438,7 +446,7 @@ public class Historia {
 
             case "2", "FUMAÇA":
                 control = false;
-                relatorio.add("Você foi para a cachoeira, mas decidiu voltar, é uma pessoa muito indecisa!");
+                Game.uteis.addRelatorios("Você foi para a cachoeira, mas decidiu voltar, é uma pessoa muito indecisa!");
                 Game.uteis.limpaConsole();
                 caminhoFumaca();
                 break;
@@ -485,7 +493,7 @@ public class Historia {
 
             case "1", "ATACA":
                 control = false;
-                ataques++;
+                Game.uteis.ataques++;
                 Game.uteis.limpaConsole();
 
                 // SPAWNA BOSS
@@ -517,7 +525,7 @@ public class Historia {
 
             case "2", "FOGE":
                 control = false;
-                fugas++;
+                Game.uteis.fugas++;
                 Game.uteis.limpaConsole();
                 caminhoCachoeira();
                 break;
@@ -586,7 +594,7 @@ public class Historia {
 
             case "2", "ARVORE":
                 control = false;
-                relatorio.add(
+                Game.uteis.addRelatorios(
                         "Você decidiu ir até a fumaça, subir e ficar na árvore, é uma pessoa que preza pela segurança.");
                 Game.uteis.limpaConsole();
                 caminhoArvore();
@@ -631,7 +639,7 @@ public class Historia {
 
             case "1", "ATACAR":
                 control = false;
-                ataques++;
+                Game.uteis.ataques++;
                 Game.uteis.limpaConsole();
 
                 // SPAWNA BOSS
@@ -667,7 +675,7 @@ public class Historia {
 
             case "2", "FUGIR":
                 control = false;
-                fugas++;
+                Game.uteis.fugas++;
                 Game.uteis.limpaConsole();
                 caminhoFumaca();
                 break;
@@ -829,11 +837,6 @@ public class Historia {
 
         // ESCOLHAS DO JOGADOR
         caminhosJangada();
-
-        String relatorioPronto = "||*************** RELATÓRIO DO JOGO ***************||\n"
-                + "||" + relatorio.toString() + "||";
-
-        Game.uteis.printaTexto(relatorioPronto, 5);
     }
 
     public void penultimoAto() {
@@ -871,7 +874,7 @@ public class Historia {
 
             case "1", "TENTACULOS":
                 Game.uteis.limpaConsole();
-                relatorio.add(
+                Game.uteis.addRelatorios(
                         "Você quis começar atacando a criatura pelos tentáculos, definitivamente você sabe como imobilizar alguém.");
                 // INSTANCIA O BOSS DE FORMA MANUAL POIS NESSE MODO ELE TEM MAIS DEFESA
                 // --MODO COMBATE - TENTÁCULOS--
@@ -888,7 +891,7 @@ public class Historia {
 
             case "2", "OLHO":
                 Game.uteis.limpaConsole();
-                relatorio.add("Você começou atacando a criatura pelos olhos, como você é cruel!!");
+                Game.uteis.addRelatorios("Você começou atacando a criatura pelos olhos, como você é cruel!!");
 
                 // INSTANCIA O BOSS DE FORMA MANUAL POIS NESSE MODO ELE TEM MAIS ATAQUE
                 // --MODO COMBATE - OLHO DA CRIATURA--
@@ -967,6 +970,7 @@ public class Historia {
                         + "||*********************************************************************************************||\n\n";
 
                 Game.uteis.printaTexto(finalDoJogo, 5);
+                Game.uteis.ataques++;
                 fim();
                 break;
 
@@ -988,7 +992,9 @@ public class Historia {
 
         Game.uteis.printaTexto(fim, 25);
         Game.uteis.delayParaProximoComando(50);
+        Game.uteis.mostraRelatorio();
         System.exit(1);
+
     }
 
     // MÉTODO QUE USA AS VARIÁVEIS DE CONTROLE PARA PRINTAR OS CAMINHOS RESTANTES
@@ -1011,7 +1017,7 @@ public class Historia {
 
                 case "1", "FOLHAS":
                     control = false;
-                    relatorio.add(
+                    Game.uteis.addRelatorios(
                             "Você preferiu construir a jangada começando pelas folha de Palmeira, então pra você a direção é o mais importante.");
                     Game.uteis.limpaConsole();
                     folhasDePalmeira();
@@ -1019,14 +1025,16 @@ public class Historia {
 
                 case "2", "MADEIRAS":
                     control = false;
-                    relatorio.add("Você decidiu construir a jangada começando pela base, excelente escolha!");
+                    Game.uteis
+                            .addRelatorios("Você decidiu construir a jangada começando pela base, excelente escolha!");
                     Game.uteis.limpaConsole();
                     madeira();
                     break;
 
                 case "3", "CORDAS":
                     control = false;
-                    relatorio.add("Você decidiu ir atrás das cordas primeiro, a união é importante pra você!");
+                    Game.uteis
+                            .addRelatorios("Você decidiu ir atrás das cordas primeiro, a união é importante pra você!");
                     Game.uteis.limpaConsole();
                     corda();
                     break;
