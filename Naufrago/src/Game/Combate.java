@@ -97,30 +97,23 @@ public class Combate {
         }
     }
 
-    /*
-     * //FAZ APARECER O INIMIGO / BOSS COM OS STATUS PASSADOS
-     * public void spawnaInimigo(String nomeInimigo, double vidaInimigo, double
-     * forcaInimigo, double resistenciaInimigo, int nivelInimigo, String
-     * tipoInimigo) {
-     * 
-     * //CRIA UMA NOVA INSTÂNCIA COM OS STATUS DO NOVO INIMIGO
-     * if (tipoInimigo == "inimigo") {
-     * Game.inimigo = new Inimigo(nomeInimigo, vidaInimigo, forcaInimigo,
-     * resistenciaInimigo, nivelInimigo);
-     * System.out.println("Você encontra o inimigo: " +
-     * Game.inimigo.getNomeInimigo() + ".\n\n");
-     * }
-     * //CRIA UMA NOVA INSTÂNCIA COM OS STATUS DO NOVO BOSS
-     * else {
-     * Game.boss = new Boss(nomeInimigo, vidaInimigo, forcaInimigo,
-     * resistenciaInimigo, nivelInimigo);
-     * System.out.println("Você encontra o inimigo: " + Game.boss.getNomeInimigo() +
-     * ".\n\n");
-     * }
-     * 
-     * combate(tipoInimigo);
-     * }
-     */
+    // FAZ APARECER O INIMIGO / BOSS COM OS STATUS PASSADOS
+    public void spawnaInimigo(String nomeInimigo, double vidaInimigo, double forcaInimigo, double resistenciaInimigo,
+            int nivelInimigo, String tipoInimigo) {
+
+        // CRIA UMA NOVA INSTÂNCIA COM OS STATUS DO NOVO INIMIGO
+        if (tipoInimigo == "inimigo") {
+            Game.inimigo = new Inimigo(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
+            System.out.println("Você encontra o inimigo: " + Game.inimigo.getNomeInimigo() + ".\n\n");
+        }
+        // CRIA UMA NOVA INSTÂNCIA COM OS STATUS DO NOVO BOSS
+        else {
+            Game.boss = new Boss(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
+            System.out.println("Você encontra o inimigo: " + Game.boss.getNomeInimigo() + ".\n\n");
+        }
+
+        combate(tipoInimigo);
+    }
 
     public static void combate(String tipoInimigo) {
 

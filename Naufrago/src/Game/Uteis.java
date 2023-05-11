@@ -71,9 +71,6 @@ public class Uteis {
 	// ADIÇÃO RELATÓRIOS
 	public void addRelatorios(String text) {
 		relatorio.add(text);
-		// for (int i = 0; i <= relatorio.size(); i++) {
-		// System.out.println(relatorio.get(i));
-		// }
 	}
 
 	public void mostraRelatorio() {
