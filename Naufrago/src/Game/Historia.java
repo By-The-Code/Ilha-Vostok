@@ -26,18 +26,11 @@ public class Historia {
                                 + "|| E então, a colisão.                                                                           ||\n"
                                 + "||***********************************************************************************************||\n\n";
 
-                Game.uteis.printaTexto(intro, 0);
-
-                Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
-                Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
-                Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
-                Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
-                Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
-                Game.uteis.addRelatorios("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
+                Game.uteis.printaTexto(intro, 5);
 
                 try {
                         Thread.sleep(2000);
-                        ultimoAto();
+                        apresentacao();
                 } catch (InterruptedException e) {
                         e.printStackTrace();
                 }
@@ -53,7 +46,7 @@ public class Historia {
                                 + "|| Você tenta se lembrar de coisas básicas como o seu nome. ||\n"
                                 + "||**********************************************************||\n\n";
 
-                Game.uteis.printaTexto(apresentacaoNome, 0);
+                Game.uteis.printaTexto(apresentacaoNome, 5);
 
                 System.out.println(
                                 "||*********************||\n"
@@ -81,7 +74,7 @@ public class Historia {
                                 + "||===========================================================||\n"
                                 + "||***********************************************************||\n";
 
-                Game.uteis.printaTexto(apresentacaoProfissao, 0);
+                Game.uteis.printaTexto(apresentacaoProfissao, 5);
 
                 System.out.println(
                                 "||**********************||\n"
@@ -173,7 +166,6 @@ public class Historia {
                                 control = false;
                                 Game.uteis.addRelatorios(
                                                 "Você escolheu seguir pela praia, com certeza esse é o seu roteiro preferido de férias!");
-                                Game.uteis.mostraRelatorio();
                                 caminhoPraia();
                                 break;
 
@@ -181,7 +173,6 @@ public class Historia {
                                 control = false;
                                 Game.uteis.addRelatorios(
                                                 "Você com certeza é uma pessoa que gosta de se conectar com a natureza.");
-                                Game.uteis.mostraRelatorio();
                                 caminhoFloresta();
                                 break;
 
@@ -996,6 +987,7 @@ public class Historia {
                 Game.uteis.printaTexto(fim, 25);
                 Game.uteis.delayParaProximoComando(50);
                 Game.uteis.mostraRelatorio();
+                Game.uteis.delayParaProximoComando(50);
 
                 Game.menu.creditos();
 

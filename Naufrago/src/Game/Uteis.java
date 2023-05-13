@@ -77,17 +77,31 @@ public class Uteis {
 
 		Game.uteis.limpaConsole();
 
-		String rel = "\n                            RELATÓRIO: ";
+		String rel = "\n                            RELATÓRIO: \n";
 
 		printaTexto(rel, 5);
 
 		for (int i = 0; i < relatorio.size(); i++) {
-			System.out.print(" || " + relatorio.get(i) + " || ");
-			System.out.println("|| ");
+			System.out.print(" || " + relatorio.get(i) + "                || ");
+			System.out.println("                                        || ");
 		}
 
-		System.out.println("ATAQUES:" + ataques);
-		System.out.println("FUGAS: " + fugas);
+		System.out.println("");
+
+		if (ataques == 1 && fugas > 1) {
+			System.out.println("               Você atacou " + ataques + " vez, e fugiu " + fugas + " vezes.\n");
+		} else if (ataques > 1 && fugas == 1) {
+			System.out.println("               Você atacou " + ataques + " vezes, e fugiu " + fugas + " vez.\n");
+		} else if (ataques > 1 && fugas > 1) {
+			System.out.println("               Você atacou " + ataques + " vezes, e fugiu " + fugas + " vezes.\n");
+		}
+
+		if (ataques > fugas) {
+			System.out.println("              Uma pessoa que não foge de confusão!");
+		} else {
+			System.out.println(
+					"                          Uma pessoa claramente pacífica, evita resolver as coisas de forma violenta!");
+		}
 
 	}
 }
