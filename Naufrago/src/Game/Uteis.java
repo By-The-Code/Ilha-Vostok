@@ -44,8 +44,8 @@ public class Uteis {
 	public boolean Continuar() {
 
 		System.out.println("||************************************||\n"
-				+ "||  Pressione 'ENTER' para continuar. ||\n"
-				+ "||************************************||\n");
+						 + "||  Pressione 'ENTER' para continuar. ||\n"
+						 + "||************************************||\n");
 
 		String input = Game.sc.nextLine();
 
@@ -77,30 +77,30 @@ public class Uteis {
 
 		Game.uteis.limpaConsole();
 
-		String rel = "\n                            RELATÓRIO: \n\n";
+		String rel = "▪——————————————————————————————————————————————— ⟦ RELATÓRIO ⟧ ———————————————————————————————————————————————▪: \n\n";
 
 		printaTexto(rel, 5);
 
 		for (int i = 0; i < relatorio.size(); i++) {
-			System.out.print(" || " + relatorio.get(i) + "                ");
-			System.out.println("                                        ");
+			System.out.print(" ✓ " + relatorio.get(i) + "\n");
+			System.out.println();
 		}
 
 		System.out.println("");
 
 		if (ataques == 1 && fugas > 1) {
-			System.out.println("               Você atacou " + ataques + " vez, e fugiu " + fugas + " vezes.\n");
+			System.out.println(" ——————————————————————————————————— VOCÊ ATACOU " + ataques + " VEZ E FUGIU " + fugas + " VEZES. ———————————————————————————————————");
 		} else if (ataques > 1 && fugas == 1) {
-			System.out.println("               Você atacou " + ataques + " vezes, e fugiu " + fugas + " vez.\n");
+			System.out.println(" ——————————————————————————————————— VOCÊ ATACOU " + ataques + " VEZES E FUGIU " + fugas + " VEZ. ———————————————————————————————————");
 		} else if (ataques > 1 && fugas > 1) {
-			System.out.println("               Você atacou " + ataques + " vezes, e fugiu " + fugas + " vezes.\n");
+			System.out.println(" ——————————————————————————————————— VOCÊ ATACOU " + ataques + " VEZES E FUGIU " + fugas + " VEZES. ———————————————————————————————————");
 		}
 
 		if (ataques > fugas) {
-			System.out.println("              Uma pessoa que não foge de confusão!");
+			System.out.println("\nClaramente você é uma pessoa que não foge de confusão!");
 		} else {
 			System.out.println(
-					"  Uma pessoa claramente pacífica, evita resolver as coisas de forma violenta!");
+					"\nClaramente você é uma pessoa pacífica, evita resolver as coisas de forma violenta!");
 		}
 
 	}

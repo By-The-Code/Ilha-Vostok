@@ -122,10 +122,10 @@ public class Combate {
         // OPÇÕES QUE IRÃO APARECER PARA O PRIMEIRO ÍNIMIGO - TUTORIAL
         if (inimigoSpawnControl == 0) {
             System.out.println(
-                    "||*************  O QUE VOCÊ FAZ? *************||\n"
-                            + "||============================================||\n"
-                            + "|| 1 - Atacar                                 ||\n"
-                            + "||============================================||");
+                    "||*** O QUE VOCÊ FAZ? ***||\n"
+                  + "||=======================||\n"
+                  + "|| 1 - Ataca (Atacar)    ||\n"
+                  + "||=======================||");
 
             input = Game.sc.next().toUpperCase();
 
@@ -144,10 +144,10 @@ public class Combate {
         // OPÇÕES QUE IRÃO APARECER PARA O SEGUNDO INIMIGO - TUTORIAL
         else if (inimigoSpawnControl == 1) {
             System.out.println(
-                    "||*************  O QUE VOCÊ FAZ? *************||\n"
-                            + "||============================================||\n"
-                            + "|| 1 - Fugir                                  ||\n"
-                            + "||============================================||");
+                    "||*** O QUE VOCÊ FAZ? ***||\n"
+                  + "||=======================||\n"
+                  + "||  1 - Foge (Fugir)     ||\n"
+                  + "||=======================||");
 
             input = Game.sc.next().toUpperCase();
 
@@ -161,8 +161,8 @@ public class Combate {
                         Game.uteis.fugas++;
                         System.out.println(
                                 "||*******************||\n"
-                                        + "||    VOCÊ FUGIU!    ||\n"
-                                        + "||*******************||\n");
+                              + "||     VOCÊ FUGIU!   ||\n"
+                              + "||*******************||\n");
                     }
                     return;
 
@@ -175,11 +175,11 @@ public class Combate {
         // OPÇÕES QUE IRÃO APARECER PARA OS DEMAIS INIMIGOS
         else {
             System.out.println(
-                    "||*************  O QUE VOCÊ FAZ? *************||\n"
-                            + "||============================================||\n"
-                            + "|| 1 - Atacar                                 ||\n"
-                            + "|| 2 - Fugir                                  ||\n"
-                            + "||============================================||");
+                    "||*** O QUE VOCÊ FAZ? ***||\n"
+                  + "||=======================||\n"
+                  + "||  1 - Ataca (Atacar)   ||\n"
+                  + "||  2 - Foge  (Fugir)    ||\n"
+                  + "||=======================||");
 
             input = Game.sc.next().toUpperCase();
 
@@ -197,8 +197,8 @@ public class Combate {
                         Game.uteis.fugas++;
                         System.out.println(
                                 "||*******************||\n"
-                                        + "||    VOCÊ FUGIU!    ||\n"
-                                        + "||*******************||\n");
+                              + "||     VOCÊ FUGIU!   ||\n"
+                              + "||*******************||\n");
                     }
                     return;
 
@@ -279,7 +279,7 @@ public class Combate {
                 // SE FOR SUFICIENTE O JOGADOR PASSA DE NÍVEL
                 else {
                     inimigoSpawnControl++;
-                    System.out.println("Você derrotou o(a)) " + Game.inimigo.getNomeInimigo() + ".\n");
+                    System.out.println("Você derrotou o(a) " + Game.inimigo.getNomeInimigo() + ".\n");
                     Game.jogador.passaDeNivel(Game.inimigo.dropExperiencia());
                     System.out.println(Game.jogador.getStatus() + "\n");
                 }
@@ -316,7 +316,7 @@ public class Combate {
                 // XP DO JOGADOR E,
                 // SE FOR SUFICIENTE O JOGADOR PASSA DE NÍVEL
                 else {
-                    System.out.println("Você derrotou o(a)): " + Game.boss.getNomeInimigo());
+                    System.out.println("Você derrotou o(a): " + Game.boss.getNomeInimigo());
                     Game.jogador.passaDeNivel(Game.boss.dropExperiencia());
                     System.out.println(Game.jogador.getStatus() + "\n");
                 }
@@ -332,12 +332,12 @@ public class Combate {
 
         // SE FOR INÍMIGO PRINTA O NOME DO INÍMIGO QUE APARECEU
         if (tipoInimigo == "inimigo") {
-            System.out.println("O " + Game.inimigo.getNomeInimigo() + " tenta te atacar");
+            System.out.println("O(A) " + Game.inimigo.getNomeInimigo() + " tenta te atacar");
         }
 
         // SE FOR BOSS PRINTA O NOME DO BOSS
         else {
-            System.out.println("O " + Game.boss.getNomeInimigo() + " tenta te atacar");
+            System.out.println("O(A) " + Game.boss.getNomeInimigo() + " tenta te atacar");
         }
 
         // INIMIGO ERROU O ATAQUE
@@ -431,9 +431,9 @@ public class Combate {
     public static void fimDeJogo() {
         System.out.println(
                 "||********************||\n"
-                        + "||    VOCÊ MORREU!    ||\n"
-                        + "||    FIM DE JOGO     ||\n"
-                        + "||********************||\n\n");
+              + "||    VOCÊ MORREU!    ||\n"
+              + "||    FIM DE JOGO     ||\n"
+              + "||********************||\n\n");
 
         Game.uteis.delayParaProximoComando(50);
         Game.uteis.limpaConsole();
