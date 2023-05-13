@@ -105,7 +105,7 @@ public class Historia {
                                 profissao = "PROFESSOR";
                                 Game.jogador = new Jogador(nome, profissao);
                                 Game.uteis.addRelatorios(
-                                                "Professoer, pra você a estratégia é fundamental para resovler os problemas, muito esperto!");
+                                                "Professor, pra você a estratégia é fundamental para resovler os problemas, muito esperto!");
                                 break;
 
                         default:
@@ -172,7 +172,7 @@ public class Historia {
                         case "2", "FLORESTA":
                                 control = false;
                                 Game.uteis.addRelatorios(
-                                                "Você com certeza é uma pessoa que gosta de se conectar com a natureza.");
+                                                "Você decidiu seguir pela floresta, com certeza é uma pessoa que gosta de se conectar com a natureza.");
                                 caminhoFloresta();
                                 break;
 
@@ -852,6 +852,7 @@ public class Historia {
                                         + "|| Você precisa tomar uma atitude rápida.                                                        ||\n"
                                         + "||***********************************************************************************************||\n";
 
+                        Game.uteis.printaTexto(finalBoss, 5);
                         control = true;
                 }
 
@@ -987,8 +988,9 @@ public class Historia {
                 Game.uteis.printaTexto(fim, 25);
                 Game.uteis.delayParaProximoComando(50);
                 Game.uteis.mostraRelatorio();
-                Game.uteis.delayParaProximoComando(50);
+                Game.uteis.delayParaProximoComando(200);
 
+                Game.uteis.limpaConsole();
                 Game.menu.creditos();
 
                 // System.exit(1);

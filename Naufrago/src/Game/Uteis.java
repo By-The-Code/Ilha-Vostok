@@ -77,13 +77,13 @@ public class Uteis {
 
 		Game.uteis.limpaConsole();
 
-		String rel = "\n                            RELATÓRIO: \n";
+		String rel = "\n                            RELATÓRIO: \n\n";
 
 		printaTexto(rel, 5);
 
 		for (int i = 0; i < relatorio.size(); i++) {
-			System.out.print(" || " + relatorio.get(i) + "                || ");
-			System.out.println("                                        || ");
+			System.out.print(" || " + relatorio.get(i) + "                ");
+			System.out.println("                                        ");
 		}
 
 		System.out.println("");
@@ -100,7 +100,7 @@ public class Uteis {
 			System.out.println("              Uma pessoa que não foge de confusão!");
 		} else {
 			System.out.println(
-					"                          Uma pessoa claramente pacífica, evita resolver as coisas de forma violenta!");
+					"  Uma pessoa claramente pacífica, evita resolver as coisas de forma violenta!");
 		}
 
 	}
