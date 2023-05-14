@@ -1,12 +1,10 @@
 package Game;
 
-import java.util.List;
-
 public class Historia {
 
         // VARIÁVEIS DE CONTROLE DA HISTÓRIA
-        boolean control, agua, comida, folhas, madeira, corda;
-        String input = "";
+        private boolean control, agua, comida, folhas, madeira, corda;
+        private  String input = "";
 
         // INTRO
         public void intro() {
@@ -125,10 +123,10 @@ public class Historia {
                 Game.uteis.printaTexto(lembranca, 5);
 
                 // PARA CONTINUAR APÓS A INTRODUÇÃO O JOGADOR DEVE APERTAR ALGUAM TECLA
-                if (Game.uteis.Continuar()) {
-                        Game.uteis.limpaConsole();
+                //if (Game.uteis.Continuar()) {
+                        //Game.uteis.limpaConsole();
                         primeiroAto();
-                }
+                //}
         }
 
         // PRIMEIRO ATO
@@ -425,7 +423,7 @@ public class Historia {
                 System.out.println(
                                 "||********* O QUE VOCÊ FAZ? *********||\n"
                               + "||===================================||\n"
-                              + "||  1 - Entra na caverna (Caverna)   ||\n"
+                              + "||  1 - Entra na caverna   (Caverna) ||\n"
                               + "||  2 - Volta para o Oeste (Fumaça)  ||\n"
                               + "||===================================||\n");
 
@@ -493,7 +491,7 @@ public class Historia {
 
                         case "1", "ATACA":
                                 control = false;
-                                Game.uteis.ataques++;
+                                Game.uteis.setAtaques();
                                 Game.uteis.limpaConsole();
 
                                 // SPAWNA BOSS
@@ -526,7 +524,7 @@ public class Historia {
 
                         case "2", "FOGE":
                                 control = false;
-                                Game.uteis.fugas++;
+                                Game.uteis.setFugas();
                                 Game.uteis.limpaConsole();
                                 caminhoCachoeira();
                                 break;
@@ -641,7 +639,7 @@ public class Historia {
 
                         case "1", "ATACAR":
                                 control = false;
-                                Game.uteis.ataques++;
+                                Game.uteis.setAtaques();
                                 Game.uteis.limpaConsole();
 
                                 // SPAWNA BOSS
@@ -677,7 +675,7 @@ public class Historia {
 
                         case "2", "FUGIR":
                                 control = false;
-                                Game.uteis.fugas++;
+                                Game.uteis.setFugas();
                                 Game.uteis.limpaConsole();
                                 caminhoFumaca();
                                 break;
@@ -824,7 +822,7 @@ public class Historia {
 
                 String louvaDeusGigante = 
                 		"||***********************************************************************************************||\n"
-                      + "|| ⌜ VOCÊ DECIDE IR ATRÁS DE CORDAS. ⌟                                                           ﾠ||\n"
+                      + "|| ⌜ VOCÊ DECIDE IR ATRÁS DE CORDAS ⌟                                                             ||\n"
                       + "|| Andando pela praia você encontra uma extensão da floresta contendo diversas trepadeiras.      ||\n"
                       + "|| Não são cordas propriamente ditas, mas os cipós das árvores irão servir perfeitamente para a  ||\n"
                       + "|| jangada. Porém, ao se aproximar da vegetação, um Louva-Deus Gigante aparece cortando parte dos||\n"
@@ -879,7 +877,7 @@ public class Historia {
                                 "||******************** O QUE VOCÊ FAZ? ******************||\n"
                               + "||=======================================================||\n"
                               + "||     1 - Bate com a arma nos Tentáculos (Tentaculos)   ||\n"
-                              + "||     2 - Fura o olho da Criatura (Olho)                ||\n"
+                              + "||     2 - Fura o olho da Criatura        (Olho)         ||\n"
                               + "||=======================================================||\n");
 
                 input = Game.sc.next().toUpperCase();
@@ -986,7 +984,8 @@ public class Historia {
                               + "||*********************************************************************************************||\n\n";
 
                                 Game.uteis.printaTexto(finalDoJogo, 5);
-                                Game.uteis.ataques++;
+                                Game.uteis.setAtaques();
+                                Game.uteis.delayParaProximoComando(30);
                                 fim();
                                 break;
 
@@ -999,9 +998,6 @@ public class Historia {
 
         // FIM
         public void fim() {
-
-                Game.uteis.delayParaProximoComando(30);
-
                 String fim = "||******************||\n"
                            + "||      F I M       ||\n"
                            + "||******************||\n\n\n";
