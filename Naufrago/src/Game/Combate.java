@@ -349,7 +349,7 @@ public class Combate {
                     Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) * 2);
                     System.out.println(
                     			"Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) * 2) + " de dano.\n"
-                            + 	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+                            + 	"Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
                 } 
                 
                 //SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
@@ -357,7 +357,7 @@ public class Combate {
                     Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()));
                     System.out.println(
                     			"Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
-                            + 	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+                            + 	"Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
                 }
 
                 //SE A VIDA DO JOGADOR FOR MAIOR QUE 0, RETORNA PARA O MÉTODO DO COMBATE PARA ESCOLHER NOVAMENTE
@@ -379,7 +379,7 @@ public class Combate {
                     Game.jogador.setVidaDano(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()) * 2);
                     System.out.println(
                     			"Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()) * 2) + " de dano.\n"
-                            + 	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+                            + 	"Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
                 } 
                 
                 //SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
@@ -387,7 +387,7 @@ public class Combate {
                     Game.jogador.setVidaDano(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()));
                     System.out.println(
                     			"Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador())) + " de dano.\n"
-                            + 	"Sua vida atual: " + Game.jogador.getVida() + "\n");
+                            + 	"Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
                 }
 
                 //SE A VIDA DO JOGADOR FOR MAIOR QUE 0, RETORNA PARA O MÉTODO DO COMBATE PARA ESCOLHER NOVAMENTE
