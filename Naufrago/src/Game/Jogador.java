@@ -211,7 +211,7 @@ public class Jogador {
             case "Capacete de Ferro":
                 return 15;
 
-            case "Carapaça de Cupim":
+            case "Exoesqueleto de Cupim":
                 return 30;
 
             default:

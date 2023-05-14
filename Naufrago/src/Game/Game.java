@@ -11,16 +11,25 @@ public class Game {
 
   public static Scanner sc = new Scanner(System.in);
   public static Menu menu = new Menu();
-  public static Uteis uteis = new Uteis();
+  public static Uteis  uteis = new Uteis();
   public static Inimigo inimigo;
   public static Jogador jogador;
   public static Boss boss;
   public static Historia historia = new Historia();
   public static Combate combate = new Combate();
+  public static Game game;
 
   // INICIA O JOGO CHAMANDO O MÉTODO 'INTRO' DA CLASSE 'MENU'
   public static void main(String[] args) {
+    /*
+    game = new Game();
 
+    historia = new Historia();
+    combate = new Combate();
+    uteis = new Uteis();
+    menu = new Menu();
+    sc = new Scanner(System.in);
+    */
     /*
      * jogador = new Jogador ("Alfonse", "PROFESSOR");
      * System.out.println(jogador.getStatus());

@@ -1,12 +1,10 @@
 package Game;
 
-import java.util.List;
-
 public class Historia {
 
         // VARIÁVEIS DE CONTROLE DA HISTÓRIA
-        boolean control, agua, comida, folhas, madeira, corda;
-        String input = "";
+        private boolean control, agua, comida, folhas, madeira, corda;
+        private String input = "";
 
         // INTRO
         public void intro() {
@@ -39,7 +37,7 @@ public class Historia {
         // APRESENTAÇÃO
         public void apresentacao() {
 
-                String apresentacaoNome = "||**********************************************************||\n"
+                String apresentacaoNome =         "||**********************************************************||\n"
                                 		+ "|| Você acorda numa ilha no meio do Pacífico.               ||\n"
                                 		+ "|| Olhando ao redor você nota que todos os outros           ||\n"
                                 		+ "|| membros da comitiva não tiveram a mesma sorte que você.  ||\n"
@@ -49,14 +47,15 @@ public class Historia {
                 Game.uteis.printaTexto(apresentacaoNome, 5);
 
                 System.out.println(
-                				"||*********************||\n"
+                		"||*********************||\n"
                               + "|| COMO VOCÊ SE CHAMA: ||\n"
                               + "||*********************||\n");
 
                 // ESCOLHE O NOME
                 String nome = Game.sc.next();
 
-                String apresentacaoProfissao = "\n\n"
+                String apresentacaoProfissao =
+                                  "\n"
                                 + "||***********************************************************||\n"
                                 + "|| Você também tenta lembrar de outras coisas                ||\n"
                                 + "|| básicas da sua vida para garantir que está tudo bem,      ||\n"
@@ -125,10 +124,10 @@ public class Historia {
                 Game.uteis.printaTexto(lembranca, 5);
 
                 // PARA CONTINUAR APÓS A INTRODUÇÃO O JOGADOR DEVE APERTAR ALGUAM TECLA
-                if (Game.uteis.Continuar()) {
-                        Game.uteis.limpaConsole();
+                //if (Game.uteis.Continuar()) {
+                //        Game.uteis.limpaConsole();
                         primeiroAto();
-                }
+                //}
         }
 
         // PRIMEIRO ATO
@@ -155,7 +154,7 @@ public class Historia {
                 System.out.println(
                                 "||********** O QUE VOCÊ FAZ? ***********||\n"
                               + "||======================================||\n"
-                              + "|| 1 - Seguir pela Praia (Praia)        ||\n"
+                              + "|| 1 - Seguir pela Praia    (Praia)     ||\n"
                               + "|| 2 - Seguir pela Floresta (Floresta)  ||\n"
                               + "||======================================||\n");
 
@@ -228,16 +227,16 @@ public class Historia {
                                     + "||***********************************************************************************************||\n\n";
 
                 String continuacaoPraia = 
-                					  "||***********************************************************************************************||\n"
-                                    + "|| Você se depara com uma montanha de rochas que impede que você siga pela praia, sua única      ||\n"
-                                    + "|| opção é entrar na floresta e é exatamente isso que você faz.                                  ||\n"
-                                    + "|| Entrando na floresta você se depara com uma cobra no tronco de uma árvore, porém você nota    ||\n"
-                                    + "|| alguma coisa brotando do que seriam as ‘costas’ do réptil, mas também nota que ela aparenta   ||\n"
-                                    + "|| ser um filhote pelo seu tamanho. Quando você percebe a peculiaridade deste animal, ela já     ||\n"
-                                    + "|| está avançando em sua direção com um par de asas abertas e por mais jovem que seja, é um      ||\n"
-                                    + "|| animal extremamente violento. Você já notou que as histórias sobre esse lugar aparentavam     ||\n"
-                                    + "|| ser verdadeiras.                                                                              ||\n"
-                                    + "||***********************************************************************************************||\n\n";
+                		        "||***********************************************************************************************||\n"
+                                    +   "|| Você se depara com uma montanha de rochas que impede que você siga pela praia, sua única      ||\n"
+                                    +   "|| opção é entrar na floresta e é exatamente isso que você faz.                                  ||\n"
+                                    +   "|| Entrando na floresta você se depara com uma cobra no tronco de uma árvore, porém você nota    ||\n"
+                                    +   "|| alguma coisa brotando do que seriam as ‘costas’ do réptil, mas também nota que ela aparenta   ||\n"
+                                    +   "|| ser um filhote pelo seu tamanho. Quando você percebe a peculiaridade deste animal, ela já     ||\n"
+                                    +   "|| está avançando em sua direção com um par de asas abertas e por mais jovem que seja, é um      ||\n"
+                                    +   "|| animal extremamente violento. Você já notou que as histórias sobre esse lugar aparentavam     ||\n"
+                                    +   "|| ser verdadeiras.                                                                              ||\n"
+                                    +   "||***********************************************************************************************||\n\n";
 
                 Game.uteis.printaTexto(caminhoPraia, 5);
 
@@ -310,7 +309,7 @@ public class Historia {
 
                 if (!control) {
                         String caminhosUnificados = 
-                        		"||***********************************************************************************************||\n"
+                        	"||***********************************************************************************************||\n"
                               + "|| Você continua floresta adentro, ao retirar alguns galhos e folhas do caminho, você            ||\n"
                               + "|| acidentalmente se depara com um, ou melhor, centenas de patas pertencentes a uma Lacraia      ||\n"
                               + "|| Gigante, com aproximadamente 3,50m de comprimento bem próximo a você. Ela não gostou de você  ||\n"
@@ -320,7 +319,7 @@ public class Historia {
                               + "||***********************************************************************************************||\n\n";
 
                         String caminhosUnificadosContinuacao = 
-                        		"||***********************************************************************************************||\n"
+                        	"||***********************************************************************************************||\n"
                               + "|| Diante de uma criatura aterrorizante daquela, você decide fugir. Você corre até uma clareira, ||\n"
                               + "|| onde seus passos desesperados conseguiram te levar, pois percebeu que aquela criatura não     ||\n"
                               + "|| gostava muito da luz do sol portanto ela não te seguiu.                                       ||\n"
@@ -392,7 +391,7 @@ public class Historia {
 
                 if (!control) {
                         String caminhoCachoeira = 
-                        		"||************************************************************************************************||\n"
+                        	"||************************************************************************************************||\n"
                               + "|| Ao chegar na cachoeira você se depara com um local lindo e estaria ainda mais maravilhado se   ||\n"
                               + "|| não lembrasse das possíveis lacraias gigantes que poderiam existir por ali, te deixando        ||\n"
                               + "|| alerta. Além disso você consegue ver a extensão do rio levando até a praia, você está          ||\n"
@@ -400,7 +399,7 @@ public class Historia {
                               + "||************************************************************************************************||\n\n";
 
                         String continuacaoCachoeira = 
-                        		"||************************************************************************************************||\n"
+                        	"||************************************************************************************************||\n"
                               + "|| A água parece boa, você se sente renovado.                                                     ||\n"
                               + "|| Olhando a frente, você verifica que numa das “paredes” da cachoeira possui uma abertura.       ||\n"
                               + "|| Aparentemente uma caverna que poderia servir de abrigo durante a noite, mas ela pode abrigar   ||\n"
@@ -425,7 +424,7 @@ public class Historia {
                 System.out.println(
                                 "||********* O QUE VOCÊ FAZ? *********||\n"
                               + "||===================================||\n"
-                              + "||  1 - Entra na caverna (Caverna)   ||\n"
+                              + "||  1 - Entra na caverna   (Caverna) ||\n"
                               + "||  2 - Volta para o Oeste (Fumaça)  ||\n"
                               + "||===================================||\n");
 
@@ -463,10 +462,10 @@ public class Historia {
 
                 if (!control) {
                         String caminhoCaverna = 
-                        		"||************************************************************************************************||\n"
+                        	"||************************************************************************************************||\n"
                               + "|| Se esgueirando pelos cantos até entrar na caverna, você acha estranho o fato dela ser quente e ||\n"
                               + "|| pensa que passar a noite ali seria realmente bem agradável, afinal, você já estaria protegido  ||\n"
-                              + "|| do frio, porém, não é só você que teve essa ideia…                                             ||\n"
+                              + "|| do frio, porém, não é só você que teve essa ideia...                                           ||\n"
                               + "|| No teto da caverna, de cabeça para baixo, está pendurado o que parece ser uma família          ||\n"
                               + "|| enorme de morcegos fluorescentes e no meio deles, existe um que se destaca, aparentemente a    ||\n"
                               + "|| mãe de todos aqueles animais exóticos.                                                         ||\n"
@@ -493,7 +492,7 @@ public class Historia {
 
                         case "1", "ATACA":
                                 control = false;
-                                Game.uteis.ataques++;
+                                Game.uteis.setAtaques();;
                                 Game.uteis.limpaConsole();
 
                                 // SPAWNA BOSS
@@ -504,7 +503,7 @@ public class Historia {
                                 Game.jogador.setArma("Osso Humano");
 
                                 String continuacaoCaverna = 
-                                		"||***********************************************************************************************||\n"
+                                	"||***********************************************************************************************||\n"
                                       + "|| Após você enfrentar e matar a mãe de todos, seus filhotes voam para fora da caverna,          ||\n"
                                       + "|| fugindo com medo, agora que sua mãe está morta.                                               ||\n"
                                       + "|| Agora mais calmo, você consegue notar alguns objetos do que um dia pertenceram a um humano    ||\n"
@@ -518,7 +517,7 @@ public class Historia {
                                 // PRINTA A NOVA ARMADURA E A DEFESA QUE ELA DÁ
                                 System.out.println("Arma Atualizada: " + Game.jogador.getArma()
                                                 + " | Dano: " + Game.jogador.getDanoArma(Game.jogador.getArma())
-                                                + ".\n\n");
+                                                + ".\n");
 
                                 // CHAMA O PRÓXIMO ATO
                                 terceiroAto();
@@ -526,7 +525,7 @@ public class Historia {
 
                         case "2", "FOGE":
                                 control = false;
-                                Game.uteis.fugas++;
+                                Game.uteis.setFugas();;
                                 Game.uteis.limpaConsole();
                                 caminhoCachoeira();
                                 break;
@@ -554,15 +553,15 @@ public class Historia {
                                              + "||************************************************************************************************||\n\n";
 
                         String continuacaoFumaca = 
-                        		               "||***********************************************************************************************||\n"
-                                             + "|| As abóboras estavam deliciosas, você se sente saciado e mais disposto.                        ||\n"
-                                             + "|| Olhando ao redor, você percebe que a vegetação muda um pouco, as árvores aqui se assemelham a ||\n"
-                                             + "|| baobás, com a copa e os troncos largos o bastante para acomodarem um humano deitado,          ||\n"
-                                             + "|| com folhagens densas o bastante para impedir a chuva, além disso alguns galhos menores estão  ||\n"
-                                             + "|| dispostos nas árvores de madeira que formam perfeitamente degraus até o topo.                 ||\n"
-                                             + "|| Você precisa de um lugar para passar a noite e, para se proteger do frio, poderia colocar     ||\n"
-                                             + "|| algumas abóboras quentinhas e folhagens sob você.                                             ||\n"
-                                             + "||***********************************************************************************************||\n\n";
+                        	                "||***********************************************************************************************||\n"
+                                             +  "|| As abóboras estavam deliciosas, você se sente saciado e mais disposto.                        ||\n"
+                                             +  "|| Olhando ao redor, você percebe que a vegetação muda um pouco, as árvores aqui se assemelham a ||\n"
+                                             +  "|| baobás, com a copa e os troncos largos o bastante para acomodarem um humano deitado,          ||\n"
+                                             +  "|| com folhagens densas o bastante para impedir a chuva, além disso alguns galhos menores estão  ||\n"
+                                             +  "|| dispostos nas árvores de madeira que formam perfeitamente degraus até o topo.                 ||\n"
+                                             +  "|| Você precisa de um lugar para passar a noite e, para se proteger do frio, poderia colocar     ||\n"
+                                             +  "|| algumas abóboras quentinhas e folhagens sob você.                                             ||\n"
+                                             +  "||***********************************************************************************************||\n\n";
 
                         Game.uteis.printaTexto(caminhoFumaca, 5);
                         Game.uteis.printaTexto(continuacaoFumaca, 5);
@@ -620,7 +619,7 @@ public class Historia {
                                              + "|| muito, pois você sente um vulto passando no céu atrás de você, ao se virar o que parece ser   ||\n"
                                              + "|| um cavalo, com cabeça e asas de àguia está voando a toda velocidade na sua direção,           ||\n"
                                              + "|| aparentemente aquele ninho pertence a ela. Você se lembra de histórias antigas e de um animal ||\n"
-                                             + "|| assim… Um Hipogrifo, é isso que você enfrentará.                                              ||\n"
+                                             + "|| assim... Um Hipogrifo, é isso que você enfrentará.                                            ||\n"
                                              + "||***********************************************************************************************||\n\n";
 
                         Game.uteis.printaTexto(caminhoArvore, 5);
@@ -641,7 +640,7 @@ public class Historia {
 
                         case "1", "ATACAR":
                                 control = false;
-                                Game.uteis.ataques++;
+                                Game.uteis.setAtaques();;
                                 Game.uteis.limpaConsole();
 
                                 // SPAWNA BOSS
@@ -654,7 +653,7 @@ public class Historia {
                                 Game.jogador.setArmadura("Capacete de Ossos");
 
                                 String continuacaoArvore = 
-                                		  "||*********************************************************************************||\n"
+                                	  "||*********************************************************************************||\n"
                                         + "|| Após você enfrentar e matar o Hipogrifo, agora mais calmo, você consegue notar  ||\n"
                                         + "|| alguns objetos que um dia pertenceram a um ser humano, que não teve tanta sorte ||\n"
                                         + "|| quanto você. Você consegue uma faca e usa os ossos como proteção.               ||\n"
@@ -677,7 +676,7 @@ public class Historia {
 
                         case "2", "FUGIR":
                                 control = false;
-                                Game.uteis.fugas++;
+                                Game.uteis.setFugas();;
                                 Game.uteis.limpaConsole();
                                 caminhoFumaca();
                                 break;
@@ -705,11 +704,11 @@ public class Historia {
                                               + "||***********************************************************||\n");
                                               
                                 Game.jogador.setVidaDano(15);
-                                System.out.println("Vida Atual: " + Game.jogador.getVida() + ".\n\n");
+                                System.out.println("Vida Atual: " + Game.jogador.getVida() + ".\n");
                         }
 
                         String caminhosUnificados2 = 
-                        		"||***********************************************************************************************||\n"
+                        	"||***********************************************************************************************||\n"
                               + "|| Após acordar, você decide ir até a outra extremidade da ilha para explorar um pouco mais e    ||\n"
                               + "|| decidir quais serão os próximos passos. Chegando na praia você elabora uma lista na areia dos ||\n"
                               + "|| itens que precisa para construir sua jangada:                                                 ||\n"
@@ -733,8 +732,8 @@ public class Historia {
                 folhas = true;
 
                 String formigasGigantes = 
-                		          "||*****************************************************************************************************||\n"
-                                + "|| ⌜ VOCÊ DECIDE IR ATRÁS DE FOLHAS DE PALMEIRA. ⌟      ﾠ                                               ||\n"
+                		  "||*****************************************************************************************************||\n"
+                                + "|| ⌜ VOCÊ DECIDE IR ATRÁS DE FOLHAS DE PALMEIRA. ⌟                                                    ||\n"
                                 + "|| Você sabe que achar tecidos por aqui seria pedir demais, já é incrível ter permanecido vivo.        ||\n"
                                 + "|| Então, você se lembra do coco que o macaco-aranha havia arremessado em você, então, deviam          ||\n"
                                 + "|| haver palmeiras por perto, você anda um pouco até encontrá-las, mas o som de outros                 ||\n"
@@ -750,7 +749,7 @@ public class Historia {
                                 + "||*****************************************************************************************************||\n\n";
 
                 String continuacaoFormigasGigantes = 
-                		          "||************************************************************************************||\n"
+                		  "||************************************************************************************||\n"
                                 + "|| VOCÊ CONSEGUIU DERROTÁ-LO!                                                         ||\n"
                                 + "|| Você pega todas as folhas necessárias para sua jangada e leva para a praia.        ||\n"
                                 + "|| Além disso você decide remover as pinças da formiga, aparentam ser uma ótima arma. ||\n"
@@ -779,7 +778,7 @@ public class Historia {
                 madeira = true;
 
                 String cupimGigante = 
-                		"||************************************************************************************************||\n"
+                	"||************************************************************************************************||\n"
                       + "|| ⌜ VOCÊ DECIDE IR ATRÁS DE MADEIRA. ⌟                                                       ﾠ    ||\n"
                       + "|| Você encontra madeiras que servirão perfeitamente para a jangada, com o diâmetro bom o         ||\n"
                       + "|| suficiente para subir com uns 5 troncos, que ficarão firmes com as cordas.                     ||\n"
@@ -794,12 +793,12 @@ public class Historia {
                       + "||************************************************************************************************||\n\n";
 
                 String continuacaoCupimGigante = 
-                		"||************************************************************************************||\n"
-                      + "|| VOCÊ CONSEGUIU DERROTÁ-LO!                                                         ||\n"
-                      + "|| Você pega todas as madeiras necessárias para sua jangada e leva para a praia.      ||\n"
-                      + "|| Além dsso você decide pegar a carapaça dura daquele cupim e usar para se proteger, ||\n"
-                      + "|| definitivamente essa carapaça é melhor do que o que você está usando atualmente.   ||\n"
-                      + "||************************************************************************************||\n\n";
+                	"||****************************************************************************************||\n"
+                      + "|| VOCÊ CONSEGUIU DERROTÁ-LO!                                                             ||\n"
+                      + "|| Você pega todas as madeiras necessárias para sua jangada e leva para a praia.          ||\n"
+                      + "|| Além dsso você decide pegar a exoesqueleto duro daquele cupim e usar para se proteger, ||\n"
+                      + "|| definitivamente esse exoesqueleto é melhor do que o que você está usando atualmente.   ||\n"
+                      + "||****************************************************************************************||\n\n";
 
                 Game.uteis.printaTexto(cupimGigante, 5);
 
@@ -810,7 +809,7 @@ public class Historia {
 
                 // DEFINE A NOVA ARMADURA
                 // PRINTA A NOVA ARMADURA E A DEFESA QUE ELA DÁ
-                Game.jogador.setArmadura("Carapaça de Cupim");
+                Game.jogador.setArmadura("Exoesqueleto de Cupim");
                 System.out.println("Armadura Atualizada: " + Game.jogador.getArmadura() + " | Defesa: "
                                 + Game.jogador.getDefesaArmadura(Game.jogador.getArmadura()) + "\n");
 
@@ -823,7 +822,7 @@ public class Historia {
                 corda = true;
 
                 String louvaDeusGigante = 
-                		"||***********************************************************************************************||\n"
+                	"||***********************************************************************************************||\n"
                       + "|| ⌜ VOCÊ DECIDE IR ATRÁS DE CORDAS. ⌟                                                           ﾠ||\n"
                       + "|| Andando pela praia você encontra uma extensão da floresta contendo diversas trepadeiras.      ||\n"
                       + "|| Não são cordas propriamente ditas, mas os cipós das árvores irão servir perfeitamente para a  ||\n"
@@ -836,7 +835,7 @@ public class Historia {
                       + "||***********************************************************************************************||\n\n";
 
                 String continuacaoLouvaDeusGigante = 
-                		"||*****************************************************************************||\n"
+                	"||*****************************************************************************||\n"
                       + "|| VOCÊ CONSEGUIU DERROTÁ-LO!                                                  ||\n"
                       + "|| Você pega todas as cordas necessárias para sua jangada e leva para a praia. ||\n"
                       + "||*****************************************************************************||\n\n";
@@ -856,8 +855,8 @@ public class Historia {
 
                 if (!control) {
                         String finalBoss = 
-                        		"||***********************************************************************************************||\n"
-                              + "|| Após conseguir todos os itens da lista, você começa a montar sua jangada…                     ||\n"
+                        	"||***********************************************************************************************||\n"
+                              + "|| Após conseguir todos os itens da lista, você começa a montar sua jangada...                   ||\n"
                               + "|| Você utiliza as madeiras, folhas de palmeira e os cipós para construir a jangada que te       ||\n"
                               + "|| levará para longe desta ilha. Você aproveita também para confeccionar uma arma mais forte     ||\n"
                               + "|| utilizando a pata de metal do Louva-Deus Gigante e a pinça da Formiga Gigante.                ||\n"
@@ -865,7 +864,7 @@ public class Historia {
                               + "|| e com sorte chegar até o continente ou um lugar sem tantas criaturas bizarras.                ||\n"
                               + "|| Você coloca a jangada na água e parte dando adeus àquela ilha maldita, você olha para trás e  ||\n"
                               + "|| sorri, agradecendo por ter sobrevivido e pensando em tudo que faria a partir dali, quando     ||\n"
-                              + "|| estivesse realmente são e salvo, porém sua esperança dura pouco…                              ||\n"
+                              + "|| estivesse realmente são e salvo, porém sua esperança dura pouco.                              ||\n"
                               + "|| Diante de você uma criatura enorme emerge das águas, os tentáculos da criatura envolvem toda  ||\n"
                               + "|| a jangada. Um olho do tamanho da sua cabeça está diante de você, te olhando fixamente.        ||\n"
                               + "|| VOCÊ PRECISA TOMAR UMA ATITUDE RÁPIDA.                                                        ||\n"
@@ -879,7 +878,7 @@ public class Historia {
                                 "||******************** O QUE VOCÊ FAZ? ******************||\n"
                               + "||=======================================================||\n"
                               + "||     1 - Bate com a arma nos Tentáculos (Tentaculos)   ||\n"
-                              + "||     2 - Fura o olho da Criatura (Olho)                ||\n"
+                              + "||     2 - Fura o olho da Criatura        (Olho)         ||\n"
                               + "||=======================================================||\n");
 
                 input = Game.sc.next().toUpperCase();
@@ -888,6 +887,12 @@ public class Historia {
 
                         case "1", "TENTACULOS":
                                 Game.uteis.limpaConsole();
+
+                                System.out.println(
+                                        "||============================================================================||\n"
+                                      + "|| Você atinge os tentáculos da Lula, ela está prestando mais atenção em você ||\n"
+                                      + "|| e parece proteger melhor seus tentátulos.                                  ||\n"
+                                      + "||============================================================================||\n");
 
                                 // INSTANCIA O BOSS DE FORMA MANUAL POIS NESSE MODO ELE TEM MAIS DEFESA
                                 // --MODO COMBATE - TENTÁCULOS--
@@ -904,6 +909,12 @@ public class Historia {
 
                         case "2", "OLHO":
                                 Game.uteis.limpaConsole();
+
+                                System.out.println(
+                                        "||=================================================================================||\n"
+                                      + "|| Você atinge o olho da Lula, ela está enfurencida e como sua visão está limitada ||\n"
+                                      + "|| parece que ela quer garantir que cada ataque te machuque bastante.              ||\n"
+                                      + "||=================================================================================||\n");
 
                                 // INSTANCIA O BOSS DE FORMA MANUAL POIS NESSE MODO ELE TEM MAIS ATAQUE
                                 // --MODO COMBATE - OLHO DA CRIATURA--
@@ -940,10 +951,10 @@ public class Historia {
                 if (!control) {
 
                         String ultimaDecisao = 
-                        		"||**************************************************************************************************||\n"
+                        	"||**************************************************************************************************||\n"
                               + "|| VOCÊ VENCEU! Garantindo suas chances de sobrevivência e podendo fugir sem maiores obstáculos.    ||\n"
                               + "|| Você vê a Lula Gigante ainda próxima, mas ela já está fraca e bastante ferida, se você deixá-la  ||\n"
-                              + "|| em paz, ela irá sobreviver. Mas você quiser, pode decidir terminar o 'serviço'…                  ||\n"
+                              + "|| em paz, ela irá sobreviver. Mas você quiser, pode decidir terminar o 'serviço'...                ||\n"
                               + "||**************************************************************************************************||\n\n";
 
                         control = true;
@@ -972,6 +983,7 @@ public class Historia {
                               + "|| novo recomeço...                                                                            ||\n"
                               + "||*********************************************************************************************||\n\n";
                                 Game.uteis.printaTexto(finalDoJogo, 5);
+                                Game.uteis.delayParaProximoComando(30);
                                 fim();
                                 break;
 
@@ -986,7 +998,8 @@ public class Historia {
                               + "||*********************************************************************************************||\n\n";
 
                                 Game.uteis.printaTexto(finalDoJogo, 5);
-                                Game.uteis.ataques++;
+                                Game.uteis.setAtaques();;
+                                Game.uteis.delayParaProximoComando(30);
                                 fim();
                                 break;
 
@@ -999,9 +1012,6 @@ public class Historia {
 
         // FIM
         public void fim() {
-
-                Game.uteis.delayParaProximoComando(30);
-
                 String fim = "||******************||\n"
                            + "||      F I M       ||\n"
                            + "||******************||\n\n\n";
@@ -1009,12 +1019,13 @@ public class Historia {
                 Game.uteis.printaTexto(fim, 25);
                 Game.uteis.delayParaProximoComando(50);
                 Game.uteis.mostraRelatorio();
-                Game.uteis.delayParaProximoComando(200);
+                Game.uteis.delayParaProximoComando(150);
 
-                Game.uteis.limpaConsole();
-                Game.menu.creditos();
-
-                // System.exit(1);
+                Game.menu.creditos(true);
+                //Runtime.getRuntime().exit(0);
+                //Game.game = new Game();
+                //System.exit(1);
+                Game.game.main(null);
         }
 
         // MÉTODO QUE USA AS VARIÁVEIS DE CONTROLE PARA PRINTAR OS CAMINHOS RESTANTES
@@ -1161,7 +1172,7 @@ public class Historia {
                         System.out.println(
                                         "||*************************************************||\n"
                                       + "|| Só restaram as CORDAS e é para lá que você vai. ||\n"
-                                      + "||*************************************************||\n\n");
+                                      + "||*************************************************||\n");
                         corda();
                 }
 
@@ -1169,7 +1180,7 @@ public class Historia {
                         System.out.println(
                                         "||***************************************************||\n"
                                       + "|| Só restaram as MADEIRAS e é para lá que você vai. ||\n"
-                                      + "||***************************************************||\n\n");
+                                      + "||***************************************************||\n");
 
                         madeira();
                 }
@@ -1178,7 +1189,7 @@ public class Historia {
                         System.out.println(
                                         "||*************************************************||\n"
                                       + "|| Só restaram as FOLHAS e é para lá que você vai. ||\n"
-                                      + "||*************************************************||\n\n");
+                                      + "||*************************************************||\n");
                         folhasDePalmeira();
                 }
 
@@ -1188,7 +1199,7 @@ public class Historia {
                         System.out.println(
                                         "||******************************************************||\n"
                                       + "|| Parece que você tem tudo que precisa para continuar. ||\n"
-                                      + "||******************************************************||\n\n");
+                                      + "||******************************************************||\n");
                         control = false;
                         penultimoAto();
                 }

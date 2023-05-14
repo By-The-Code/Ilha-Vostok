@@ -4,12 +4,13 @@ public class Menu {
 	
 	//INTRO - COM O NOME DO GRUPO + JOGO
 	public void intro() {
-		String texto = 	"||****************************************||\n" 
+		String texto = 	
+								"||****************************************||\n" 
 				+ 		"||         By The Code - Apresenta        ||\n"
 				+ 		"||========================================||\n"
 				+ 		"||                                        ||\n"
-				+ 		"||                NAUFRAGO                ||\n"
-				+       "||                                        ||\n"
+				+ 		"||                NÁUFRAGO                ||\n"
+				+   "||                                        ||\n"
 				+ 		"||****************************************||\n";
 		
 		Game.uteis.printaTexto(texto, 5);
@@ -21,14 +22,15 @@ public class Menu {
 	//MENU
 	public void menu() {
 		
-		 String menu = 	"||****************************************||\n" 
+		 String menu = 	
+								"||****************************************||\n" 
 				+ 		"||                  Menu                  ||\n"
 				+ 		"||========================================||\n"
 				+ 		"||                                        ||\n"
 				+ 		"||               1 - Jogar                ||\n"
-				+       "||               2 - Instruções           ||\n"
-				+       "||               3 - Créditos             ||\n"
-				+       "||               4 - Sair                 ||\n"
+				+   "||               2 - Instruções           ||\n"
+				+   "||               3 - Créditos             ||\n"
+				+   "||               4 - Sair                 ||\n"
 				+ 		"||                                        ||\n"
 				+ 		"||****************************************||\n\n";
 		
@@ -36,9 +38,9 @@ public class Menu {
 		 
 		//OPÇÕES
 		System.out.println(
-				  "||*************************************||\n"
-				+ "||          DIGITE UMA OPÇÃO!          ||\n"
-				+ "||*************************************||\n");
+				  		"||****************************************||\n"
+				+ 		"||            DIGITE UMA OPÇÃO!           ||\n"
+				+ 		"||****************************************||\n");
 		
 		String opcao = Game.sc.next().toUpperCase();
 		
@@ -53,7 +55,7 @@ public class Menu {
 			break;
 		case "3", "CREDITOS":
 			Game.uteis.limpaConsole();
-			creditos();
+			creditos(false);
 			break;
 		case "4", "SAIR":
 			Game.uteis.limpaConsole();
@@ -68,8 +70,9 @@ public class Menu {
 	
 	//INSTRUÇÕES
 	public void instrucoes() {
-		String instrucoes 	= "||****************************************** INSTRUÇÕES *******************************************||\n"
-							+ "|| VIDA MÁXIMA: Vida máxima do jogador;                                                             ||\n"
+		String instrucoes 	= 
+									"||****************************************** INSTRUÇÕES *******************************************||\n"
+							+ "|| VIDA MÁXIMA: Vida máxima do jogador;                                                            ||\n"
 							+ "|| VIDA: Vida atual do jogador;                                                                    ||\n"
 							+ "|| FORÇA: Força atual do jogador, utilizada para o cálculo de dano;                                ||\n"
 							+ "|| RESISTÊNCIA: Resistência atual do jogador, utilizada para o cálculo de defesa;                  ||\n"
@@ -88,8 +91,9 @@ public class Menu {
 	
 	
 	//CRÉDITOS
-	public void creditos() {
-		String creditos = "||************** CRÉDITOS **************||\n"
+	public void creditos(boolean b) {
+		String creditos = 
+								"||************** CRÉDITOS **************||\n"
 						+ "||               NAUFRAGO               ||\n"
 						+ "||======================================||\n"
 						+ "||        Uma produção By The Code      ||\n"
@@ -103,13 +107,20 @@ public class Menu {
 						+ "||**************************************||\n\n";
 	
 		Game.uteis.printaTexto(creditos, 25);
-		voltar();
-		
+
+		if (!b) {
+			voltar();
+		}
+		else {
+			Game.uteis.delayParaProximoComando(50);
+			return;
+		}
 	}
 	
 	//SAIR
 	public void sair() {
-		System.out.println(	"||*************************************||\n"
+		System.out.println(
+									"||*************************************||\n"
 						+ 	"||         OBRIGADO POR JOGAR!         ||\n"
 						+ 	"||*************************************||\n");
 		System.exit(1);
@@ -118,9 +129,10 @@ public class Menu {
 	
 	//VOLTAR - INFORMA AO JOGADOR PARA DIGITAR 1 PARA VOLTAR
 	public void voltar() {
-		System.out.println(	"||*************************************||\n"
-						+ 	"||         DIGITE 1 PARA VOLTAR!       ||\n"
-						+ 	"||*************************************||\n");
+		System.out.println(
+									"||**************************************||\n"
+						+ 	"||          DIGITE 1 PARA VOLTAR!       ||\n"
+						+ 	"||**************************************||\n");
 		int opcao = Game.sc.nextInt();
 		
 		if(opcao == 1)  {

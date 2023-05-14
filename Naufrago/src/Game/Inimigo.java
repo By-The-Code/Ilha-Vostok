@@ -38,11 +38,11 @@ public class Inimigo {
     //RETORNA OS STATUS DO INÍMIGO/ BOSS
     public String getStatusInimigo() {
         String txt
-        		= "INIMIGO: " + getNomeInimigo() + "\n"
-                + "VIDA: " + Game.dc.format(getVidaInimigo()) + "\n"
-                + "FORÇA: " + getForcaInimigo() + "\n"
-                + "RESISTÊNCIA: " + getResistenciaInimigo() + "\n"
-                + "NÍVEL: " + getNivelInimigo() + "\n";
+        		= "INIMIGO: "       + getNomeInimigo() + "\n"
+                + "VIDA: "          + Game.dc.format(getVidaInimigo()) + "\n"
+                + "FORÇA: "         + getForcaInimigo() + "\n"
+                + "RESISTÊNCIA: "   + getResistenciaInimigo() + "\n"
+                + "NÍVEL: "         + getNivelInimigo() + "\n";
 
         return txt;
     }

@@ -5,7 +5,6 @@ public class Boss extends Inimigo {
 	//CONSTRUTOR DO BOSS
     public Boss(String nome, double vida, double forca, double resistencia, int nivel) {
 		super(nome, vida, forca, resistencia, nivel);
-		// TODO Auto-generated constructor stub
 	}
 
     /*
