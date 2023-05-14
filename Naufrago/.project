@@ -14,9 +14,14 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+<<<<<<< HEAD
 	<filteredResources>
 		<filter>
+<<<<<<< HEAD
+			<id>1684088167737</id>
+=======
 			<id>1683390982588</id>
+>>>>>>> main
 			<name></name>
 			<type>30</type>
 			<matcher>
@@ -25,4 +30,6 @@
 			</matcher>
 		</filter>
 	</filteredResources>
+=======
+>>>>>>> parent of 3155ad6 (Ajustes)
 </projectDescription>
