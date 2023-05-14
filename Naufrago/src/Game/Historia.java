@@ -72,7 +72,7 @@ public class Historia {
                 + "||===========================================================||\n"
                 + "||   3 - PROFESSOR |   +2,5    |      +3    |        +3      ||\n"
                 + "||===========================================================||\n"
-                + "||***********************************************************||\n\n";
+                + "||***********************************************************||\n";
 
         Game.uteis.printaTexto(apresentacaoProfissao, 5);
 
@@ -146,11 +146,11 @@ public class Historia {
         }
 
         System.out.println(
-        			"||********** O QUE VOCÊ FAZ? **********||\n"
-                + 	"||=====================================||\n"
-                + 	"|| 1 - Seguir pela Praia    (Praia)    ||\n"
-                + 	"|| 2 - Seguir pela Floresta (Floresta) ||\n"
-                + 	"||=====================================||\n");
+        			"||******* O QUE VOCÊ FAZ? ********||\n"
+                + 	"||================================||\n"
+                + 	"|| 1 - Seguir pela Praia          ||\n"
+                + 	"|| 2 - Seguir pela Floresta       ||\n"
+                + 	"||================================||\n");
 
         //ESCOLHA DO JOGADOR
         input = Game.sc.next().toUpperCase();
@@ -416,7 +416,7 @@ public class Historia {
         System.out.println(
                 	"||********* O QUE VOCÊ FAZ? *********||\n"
                 + 	"||===================================||\n"
-                + 	"||  1 - Entra na caverna   (Caverna) ||\n"
+                + 	"||  1 - Entra na caverna (Caverna)   ||\n"
                 + 	"||  2 - Volta para o Oeste (Fumaça)  ||\n"
                 + 	"||===================================||\n");
 
@@ -866,14 +866,14 @@ public class Historia {
                 	"||******************** O QUE VOCÊ FAZ? ******************||\n"
                 + 	"||=======================================================||\n"
                 + 	"||       1 - Bate com a arma nos Tentáculos (Tentaculos) ||\n"
-                + 	"||       2 - Fura o olho da Criatura        (Olho)       ||\n"
+                + 	"||       2 - Fura o olho da Criatura (Olho)              ||\n"
                 + 	"||=======================================================||\n");
 
         input = Game.sc.next().toUpperCase();
 
         switch (input) {
 
-            case "1", "TENTACULOS", "TENTÁCULOS":
+            case "1", "TENTACULOS":
                 Game.uteis.limpaConsole();
             
             	//INSTANCIA O BOSS DE FORMA MANUAL POIS NESSE MODO ELE TEM MAIS DEFESA
@@ -975,7 +975,6 @@ public class Historia {
                         + "||*********************************************************************************************||\n\n";
 
                 Game.uteis.printaTexto(finalDoJogo, 5);
-                Game.uteis.delayParaProximoComando(30);
                 fim();
                 break;
 
@@ -988,6 +987,9 @@ public class Historia {
 
     //FIM
     public void fim() {
+
+        Game.uteis.delayParaProximoComando(30);
+
         String fim
                 = "||******************||\n"
                 + "||      F I M       ||\n"
