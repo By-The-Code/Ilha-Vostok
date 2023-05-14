@@ -858,6 +858,7 @@ public class Historia {
                     + "|| Você precisa tomar uma atitude rápida.                                                        ||\n"
                     + "||***********************************************************************************************||\n";
 
+            Game.uteis.printaTexto(finalBoss, 5);      
             control = true;
         }
 
