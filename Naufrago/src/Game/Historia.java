@@ -119,10 +119,10 @@ public class Historia {
         Game.uteis.printaTexto(lembranca, 5);
 
         //PARA CONTINUAR APÓS A INTRODUÇÃO O JOGADOR DEVE APERTAR ALGUAM TECLA
-        if (Game.uteis.Continuar()) {
-            Game.uteis.limpaConsole();
+        //if (Game.uteis.Continuar()) {
+        //    Game.uteis.limpaConsole();
             primeiroAto();
-        }
+        //}
     }
 
     //PRIMEIRO ATO
