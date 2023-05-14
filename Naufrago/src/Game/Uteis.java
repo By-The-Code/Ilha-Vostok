@@ -7,11 +7,11 @@ import java.util.Random;
 public class Uteis {
 
 	// VARIAVÉIS
-	private Random random = new Random();
+	Random random = new Random();
 
-	private List<String> relatorio = new ArrayList<String>();
-	private int ataques = 0;
-	private int fugas = 0;
+	List<String> relatorio = new ArrayList<String>();
+	int ataques = 0;
+	int fugas = 0;
 
 	// PRINTA O TEXTO LETRA POR LETRA, PARA FAZER UMA 'ANIMAÇÃO' AO INVÉS DO PRINT
 	// PADRÃO
@@ -41,7 +41,6 @@ public class Uteis {
 
 	// CONTINUA COM O MÉTODO SEGUINTE APERTANDO QUALQUER TECLA, DEFINIMOS 'ENTER'
 	// APENAS PARA FACILITAR AO JOGADOR
-	/*
 	public boolean Continuar() {
 
 		System.out.println("||************************************||\n"
@@ -55,9 +54,9 @@ public class Uteis {
 		else
 			return true;
 	}
-	*/
 
-	// EXECUTA O PRÓXIMO COMANDO APÓS X PERÍODO DE TEMPO, 25 = 2500 = 2 SEGUNDOS E 5 MILÉSSIMOS
+	// EXECUTA O PRÓXIMO COMANDO APÓS X PERÍODO DE TEMPO, 25 = 2500 = 2 SEGUNDOS E 5
+	// MILÉSSIMOS
 	public void delayParaProximoComando(int tempo) {
 
 		tempo *= 100;
@@ -105,26 +104,4 @@ public class Uteis {
 		}
 
 	}
-
-	/*
-	public int getAtaques() {
-		return ataques;
-	}
-	*/
-
-	public void setAtaques() {
-		this.ataques += 1;
-	}
-
-	/*
-	public int getFugas() {
-		return fugas;
-	}
-	*/
-
-	public void setFugas() {
-		this.fugas += 1;
-	}
-	
-	
 }

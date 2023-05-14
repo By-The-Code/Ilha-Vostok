@@ -132,7 +132,7 @@ public class Combate {
             switch (input) {
                 case "1", "ATACAR":
                     ataqueJogador(tipoInimigo);
-                    Game.uteis.setAtaques();
+                    Game.uteis.ataques++;
                     break;
 
                 default:
@@ -158,7 +158,7 @@ public class Combate {
                         combate(tipoInimigo);
                     } else {
                         inimigoSpawnControl++;
-                        Game.uteis.setFugas();;
+                        Game.uteis.fugas++;
                         System.out.println(
                                 "||*******************||\n"
                               + "||     VOCÊ FUGIU!   ||\n"
@@ -185,7 +185,7 @@ public class Combate {
 
             switch (input) {
                 case "1", "ATACAR":
-                    Game.uteis.setAtaques();
+                    Game.uteis.ataques++;
                     ataqueJogador(tipoInimigo);
                     break;
                 case "2", "FUGIR":
@@ -194,7 +194,7 @@ public class Combate {
                         combate(tipoInimigo);
                     } else {
                         inimigoSpawnControl++;
-                        Game.uteis.setFugas();
+                        Game.uteis.fugas++;
                         System.out.println(
                                 "||*******************||\n"
                               + "||     VOCÊ FUGIU!   ||\n"
@@ -381,21 +381,28 @@ public class Combate {
                             "Você recebeu "
                                     + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) * 2)
                                     + " de dano.\n"
+<<<<<<< HEAD
                                     + "Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
 =======
                             + 	"Sua vida atual: " + Game.jogador.getVida() + "\n");
 >>>>>>> parent of 3155ad6 (Ajustes)
+=======
+                                    + "Sua vida atual: " + Game.jogador.getVida() + "\n");
+>>>>>>> parent of 0f8daf2 (Ajustes)
                 }
 
                 // SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
                 else {
                     Game.jogador.setVidaDano(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()));
                     System.out.println(
-                            "Você recebeu " 
-                            		+ Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()))
+                            "Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()))
                                     + " de dano.\n"
+<<<<<<< HEAD
                                     + "Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
 >>>>>>> main
+=======
+                                    + "Sua vida atual: " + Game.jogador.getVida() + "\n");
+>>>>>>> parent of 0f8daf2 (Ajustes)
                 }
 
                 // SE A VIDA DO JOGADOR FOR MAIOR QUE 0, RETORNA PARA O MÉTODO DO COMBATE PARA
@@ -432,10 +439,14 @@ public class Combate {
 =======
                             "Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()) * 2)
                                     + " de dano.\n"
+<<<<<<< HEAD
                                     + "Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
 =======
                             + 	"Sua vida atual: " + Game.jogador.getVida() + "\n");
 >>>>>>> parent of 3155ad6 (Ajustes)
+=======
+                                    + "Sua vida atual: " + Game.jogador.getVida() + "\n");
+>>>>>>> parent of 0f8daf2 (Ajustes)
                 }
 
                 // SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
@@ -444,8 +455,12 @@ public class Combate {
                     System.out.println(
                             "Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()))
                                     + " de dano.\n"
+<<<<<<< HEAD
                                     + "Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
 >>>>>>> main
+=======
+                                    + "Sua vida atual: " + Game.jogador.getVida() + "\n");
+>>>>>>> parent of 0f8daf2 (Ajustes)
                 }
 
                 // SE A VIDA DO JOGADOR FOR MAIOR QUE 0, RETORNA PARA O MÉTODO DO COMBATE PARA
