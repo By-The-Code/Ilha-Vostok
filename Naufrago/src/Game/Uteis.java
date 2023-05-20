@@ -9,7 +9,7 @@ public class Uteis {
 	// VARIAVÉIS
 	private Random random = new Random();
 
-	private	List<String> relatorio = new ArrayList<String>();
+	private List<String> relatorio = new ArrayList<String>();
 	private int ataques = 0;
 	private int fugas = 0;
 
@@ -41,21 +41,22 @@ public class Uteis {
 
 	// CONTINUA COM O MÉTODO SEGUINTE APERTANDO QUALQUER TECLA, DEFINIMOS 'ENTER'
 	// APENAS PARA FACILITAR AO JOGADOR
-/*	public boolean Continuar() {
-
-		System.out.println(
-									"||************************************||\n"
-						 + "||  Pressione 'ENTER' para continuar. ||\n"
-						 + "||************************************||\n");
-
-		String input = Game.sc.nextLine();
-
-		if (input == "" || input != "")
-			return true;
-		else
-			return true;
-	}
-	*/
+	/*
+	 * public boolean Continuar() {
+	 * 
+	 * System.out.println(
+	 * "||************************************||\n"
+	 * + "||  Pressione 'ENTER' para continuar. ||\n"
+	 * + "||************************************||\n");
+	 * 
+	 * String input = Game.sc.nextLine();
+	 * 
+	 * if (input == "" || input != "")
+	 * return true;
+	 * else
+	 * return true;
+	 * }
+	 */
 
 	// EXECUTA O PRÓXIMO COMANDO APÓS X PERÍODO DE TEMPO, 25 = 2500 = 2 SEGUNDOS E 5
 	// MILÉSSIMOS
@@ -90,36 +91,39 @@ public class Uteis {
 		System.out.println("");
 
 		if (ataques == 1 && fugas > 1) {
-			System.out.println(" ——————————————————————————————————— VOCÊ ATACOU " + ataques + " VEZ E FUGIU " + fugas + " VEZES. ———————————————————————————————————");
+			System.out.println(" ——————————————————————————————————— VOCÊ ATACOU " + ataques + " VEZ E FUGIU " + fugas
+					+ " VEZES. ———————————————————————————————————");
 		} else if (ataques > 1 && fugas == 1) {
-			System.out.println(" ——————————————————————————————————— VOCÊ ATACOU " + ataques + " VEZES E FUGIU " + fugas + " VEZ. ———————————————————————————————————");
+			System.out.println(" ——————————————————————————————————— VOCÊ ATACOU " + ataques + " VEZES E FUGIU " + fugas
+					+ " VEZ. ———————————————————————————————————");
 		} else if (ataques > 1 && fugas > 1) {
-			System.out.println(" ——————————————————————————————————— VOCÊ ATACOU " + ataques + " VEZES E FUGIU " + fugas + " VEZES. ———————————————————————————————————");
+			System.out.println(" ——————————————————————————————————— VOCÊ ATACOU " + ataques + " VEZES E FUGIU " + fugas
+					+ " VEZES. ———————————————————————————————————");
 		}
 
-		if (ataques > fugas) {
+		if (ataques > 30) {
 			System.out.println("\nClaramente você é uma pessoa que não foge de confusão!\n");
 		} else {
 			System.out.println(
-					"\nClaramente você é uma pessoa pacífica, evita resolver as coisas de forma violenta!\n");
+					"\nVocê optou por fazer parte do caminho de forma mais pacífica, parabéns!\n");
 		}
 	}
 
-	/* 
-	public int getAtaques() {
-		return ataques;
-	}
-	*/
+	/*
+	 * public int getAtaques() {
+	 * return ataques;
+	 * }
+	 */
 
 	public void setAtaques() {
 		this.ataques += 1;
 	}
 
-/* 
-	public int getFugas() {
-		return fugas;
-	}
-*/
+	/*
+	 * public int getFugas() {
+	 * return fugas;
+	 * }
+	 */
 	public void setFugas() {
 		this.fugas += 1;
 	}
