@@ -18,10 +18,6 @@ public class Inimigo {
         this.vidaInicialInimigo = this.vidaInimigo;
         this.resistenciaInimigo = resistencia;
         this.nivelInimigo = nivel;
-
-        if (this.nivelInimigo <= 0) {
-            this.nivelInimigo = 1;
-        }
     }
     
     /*
@@ -39,7 +35,7 @@ public class Inimigo {
     public String getStatusInimigo() {
         String txt
         		= "INIMIGO: "       + getNomeInimigo() + "\n"
-                + "VIDA: "          + Game.dc.format(getVidaInimigo()) + "\n"
+                + "VIDA: "          + Game.dc.format(getVidaInimigo()) + " | " + printaVidaInimigo() + "\n"
                 + "FORÇA: "         + getForcaInimigo() + "\n"
                 + "RESISTÊNCIA: "   + getResistenciaInimigo() + "\n"
                 + "NÍVEL: "         + getNivelInimigo() + "\n";
@@ -51,10 +47,10 @@ public class Inimigo {
     public double dropExperiencia() {
 
         if (getForcaInimigo() > getResistenciaInimigo()) {
-            double exp = (double) getVidaInicialInimigo() / (getNivelInimigo() + getResistenciaInimigo());
+            double exp = (double) getVidaInicialInimigo() / getResistenciaInimigo();
             return exp;
         } else {
-            double exp = (double) getVidaInicialInimigo() / (getNivelInimigo() + getForcaInimigo());
+            double exp = (double) getVidaInicialInimigo() / getForcaInimigo();
             return exp;
         }
     }
@@ -81,6 +77,67 @@ public class Inimigo {
         } else {
             return defesaInimigo;
         }
+    }
+    
+    public String printaVidaInimigo() {
+    	
+    	String l;
+    	
+    	if (getVidaInimigo() >= getVidaInicialInimigo())
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.90)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.80)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.70)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.60)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.50)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.40)
+    	{
+    		l = "[❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.30)
+    	{
+    		l = "[❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.20)
+    	{
+    		l = "[❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.01)
+    	{
+    		l = "[❤]";
+    	}
+    	
+    	else {
+    		l = "[]";
+    	}
+    	
+		return l;
     }
     
     //RETORNA O NOME DO INÍMIGO/ BOSS

@@ -108,7 +108,7 @@ public class Uteis {
 					"\nVocê optou por fazer parte do caminho de forma mais pacífica, parabéns!\n");
 		}
 	}
-
+	
 	/*
 	 * public int getAtaques() {
 	 * return ataques;

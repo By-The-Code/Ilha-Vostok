@@ -26,11 +26,11 @@ public class Boss extends Inimigo {
 	public double dropExperiencia() {
 		
 		if(getForcaInimigo() > getResistenciaInimigo()) {
-			double exp = (double) getVidaInicialInimigo() / getResistenciaInimigo();
+			double exp = (double) (getVidaInicialInimigo() / getResistenciaInimigo()) * 2;
 			return exp;
 		} 
 		else {
-			double exp = (double) getVidaInicialInimigo() / getForcaInimigo();
+			double exp = (double) (getVidaInicialInimigo() / getForcaInimigo()) * 2;
 			return exp;
 		}
 	}

@@ -41,7 +41,7 @@ public class Combate {
              * tipoInimigo);
              */
 
-            Game.inimigo = new Inimigo(criatura, Game.jogador.getVidaMaxima() * 0.25, Game.jogador.getForca() * 0.50,
+            Game.inimigo = new Inimigo(criatura, Game.jogador.getVidaMaxima() * 0.75, Game.jogador.getForca() * 0.50,
                     Game.jogador.getResistencia() * 0.50, Game.jogador.getNivel());
             System.out.println("Você encontra o inimigo: " + Game.inimigo.getNomeInimigo() + ".\n\n");
 
@@ -222,7 +222,7 @@ public class Combate {
         if (tipoInimigo == "inimigo") {
             System.out.println(
                     "Você tenta atacar o(a) " + Game.inimigo.getNomeInimigo() + ".\n"
-                            + "Seus Status: \n" + Game.jogador.getStatus() + "\n"
+                            //+ "Seus Status: \n" + Game.jogador.getStatus() + "\n"
                             + "Status Inimigo: \n" + Game.inimigo.getStatusInimigo() + "\n");
         }
 
@@ -230,7 +230,7 @@ public class Combate {
         else {
             System.out.println(
                     "Você tenta atacar o(a) " + Game.boss.getNomeInimigo() + ".\n"
-                            + "Seus Status: \n" + Game.jogador.getStatus() + "\n"
+                            //+ "Seus Status: \n" + Game.jogador.getStatus() + "\n"
                             + "Status Inimigo: \n" + Game.boss.getStatusInimigo() + "\n");
         }
 
@@ -253,11 +253,12 @@ public class Combate {
                 if (danoCritico > 8) {
                     Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()) * 2);
                     System.out.println(
-                            "Você deu "
+                            		"Você deu "
                                     + Game.dc.format(
                                             Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()) * 2)
                                     + " de dano.\n"
-                                    + "Vida atual do inimigo: " + Game.dc.format(Game.inimigo.getVidaInimigo()) + "\n");
+                                    + "Vida atual do inimigo: " //+ Game.dc.format(Game.inimigo.getVidaInimigo()) + "\n"
+                                    + "" + Game.inimigo.printaVidaInimigo() + "\n");
                 }
 
                 // SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
@@ -267,7 +268,8 @@ public class Combate {
                             "Você deu "
                                     + Game.dc.format(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()))
                                     + " de dano.\n"
-                                    + "Vida atual do inimigo: " + Game.dc.format(Game.inimigo.getVidaInimigo()) + "\n");
+                                    + "Vida atual do inimigo: " //+ Game.dc.format(Game.inimigo.getVidaInimigo()) + "\n"
+                                    + "" + Game.inimigo.printaVidaInimigo() + "\n");
                 }
 
                 // SE A VIDA DO INIMIGO FOR MAIOR QUE 0 (ESTÁ VIVO, O INIMIGO ATACA APÓS O
@@ -297,7 +299,8 @@ public class Combate {
                             "Você deu "
                                     + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()) * 2)
                                     + " de dano.\n"
-                                    + "Vida atual do inimigo: " + Game.dc.format(Game.boss.getVidaInimigo()) + "\n");
+                                    + "Vida atual do inimigo: " //+ Game.dc.format(Game.boss.getVidaInimigo()) + "\n"
+                                    + "" + Game.inimigo.printaVidaInimigo() + "\n");
                 }
 
                 // SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
@@ -306,7 +309,8 @@ public class Combate {
                     System.out.println(
                             "Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()))
                                     + " de dano.\n"
-                                    + "Vida atual do inimigo: " + Game.dc.format(Game.boss.getVidaInimigo()) + "\n");
+                                    + "Vida atual do inimigo: " //+ Game.dc.format(Game.boss.getVidaInimigo()) + "\n"
+                                    + "" + Game.inimigo.printaVidaInimigo() + "\n");
                 }
 
                 // SE A VIDA DO BOSS FOR MAIOR QUE 0 (ESTÁ VIVO, O BOSS ATACA APÓS O JOGADOR)
@@ -370,7 +374,8 @@ public class Combate {
                                 "Você recebeu "
                              +  Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()) * 2)
                              +  " de dano.\n"
-                             +  "Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
+                             +  "Sua vida atual: " //+ Game.dc.format(Game.jogador.getVida()) + "\n");
+                             +  "" + Game.jogador.printaVidaJogador() + "\n");
                 }
 
                 // SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
@@ -379,7 +384,9 @@ public class Combate {
                     System.out.println(
                                 "Você recebeu " + Game.dc.format(Game.inimigo.danoInimigo(Game.jogador.getDefesaJogador()))
                              +  " de dano.\n"
-                             +  "Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
+                             +  "Sua vida atual: " //+ Game.dc.format(Game.jogador.getVida()) + "\n");
+                             +  "" + Game.jogador.printaVidaJogador() + "\n");
+
                 }
 
                 // SE A VIDA DO JOGADOR FOR MAIOR QUE 0, RETORNA PARA O MÉTODO DO COMBATE PARA
@@ -403,7 +410,9 @@ public class Combate {
                     System.out.println(
                             "Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()) * 2)
                          +  " de dano.\n"
-                         +  "Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
+                         +  "Sua vida atual: " //+ Game.dc.format(Game.jogador.getVida()) + "\n");
+                         +  "" + Game.jogador.printaVidaJogador() + "\n");
+
                 }
 
                 // SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
@@ -412,7 +421,8 @@ public class Combate {
                     System.out.println(
                              "Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()))
                          +   " de dano.\n"
-                         +   "Sua vida atual: " + Game.dc.format(Game.jogador.getVida()) + "\n");
+                         +   "Sua vida atual: " //+ Game.dc.format(Game.jogador.getVida()) + "\n");
+                         +  "" + Game.jogador.printaVidaJogador() + "\n");
                 }
 
                 // SE A VIDA DO JOGADOR FOR MAIOR QUE 0, RETORNA PARA O MÉTODO DO COMBATE PARA
@@ -428,7 +438,7 @@ public class Combate {
             }
         }
     }
-
+    
     // SE O JOGADOR MORRER O JOGO ACABA
     public static void fimDeJogo() {
         System.out.println(
@@ -438,10 +448,10 @@ public class Combate {
               + "||********************||\n\n");
 
         Game.uteis.delayParaProximoComando(50);
-        Game.uteis.limpaConsole();
+        Game.menu.sair();
         //Runtime.getRuntime().exit(0);
         //Game.game = new Game();
         //Game.game.main(null);
-        System.exit(1);
+        //System.exit(1);
     }
 }

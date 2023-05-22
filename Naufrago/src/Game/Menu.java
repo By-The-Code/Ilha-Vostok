@@ -71,18 +71,18 @@ public class Menu {
 	//INSTRUÇÕES
 	public void instrucoes() {
 		String instrucoes 	= 
-									"||****************************************** INSTRUÇÕES *******************************************||\n"
-							+ "|| VIDA MÁXIMA: Vida máxima do jogador;                                                            ||\n"
-							+ "|| VIDA: Vida atual do jogador;                                                                    ||\n"
-							+ "|| FORÇA: Força atual do jogador, utilizada para o cálculo de dano;                                ||\n"
-							+ "|| RESISTÊNCIA: Resistência atual do jogador, utilizada para o cálculo de defesa;                  ||\n"
-							+ "|| XP: Experiência atual do jogador, utilizada para subir de nível;                                ||\n"
-							+ "|| ARMA: Arma atual do jogador, utilizada para o cálculo de dano;                                  ||\n"
-							+ "|| ARMADURA: Armadura atual do jogador, utilizada para o cálculo de defesa;                        ||\n"
-							+ "|| ESCOLHAS: Para definir o que deseja fazer, digite o número correspondente a cada uma das opções ||\n"
-							+ "||                                                                                                 ||\n"
-							+ "|| EXEMPLO: 1 - Jogar | 2 - Sair, se quiser jogar, digite 1, se quiser sair digite 2.              ||\n"
-							+ "||*************************************************************************************************||\n\n";
+								"||****************************************** INSTRUÇÕES *******************************************||\n"
+							+ 	"|| VIDA MÁXIMA: Vida máxima do jogador;                                                            ||\n"
+							+ 	"|| VIDA: Vida atual do jogador;                                                                    ||\n"
+							+ 	"|| FORÇA: Força atual do jogador, utilizada para o cálculo de dano;                                ||\n"
+							+ 	"|| RESISTÊNCIA: Resistência atual do jogador, utilizada para o cálculo de defesa;                  ||\n"
+							+ 	"|| XP: Experiência atual do jogador, utilizada para subir de nível;                                ||\n"
+							+ 	"|| ARMA: Arma atual do jogador, utilizada para o cálculo de dano;                                  ||\n"
+							+ 	"|| ARMADURA: Armadura atual do jogador, utilizada para o cálculo de defesa;                        ||\n"
+							+ 	"|| ESCOLHAS: Para definir o que deseja fazer, digite o número correspondente a cada uma das opções ||\n"
+							+ 	"||                                                                                                 ||\n"
+							+ 	"|| EXEMPLO: 1 - Jogar | 2 - Sair, se quiser jogar, digite 1, se quiser sair digite 2.              ||\n"
+							+ 	"||*************************************************************************************************||\n\n";
 		
 		Game.uteis.printaTexto(instrucoes, 5);
 		
@@ -93,18 +93,18 @@ public class Menu {
 	//CRÉDITOS
 	public void creditos(boolean b) {
 		String creditos = 
-								"||************** CRÉDITOS **************||\n"
-						+ "||               NAUFRAGO               ||\n"
-						+ "||======================================||\n"
-						+ "||        Uma produção By The Code      ||\n"
-						+ "||                                      ||\n"
-						+ "|| Uma criação de:                      ||\n"
-						+ "|| Eduardo Ribeiro Torquato             ||\n"
-						+ "|| Eliana Moura de Lima                 ||\n"
-						+ "|| Nathalia Narumi Nakamura             ||\n"
-						+ "|| Paulo Garcia Santos                  ||\n"
-						+ "|| Vinicius Araujo da Silveira          ||\n"
-						+ "||**************************************||\n\n";
+							"||************** CRÉDITOS **************||\n"
+						+ 	"||               NAUFRAGO               ||\n"
+						+ 	"||======================================||\n"
+						+ 	"||        Uma produção By The Code      ||\n"
+						+ 	"||                                      ||\n"
+						+ 	"|| Uma criação de:                      ||\n"
+						+ 	"|| Eduardo Ribeiro Torquato             ||\n"
+						+ 	"|| Eliana Moura de Lima                 ||\n"
+						+ 	"|| Nathalia Narumi Nakamura             ||\n"
+						+ 	"|| Paulo Garcia Santos                  ||\n"
+						+ 	"|| Vinicius Araujo da Silveira          ||\n"
+						+ 	"||**************************************||\n\n";
 	
 		Game.uteis.printaTexto(creditos, 25);
 
@@ -113,14 +113,15 @@ public class Menu {
 		}
 		else {
 			Game.uteis.delayParaProximoComando(50);
-			return;
+			System.out.println();
+			sair();
 		}
 	}
 	
 	//SAIR
 	public void sair() {
 		System.out.println(
-									"||*************************************||\n"
+							"||*************************************||\n"
 						+ 	"||         OBRIGADO POR JOGAR!         ||\n"
 						+ 	"||*************************************||\n");
 		System.exit(1);
@@ -130,7 +131,7 @@ public class Menu {
 	//VOLTAR - INFORMA AO JOGADOR PARA DIGITAR 1 PARA VOLTAR
 	public void voltar() {
 		System.out.println(
-									"||**************************************||\n"
+							"||**************************************||\n"
 						+ 	"||          DIGITE 1 PARA VOLTAR!       ||\n"
 						+ 	"||**************************************||\n");
 		int opcao = Game.sc.nextInt();

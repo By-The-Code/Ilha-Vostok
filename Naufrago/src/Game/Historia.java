@@ -37,22 +37,23 @@ public class Historia {
         // APRESENTAÇÃO
         public void apresentacao() {
 
-                String apresentacaoNome =         "||**********************************************************||\n"
-                                		+ "|| Você acorda numa ilha no meio do Pacífico.               ||\n"
-                                		+ "|| Olhando ao redor você nota que todos os outros           ||\n"
-                                		+ "|| membros da comitiva não tiveram a mesma sorte que você.  ||\n"
-                                		+ "|| Você tenta se lembrar de coisas básicas como o seu nome. ||\n"
-                                		+ "||**********************************************************||\n\n";
+                String apresentacaoNome =         
+                							"||**********************************************************||\n"
+                                		+ 	"|| Você acorda numa ilha no meio do Pacífico.               ||\n"
+                                		+ 	"|| Olhando ao redor você nota que todos os outros           ||\n"
+                                		+ 	"|| membros da comitiva não tiveram a mesma sorte que você.  ||\n"
+                                		+ 	"|| Você tenta se lembrar de coisas básicas como o seu nome. ||\n"
+                                		+ 	"||**********************************************************||\n\n";
 
                 Game.uteis.printaTexto(apresentacaoNome, 5);
 
                 System.out.println(
-                		"||*********************||\n"
+                				"||*********************||\n"
                               + "|| COMO VOCÊ SE CHAMA: ||\n"
                               + "||*********************||\n");
 
                 // ESCOLHE O NOME
-                String nome = Game.sc.next();
+                String nome = Game.sc.next().toUpperCase();
 
                 String apresentacaoProfissao =
                                   "\n"
@@ -1024,7 +1025,6 @@ public class Historia {
                 Game.menu.creditos(true);
                 //Runtime.getRuntime().exit(0);
                 //Game.game = new Game();
-                System.exit(1);
                 //Game.game.main(null);
         }
 

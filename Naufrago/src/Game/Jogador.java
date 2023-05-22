@@ -85,16 +85,17 @@ public class Jogador {
     //STATUS DO JOGADOR
     public String getStatus() {
 
-        String txt = "NOME: " + nome + ""
-                + " | PROFISSÃO: " + profissao + "\n"
+        String txt = "NOME: " 		+ getNome() + ""
+                + " | PROFISSÃO: " 	+ getProfissao() + "\n"
                 //+	"Vida Máxima: " 	+ vidaMaxima					+ "\n"
-                + "VIDA: " +  Game.dc.format(vida) + "\n"
-                + "FORÇA: " + forca + "\n"
-                + "RESISTÊNCIA: " + resistencia + "\n"
-                + "NÍVEL: " + nivel + "\n"
-                + "XP: " + Game.dc.format(xp) + "\n"
-                + "ARMA: " + arma + "\n"
-                + "ARMADURA: " + armadura + "\n";
+                + "VIDA: " 			+  Game.dc.format(getVida()) + "\n"
+                + "FORÇA: " 		+ getForca() + "\n"
+                + "RESISTÊNCIA: " 	+ getResistencia() + "\n"
+                + "NÍVEL: " 		+ getNivel() + "\n"
+                + "XP: " 			+ Game.dc.format(xp) + "\n"
+                + "XP Upar: "       + getXpParaUpar()
+                + "ARMA: " 			+ getArma() + "\n"
+                + "ARMADURA: " 		+ getArmadura() + "\n";
         //+ 	"XP p/ Upar: "  	+ Game.dc.format(xpParaUpar)    + "\n";
 
         return txt;
@@ -106,7 +107,7 @@ public class Jogador {
 
         if (getXp() + experiencia >= getXpParaUpar()) {
             setXp(getXp() + experiencia - getXpParaUpar());
-            setXpParaUpar(1.25f);
+            setXpParaUpar(getXpParaUpar() * 0.25);
             setNivel(1);
             melhoraStatus();
         } else {
@@ -127,8 +128,8 @@ public class Jogador {
                   "||********** SUBIU DE NÍVEL ***********||\n"
                 + "|| Suas estatísticas subiram de nível! ||\n"
                 + "|| VIDA MÁXIMA:  + 2,5                 ||\n"
-                + "|| FORÇA:        + 3                   ||\n"
-                + "|| RESISTÊNCIA:  + 3                   ||\n"
+                + "|| FORÇA:        +  3                  ||\n"
+                + "|| RESISTÊNCIA:  +  3                  ||\n"
                 + "||*************************************||\n");
         
         getStatus();
@@ -219,6 +220,67 @@ public class Jogador {
                 return 0;
         }
     }
+    
+    public String printaVidaJogador() {
+    	
+    	String l;
+    	
+    	if (getVida() >= getVidaMaxima())
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.90)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.80)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.70)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.60)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.50)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.40)
+    	{
+    		l = "[❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.30)
+    	{
+    		l = "[❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.20)
+    	{
+    		l = "[❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.01)
+    	{
+    		l = "[❤]";
+    	}
+    	
+    	else {
+    		l = "[]";
+    	}
+    	
+		return l;
+    }
 
     //CÁLCULO PARA RETORNAR A DEFESA DO JOGADOR
     public int getDefesaJogador() {
@@ -302,7 +364,7 @@ public class Jogador {
 
     //APÓS UPAR DEFINE O NOME XP PARA UPAR, SENDO 25% MAIOR QUE O NECESSÁRIO DO NÍVEL ANTERIOR (PARÂMETRO PASSADO NO MÉTODO 'PASSA NÍVEL')
     public void setXpParaUpar(double xpParaUpar) {
-        this.xpParaUpar *= xpParaUpar;
+        this.xpParaUpar += xpParaUpar;
     }
 
     //RETORNA O NOME DO JOGADOR
