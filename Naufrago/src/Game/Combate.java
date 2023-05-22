@@ -422,7 +422,7 @@ public class Combate {
                              "Você recebeu " + Game.dc.format(Game.boss.danoInimigo(Game.jogador.getDefesaJogador()))
                          +   " de dano.\n"
                          +   "Sua vida atual: " //+ Game.dc.format(Game.jogador.getVida()) + "\n");
-                         +  "" + Game.jogador.printaVidaJogador() + "\n");
+                         +   "" + Game.jogador.printaVidaJogador() + "\n");
                 }
 
                 // SE A VIDA DO JOGADOR FOR MAIOR QUE 0, RETORNA PARA O MÉTODO DO COMBATE PARA

@@ -88,12 +88,11 @@ public class Jogador {
         String txt = "NOME: " 		+ getNome() + ""
                 + " | PROFISSÃO: " 	+ getProfissao() + "\n"
                 //+	"Vida Máxima: " 	+ vidaMaxima					+ "\n"
-                + "VIDA: " 			+  Game.dc.format(getVida()) + "\n"
+                + "VIDA: " 			+  Game.dc.format(getVida()) + " | " + printaVidaJogador() + "\n" 
                 + "FORÇA: " 		+ getForca() + "\n"
                 + "RESISTÊNCIA: " 	+ getResistencia() + "\n"
                 + "NÍVEL: " 		+ getNivel() + "\n"
                 + "XP: " 			+ Game.dc.format(xp) + "\n"
-                + "XP Upar: "       + getXpParaUpar()
                 + "ARMA: " 			+ getArma() + "\n"
                 + "ARMADURA: " 		+ getArmadura() + "\n";
         //+ 	"XP p/ Upar: "  	+ Game.dc.format(xpParaUpar)    + "\n";
@@ -111,7 +110,7 @@ public class Jogador {
             setNivel(1);
             melhoraStatus();
         } else {
-            setXp(experiencia);
+            setXp(getXp() + experiencia);
         }
     }
 
@@ -354,7 +353,7 @@ public class Jogador {
 
     //DEFINE O NOVO XP DO JOGADOR ACRESCENTANDO A NOVA EXPERIÊNCIA DROPADA (APÓS DERROTAR O INÍMIGO, UPANDO DE NÍVEL OU NÃO)
     public void setXp(double xp) {
-        this.xp += xp;
+        this.xp = xp;
     }
 
     //RETORNA O XP NECESSÁRIO PARA UPAR

@@ -102,10 +102,12 @@ public class Uteis {
 		}
 
 		if (ataques > 30) {
-			System.out.println("\nClaramente você é uma pessoa que não foge de confusão!\n");
-		} else {
+			System.out.println("\nClaramente você é uma pessoa que não foge de confusão!\n\n\n\n\n");
+		} 
+		
+		else {
 			System.out.println(
-					"\nVocê optou por fazer parte do caminho de forma mais pacífica, parabéns!\n");
+					"\nVocê optou por fazer parte do caminho de forma mais pacífica, parabéns!\n\n\n\n\n");
 		}
 	}
 	

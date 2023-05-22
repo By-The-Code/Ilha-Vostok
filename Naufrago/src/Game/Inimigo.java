@@ -36,8 +36,8 @@ public class Inimigo {
         String txt
         		= "INIMIGO: "       + getNomeInimigo() + "\n"
                 + "VIDA: "          + Game.dc.format(getVidaInimigo()) + " | " + printaVidaInimigo() + "\n"
-                + "FORÇA: "         + getForcaInimigo() + "\n"
-                + "RESISTÊNCIA: "   + getResistenciaInimigo() + "\n"
+                + "FORÇA: "         + Game.dc.format(getForcaInimigo()) + "\n"
+                + "RESISTÊNCIA: "   + Game.dc.format(getResistenciaInimigo()) + "\n"
                 + "NÍVEL: "         + getNivelInimigo() + "\n";
 
         return txt;
