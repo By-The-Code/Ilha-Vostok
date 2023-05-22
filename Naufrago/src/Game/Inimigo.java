@@ -18,31 +18,16 @@ public class Inimigo {
         this.vidaInicialInimigo = this.vidaInimigo;
         this.resistenciaInimigo = resistencia;
         this.nivelInimigo = nivel;
-
-        if (this.nivelInimigo <= 0) {
-            this.nivelInimigo = 1;
-        }
     }
-    
-    /*
-	private Inimigo(String nomeInimigo, int vidaInimigo, int forcaInimigo, int resistenciaInimigo, int nivelInimigo) {
-		super();
-		this.nomeInimigo = nomeInimigo;
-		this.vidaInimigo = vidaInimigo;
-		this.forcaInimigo = forcaInimigo;
-		this.resistenciaInimigo = resistenciaInimigo;
-		this.nivelInimigo = nivelInimigo;
-	}
-    */
 
     //RETORNA OS STATUS DO INÍMIGO/ BOSS
     public String getStatusInimigo() {
         String txt
-        		= "INIMIGO: " + getNomeInimigo() + "\n"
-                + "VIDA: " + Game.dc.format(getVidaInimigo()) + "\n"
-                + "FORÇA: " + getForcaInimigo() + "\n"
-                + "RESISTÊNCIA: " + getResistenciaInimigo() + "\n"
-                + "NÍVEL: " + getNivelInimigo() + "\n";
+        		= "INIMIGO: "       + getNomeInimigo() + "\n"
+                + "VIDA: "          + Game.dc.format(getVidaInimigo()) + " | " + printaVidaInimigo() + "\n"
+                + "FORÇA: "         + Game.dc.format(getForcaInimigo()) + "\n"
+                + "RESISTÊNCIA: "   + Game.dc.format(getResistenciaInimigo()) + "\n"
+                + "NÍVEL: "         + getNivelInimigo() + "\n";
 
         return txt;
     }
@@ -51,10 +36,10 @@ public class Inimigo {
     public double dropExperiencia() {
 
         if (getForcaInimigo() > getResistenciaInimigo()) {
-            double exp = (double) getVidaInicialInimigo() / (getNivelInimigo() + getResistenciaInimigo());
+            double exp = (double) getVidaInicialInimigo() / getResistenciaInimigo();
             return exp;
         } else {
-            double exp = (double) getVidaInicialInimigo() / (getNivelInimigo() + getForcaInimigo());
+            double exp = (double) getVidaInicialInimigo() / getForcaInimigo();
             return exp;
         }
     }
@@ -83,16 +68,71 @@ public class Inimigo {
         }
     }
     
+    public String printaVidaInimigo() {
+    	
+    	String l;
+    	
+    	if (getVidaInimigo() >= getVidaInicialInimigo())
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.90)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.80)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.70)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.60)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.50)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.40)
+    	{
+    		l = "[❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.30)
+    	{
+    		l = "[❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.20)
+    	{
+    		l = "[❤  ❤]";
+    	}
+    	
+    	else if (getVidaInimigo() >= getVidaInicialInimigo() * 0.01)
+    	{
+    		l = "[❤]";
+    	}
+    	
+    	else {
+    		l = "[]";
+    	}
+    	
+		return l;
+    }
+    
     //RETORNA O NOME DO INÍMIGO/ BOSS
     public String getNomeInimigo() {
         return nomeInimigo;
     }
-
-    /*
-	private void setNomeInimigo(String nomeInimigo) {
-		this.nomeInimigo = nomeInimigo;
-	}
-    */
     
     //RETORNA A VIDA INÍCIAL DO INÍMIGO/ BOSS
     public double getVidaInicialInimigo() {
@@ -113,32 +153,14 @@ public class Inimigo {
     public double getForcaInimigo() {
         return forcaInimigo;
     }
-
-    /*
-	private void setForcaInimigo(int forcaInimigo) {
-		this.forcaInimigo = forcaInimigo;
-	}
-    */
     
     //RETORNA A RESISTÊNCIA DO INÍMIGO/ BOSS
     public double getResistenciaInimigo() {
         return resistenciaInimigo;
     }
-
-    /*
-	private void setResistenciaInimigo(int resistenciaInimigo) {
-		this.resistenciaInimigo = resistenciaInimigo;
-	}
-    */
     
     //RETORNA O NÍVEL DO INÍMIGO/ BOSS
     public double getNivelInimigo() {
         return nivelInimigo;
     }
-
-    /*
-	private void setNivelInimigo(int nivelInimigo) {
-		this.nivelInimigo = nivelInimigo;
-	}
-    */
 }

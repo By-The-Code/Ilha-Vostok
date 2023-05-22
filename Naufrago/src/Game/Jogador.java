@@ -49,52 +49,20 @@ public class Jogador {
         }
     }
 
-    /*
-	private void atribuindoValoresBaseadoNaProfissao(String profissao) {
-		
-		switch (profissao) {
-			case "Médico":  		
-				setVidaMaxima(15);
-				setResistencia(5);
-				setVida(vidaMaxima);
-				//getStatus();
-				break;
-				
-			case "Soldado":
-				setVidaMaxima(15);
-				setVida(vidaMaxima);
-				setForca(5);
-				//getStatus();
-				break;
-				
-			case "Professor":
-				setVidaMaxima(10);
-				setVida(vidaMaxima);
-				setForca(3);
-				setResistencia(3);
-				//getStatus();
-				break;	
-				
-			default: System.out.println("Comando Inválido!");
-			atribuindoValoresBaseadoNaProfissao("Professor");
-		}		
-	}
-     */
-
     
     //STATUS DO JOGADOR
     public String getStatus() {
 
-        String txt = "NOME: " + nome + ""
-                + " | PROFISSÃO: " + profissao + "\n"
+        String txt = "NOME: " 		+ getNome() + ""
+                + " | PROFISSÃO: " 	+ getProfissao() + "\n"
                 //+	"Vida Máxima: " 	+ vidaMaxima					+ "\n"
-                + "VIDA: " +  Game.dc.format(vida) + "\n"
-                + "FORÇA: " + forca + "\n"
-                + "RESISTÊNCIA: " + resistencia + "\n"
-                + "NÍVEL: " + nivel + "\n"
-                + "XP: " + Game.dc.format(xp) + "\n"
-                + "ARMA: " + arma + "\n"
-                + "ARMADURA: " + armadura + "\n";
+                + "VIDA: " 			+  Game.dc.format(getVida()) + " | " + printaVidaJogador() + "\n" 
+                + "FORÇA: " 		+ getForca() + "\n"
+                + "RESISTÊNCIA: " 	+ getResistencia() + "\n"
+                + "NÍVEL: " 		+ getNivel() + "\n"
+                + "XP: " 			+ Game.dc.format(xp) + "\n"
+                + "ARMA: " 			+ getArma() + "\n"
+                + "ARMADURA: " 		+ getArmadura() + "\n";
         //+ 	"XP p/ Upar: "  	+ Game.dc.format(xpParaUpar)    + "\n";
 
         return txt;
@@ -106,11 +74,11 @@ public class Jogador {
 
         if (getXp() + experiencia >= getXpParaUpar()) {
             setXp(getXp() + experiencia - getXpParaUpar());
-            setXpParaUpar(1.25f);
+            setXpParaUpar(getXpParaUpar() * 0.25);
             setNivel(1);
             melhoraStatus();
         } else {
-            setXp(experiencia);
+            setXp(getXp() + experiencia);
         }
     }
 
@@ -127,39 +95,11 @@ public class Jogador {
                   "||********** SUBIU DE NÍVEL ***********||\n"
                 + "|| Suas estatísticas subiram de nível! ||\n"
                 + "|| VIDA MÁXIMA:  + 2,5                 ||\n"
-                + "|| FORÇA:        + 3                   ||\n"
-                + "|| RESISTÊNCIA:  + 3                   ||\n"
+                + "|| FORÇA:        +  3                  ||\n"
+                + "|| RESISTÊNCIA:  +  3                  ||\n"
                 + "||*************************************||\n");
         
         getStatus();
-
-        /*
-        Scanner scan = new Scanner(System.in);
-        int escolha = scan.nextInt();
- 
-        switch (escolha) {
-            case 1:                                           
-                setVidaMaxima(10);                            
-                setVida(vidaMaxima);                          
-                getStatus();                                  
-                break;
-            case 2:
-                setForca(1);
- 
-                setVida(vidaMaxima);
-                getStatus();
-                break;
-            case 3:
-                setResistencia(1);
-                setVida(vidaMaxima);
-                getStatus();
-                break;
- 
-            default:
-                System.out.println("Comando inválido!");
-                melhoraStatus();
-        }
-        */
     }
 
     
@@ -211,13 +151,74 @@ public class Jogador {
             case "Capacete de Ferro":
                 return 15;
 
-            case "Carapaça de Cupim":
+            case "Exoesqueleto de Cupim":
                 return 30;
 
             default:
                 System.out.println("Esta armadura é inválida!");
                 return 0;
         }
+    }
+    
+    public String printaVidaJogador() {
+    	
+    	String l;
+    	
+    	if (getVida() >= getVidaMaxima())
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.90)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.80)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.70)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.60)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.50)
+    	{
+    		l = "[❤  ❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.40)
+    	{
+    		l = "[❤  ❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.30)
+    	{
+    		l = "[❤  ❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.20)
+    	{
+    		l = "[❤  ❤]";
+    	}
+    	
+    	else if (getVida() >= getVidaMaxima() * 0.01)
+    	{
+    		l = "[❤]";
+    	}
+    	
+    	else {
+    		l = "[]";
+    	}
+    	
+		return l;
     }
 
     //CÁLCULO PARA RETORNAR A DEFESA DO JOGADOR
@@ -292,7 +293,7 @@ public class Jogador {
 
     //DEFINE O NOVO XP DO JOGADOR ACRESCENTANDO A NOVA EXPERIÊNCIA DROPADA (APÓS DERROTAR O INÍMIGO, UPANDO DE NÍVEL OU NÃO)
     public void setXp(double xp) {
-        this.xp += xp;
+        this.xp = xp;
     }
 
     //RETORNA O XP NECESSÁRIO PARA UPAR
@@ -302,7 +303,7 @@ public class Jogador {
 
     //APÓS UPAR DEFINE O NOME XP PARA UPAR, SENDO 25% MAIOR QUE O NECESSÁRIO DO NÍVEL ANTERIOR (PARÂMETRO PASSADO NO MÉTODO 'PASSA NÍVEL')
     public void setXpParaUpar(double xpParaUpar) {
-        this.xpParaUpar *= xpParaUpar;
+        this.xpParaUpar += xpParaUpar;
     }
 
     //RETORNA O NOME DO JOGADOR
@@ -310,22 +311,10 @@ public class Jogador {
         return nome;
     }
 
-    /*
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-    */
-
     //RETORNA A PROFISSÃO DO JOGADOR
     public String getProfissao() {
         return profissao;
     }
-
-    /*
-	public void setProfissao(String profissao) {
-		this.profissao = profissao;
-	}
-    */
     
     //RETORNA O NOME DA ARMA ATUAL DO JOGADOR
     public String getArma() {
