@@ -8,9 +8,8 @@ public class Combate {
 
     public static void inimigo(String tipoInimigo, String nomeBoss) {
 
+    	//VARIAVEIS
         String criatura = "";
-        // int bossStatus = 1;
-        // int randomAtt = Game.uteis.geraNumeroRandomico(0, 3);
         int random = Game.uteis.geraNumeroRandomico(0, 101);
 
         // SE FOR INIMIGO COMUM
@@ -28,19 +27,6 @@ public class Combate {
             }
 
             // CRIA UM INIMIGO COM OS STATUS ABAIXO
-            /*
-             * spawnaInimigo(criatura,
-             * //vidaInimigo
-             * Game.jogador.getVidaMaxima() * 0.25,
-             * //forcaInimigo
-             * Game.jogador.getForca() * 0.50,
-             * //resistenciaInimigo
-             * Game.jogador.getResistencia() * 0.50,
-             * //nivelInimigo
-             * Game.jogador.getNivel(),
-             * tipoInimigo);
-             */
-
             Game.inimigo = new Inimigo(criatura, Game.jogador.getVidaMaxima() * 0.75, Game.jogador.getForca() * 0.50,
                     Game.jogador.getResistencia() * 0.50, Game.jogador.getNivel());
             System.out.println("Você encontra o inimigo: " + Game.inimigo.getNomeInimigo() + ".\n\n");
@@ -50,22 +36,9 @@ public class Combate {
 
         // SE NÃO FOR INIMIGO COMUM É BOSS
         else {
+        	
             // INIMIGO COM MAIS FORÇA
             if (random <= 50) {
-                /*
-                 * spawnaInimigo(
-                 * nomeBoss,
-                 * //vidaInimigo
-                 * Game.jogador.getVidaMaxima() * 0.75,
-                 * //forcaInimigo
-                 * Game.jogador.getForca() * 0.75,
-                 * //resistenciaInimigo
-                 * Game.jogador.getResistencia() * 0.50,
-                 * //nivelInimigo
-                 * Game.jogador.getNivel() * 2,
-                 * tipoInimigo);
-                 */
-
                 Game.boss = new Boss(nomeBoss, Game.jogador.getVidaMaxima() * 0.75, Game.jogador.getForca() * 0.75,
                         Game.jogador.getResistencia() * 0.50, Game.jogador.getNivel() * 2);
                 System.out.println("Você encontra o inimigo: " + Game.boss.getNomeInimigo() + ".\n\n");
@@ -75,19 +48,6 @@ public class Combate {
 
             // INIMIGO COM MAIS RESISTÊNCIA
             else {
-                /*
-                 * spawnaInimigo(
-                 * nomeBoss,
-                 * //vidaInimigo
-                 * Game.jogador.getVidaMaxima() * 0.75,
-                 * //forcaInimigo
-                 * Game.jogador.getForca() * 0.50,
-                 * //resistenciaInimigo
-                 * Game.jogador.getResistencia() * 0.75,
-                 * Game.jogador.getNivel() * 2,
-                 * tipoInimigo);
-                 */
-
                 Game.boss = new Boss(nomeBoss, Game.jogador.getVidaMaxima() * 0.75, Game.jogador.getForca() * 0.50,
                         Game.jogador.getResistencia() * 0.75, Game.jogador.getNivel() * 2);
                 System.out.println("Você encontra o inimigo: " + Game.boss.getNomeInimigo() + ".\n\n");
@@ -97,26 +57,7 @@ public class Combate {
         }
     }
 
-    /* 
-    // FAZ APARECER O INIMIGO / BOSS COM OS STATUS PASSADOS
-    public void spawnaInimigo(String nomeInimigo, double vidaInimigo, double forcaInimigo, double resistenciaInimigo,
-            int nivelInimigo, String tipoInimigo) {
-
-        // CRIA UMA NOVA INSTÂNCIA COM OS STATUS DO NOVO INIMIGO
-        if (tipoInimigo == "inimigo") {
-            Game.inimigo = new Inimigo(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
-            System.out.println("Você encontra o inimigo: " + Game.inimigo.getNomeInimigo() + ".\n\n");
-        }
-        // CRIA UMA NOVA INSTÂNCIA COM OS STATUS DO NOVO BOSS
-        else {
-            Game.boss = new Boss(nomeInimigo, vidaInimigo, forcaInimigo, resistenciaInimigo, nivelInimigo);
-            System.out.println("Você encontra o inimigo: " + Game.boss.getNomeInimigo() + ".\n\n");
-        }
-
-        combate(tipoInimigo);
-    }
-    */
-
+    //MÉTODO DE COMBATE
     public static void combate(String tipoInimigo) {
 
         String input = "";
@@ -261,7 +202,7 @@ public class Combate {
                                     + "" + Game.inimigo.printaVidaInimigo() + "\n");
                 }
 
-                // SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
+                // SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O ATAQUE CRÍTICO
                 else {
                     Game.inimigo.setVidaInimigo(Game.jogador.getDanoJogador(Game.inimigo.getResistenciaInimigo()));
                     System.out.println(
@@ -300,17 +241,17 @@ public class Combate {
                                     + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()) * 2)
                                     + " de dano.\n"
                                     + "Vida atual do inimigo: " //+ Game.dc.format(Game.boss.getVidaInimigo()) + "\n"
-                                    + "" + Game.inimigo.printaVidaInimigo() + "\n");
+                                    + "" + Game.boss.printaVidaInimigo() + "\n");
                 }
 
-                // SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O CRÍTICO
+                // SE A VARIÁVEL FOR MENOR OU IGUAL A 8, NÃO DÁ O ATAQUE CRÍTICO
                 else {
                     Game.boss.setVidaInimigo(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()));
                     System.out.println(
                             "Você deu " + Game.dc.format(Game.jogador.getDanoJogador(Game.boss.getResistenciaInimigo()))
                                     + " de dano.\n"
                                     + "Vida atual do inimigo: " //+ Game.dc.format(Game.boss.getVidaInimigo()) + "\n"
-                                    + "" + Game.inimigo.printaVidaInimigo() + "\n");
+                                    + "" + Game.boss.printaVidaInimigo() + "\n");
                 }
 
                 // SE A VIDA DO BOSS FOR MAIOR QUE 0 (ESTÁ VIVO, O BOSS ATACA APÓS O JOGADOR)
@@ -449,9 +390,5 @@ public class Combate {
 
         Game.uteis.delayParaProximoComando(50);
         Game.menu.sair();
-        //Runtime.getRuntime().exit(0);
-        //Game.game = new Game();
-        //Game.game.main(null);
-        //System.exit(1);
     }
 }

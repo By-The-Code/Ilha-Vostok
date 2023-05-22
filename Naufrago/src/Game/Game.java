@@ -21,20 +21,6 @@ public class Game {
 
   // INICIA O JOGO CHAMANDO O MÉTODO 'INTRO' DA CLASSE 'MENU'
   public static void main(String[] args) {
-    /*
-    game = new Game();
-
-    historia = new Historia();
-    combate = new Combate();
-    uteis = new Uteis();
-    menu = new Menu();
-    sc = new Scanner(System.in);
-    */
-    /*
-     * jogador = new Jogador ("Alfonse", "PROFESSOR");
-     * System.out.println(jogador.getStatus());
-     * historia.penultimoAto();
-     */
     menu.intro();
   }
 }

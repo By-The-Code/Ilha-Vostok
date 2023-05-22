@@ -7,20 +7,6 @@ public class Boss extends Inimigo {
 		super(nome, vida, forca, resistencia, nivel);
 	}
 
-    /*
-	@Override
-    public double danoInimigo(int resistJogador) {
-    	double danoInimigo = ((getForcaInimigo() * getNivelInimigo() + 5) / resistJogador) * 2;
-        return danoInimigo;
-    }
-	
-	@Override
-	public double defesaInimigo() {
-		double defesaInimigo = (double) getResistenciaInimigo() * getNivelInimigo() + 5;
-		return defesaInimigo;
-	}
-	*/
-
 	//OVERRIDE PARA RETORNAR MAIS XP QUANDO DERROTAR O BOSS, POIS OS INÍMIGOS COMUM DROPAM MENOS XP 
 	@Override
 	public double dropExperiencia() {

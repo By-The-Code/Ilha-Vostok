@@ -19,17 +19,6 @@ public class Inimigo {
         this.resistenciaInimigo = resistencia;
         this.nivelInimigo = nivel;
     }
-    
-    /*
-	private Inimigo(String nomeInimigo, int vidaInimigo, int forcaInimigo, int resistenciaInimigo, int nivelInimigo) {
-		super();
-		this.nomeInimigo = nomeInimigo;
-		this.vidaInimigo = vidaInimigo;
-		this.forcaInimigo = forcaInimigo;
-		this.resistenciaInimigo = resistenciaInimigo;
-		this.nivelInimigo = nivelInimigo;
-	}
-    */
 
     //RETORNA OS STATUS DO INÍMIGO/ BOSS
     public String getStatusInimigo() {
@@ -144,12 +133,6 @@ public class Inimigo {
     public String getNomeInimigo() {
         return nomeInimigo;
     }
-
-    /*
-	private void setNomeInimigo(String nomeInimigo) {
-		this.nomeInimigo = nomeInimigo;
-	}
-    */
     
     //RETORNA A VIDA INÍCIAL DO INÍMIGO/ BOSS
     public double getVidaInicialInimigo() {
@@ -170,32 +153,14 @@ public class Inimigo {
     public double getForcaInimigo() {
         return forcaInimigo;
     }
-
-    /*
-	private void setForcaInimigo(int forcaInimigo) {
-		this.forcaInimigo = forcaInimigo;
-	}
-    */
     
     //RETORNA A RESISTÊNCIA DO INÍMIGO/ BOSS
     public double getResistenciaInimigo() {
         return resistenciaInimigo;
     }
-
-    /*
-	private void setResistenciaInimigo(int resistenciaInimigo) {
-		this.resistenciaInimigo = resistenciaInimigo;
-	}
-    */
     
     //RETORNA O NÍVEL DO INÍMIGO/ BOSS
     public double getNivelInimigo() {
         return nivelInimigo;
     }
-
-    /*
-	private void setNivelInimigo(int nivelInimigo) {
-		this.nivelInimigo = nivelInimigo;
-	}
-    */
 }

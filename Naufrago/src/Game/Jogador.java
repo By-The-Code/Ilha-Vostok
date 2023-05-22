@@ -49,38 +49,6 @@ public class Jogador {
         }
     }
 
-    /*
-	private void atribuindoValoresBaseadoNaProfissao(String profissao) {
-		
-		switch (profissao) {
-			case "Médico":  		
-				setVidaMaxima(15);
-				setResistencia(5);
-				setVida(vidaMaxima);
-				//getStatus();
-				break;
-				
-			case "Soldado":
-				setVidaMaxima(15);
-				setVida(vidaMaxima);
-				setForca(5);
-				//getStatus();
-				break;
-				
-			case "Professor":
-				setVidaMaxima(10);
-				setVida(vidaMaxima);
-				setForca(3);
-				setResistencia(3);
-				//getStatus();
-				break;	
-				
-			default: System.out.println("Comando Inválido!");
-			atribuindoValoresBaseadoNaProfissao("Professor");
-		}		
-	}
-     */
-
     
     //STATUS DO JOGADOR
     public String getStatus() {
@@ -132,34 +100,6 @@ public class Jogador {
                 + "||*************************************||\n");
         
         getStatus();
-
-        /*
-        Scanner scan = new Scanner(System.in);
-        int escolha = scan.nextInt();
- 
-        switch (escolha) {
-            case 1:                                           
-                setVidaMaxima(10);                            
-                setVida(vidaMaxima);                          
-                getStatus();                                  
-                break;
-            case 2:
-                setForca(1);
- 
-                setVida(vidaMaxima);
-                getStatus();
-                break;
-            case 3:
-                setResistencia(1);
-                setVida(vidaMaxima);
-                getStatus();
-                break;
- 
-            default:
-                System.out.println("Comando inválido!");
-                melhoraStatus();
-        }
-        */
     }
 
     
@@ -371,22 +311,10 @@ public class Jogador {
         return nome;
     }
 
-    /*
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-    */
-
     //RETORNA A PROFISSÃO DO JOGADOR
     public String getProfissao() {
         return profissao;
     }
-
-    /*
-	public void setProfissao(String profissao) {
-		this.profissao = profissao;
-	}
-    */
     
     //RETORNA O NOME DA ARMA ATUAL DO JOGADOR
     public String getArma() {

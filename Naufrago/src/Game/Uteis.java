@@ -39,25 +39,6 @@ public class Uteis {
 		return random.nextInt(valorMin, valorMax);
 	}
 
-	// CONTINUA COM O MÉTODO SEGUINTE APERTANDO QUALQUER TECLA, DEFINIMOS 'ENTER'
-	// APENAS PARA FACILITAR AO JOGADOR
-	/*
-	 * public boolean Continuar() {
-	 * 
-	 * System.out.println(
-	 * "||************************************||\n"
-	 * + "||  Pressione 'ENTER' para continuar. ||\n"
-	 * + "||************************************||\n");
-	 * 
-	 * String input = Game.sc.nextLine();
-	 * 
-	 * if (input == "" || input != "")
-	 * return true;
-	 * else
-	 * return true;
-	 * }
-	 */
-
 	// EXECUTA O PRÓXIMO COMANDO APÓS X PERÍODO DE TEMPO, 25 = 2500 = 2 SEGUNDOS E 5
 	// MILÉSSIMOS
 	public void delayParaProximoComando(int tempo) {
@@ -110,22 +91,11 @@ public class Uteis {
 					"\nVocê optou por fazer parte do caminho de forma mais pacífica, parabéns!\n\n\n\n\n");
 		}
 	}
-	
-	/*
-	 * public int getAtaques() {
-	 * return ataques;
-	 * }
-	 */
 
 	public void setAtaques() {
 		this.ataques += 1;
 	}
 
-	/*
-	 * public int getFugas() {
-	 * return fugas;
-	 * }
-	 */
 	public void setFugas() {
 		this.fugas += 1;
 	}
