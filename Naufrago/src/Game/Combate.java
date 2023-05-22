@@ -21,7 +21,7 @@ public class Combate {
             } else if (random >= 41 && random <= 75) {
                 criatura = "Cobra-Voadora";
             } else if (random >= 76) {
-                criatura = "Lacraia-Maior";
+                criatura = "Lacraia-Grande";
             } else {
                 return;
             }
